@@ -1,0 +1,369 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Kisi Calendars Events API
+  description: "## Introduction\n\nWelcome to the Kisi API documentation. Before you read further, please read\nthe general [Kisi Docs portal](https://docs.kisi.io/).\n\n<!-- theme: info -->\n> If you want to be notified by email about updates to our API, please subscribe to our\n> [newsletter](https://2e2bc.share.hsforms.com/2OsdqtC8xRHGQ2yaS16AF7w).\n\n### Format\n\nThe Kisi API supports JSON only, so please set `Accept` and `Content-Type`\nto `application/json`. All requests and responses will use JSON as the\nformat for any data encompassed in the body of requests and responses.\n\n```http\n<METHOD> <URL> HTTP/1.1\nAccept: application/json\nContent-Type: application/json\n```\n\n### Authentication\n\nMost calls to the API will require an authenticated user. If such a user\nis not present, you will receive a 401 response.\nFor more information about authentication, see the [Kisi Docs portal](https://docs.kisi.io/api/get_started/add_necessary_headers).\n\nAPI calls must be made using HTTPS. Any calls made over plain HTTP will fail.\n\n### Rate limits\n\nFor authenticated API requests, you can make up to 5 requests per second,\nper user. Note that the limit applies per user, so requests made using\ndifferent logins for the same user share the same quota.\n\nFor unauthenticated requests, you can make up to 5 requests per second, per\nIP address.\n\nThe following endpoints have custom rate limits:\n\n| Endpoint                   | Limit            |\n|----------------------------|------------------|\n| `POST /event_sets`         | 1 per second     |\n| `POST /signed_upload_urls` | 1 per 10 seconds |\n\nIf you exceed the rate limit, a 429 response will be returned.\n\nSome best practices:\n- If you're making requests for a single user, do so serially, *not* concurrently.\n- If you're making a large number of requests for a single user, wait at least one second between each request.\n\nWe reserve the right to change these limits as needed to ensure availability.\n\n### Deprecations\n\nIn the event that some part of the API has to be deprecated, we do the following:\n\n  1. Return the `Deprecation` header with the date of when the endpoint is deprecated.\n  2. Return the `Sunset` header with the date of when the endpoint can be expected to not function anymore.\n  3. When the `Sunset` date is reached, the endpoint may go away at any time.\n\nWe recommend listening to these headers to avoid disruptions.\n\n### Error codes\n\nSome endpoints return an error code and a message. In the table below all error codes are listed.\n\n| Error code | Message                                                                                         |\n|------------|-------------------------------------------------------------------------------------------------|\n| `afc507`   | The authentication link is not valid.                                                           |\n| `afc546`   | Invalid Two Factor backup code.                                                                 |\n| `faa9ff`   | The card is not activated.                                                                      |\n| `faa9ef`   | The card was not found.                                                                         |\n| `afc496`   | Access denied.                                                                                  |\n| `f29aef`   | Your link is invalid.                                                                           |\n| `afc516`   | Wrong email address or password.                                                                |\n| `afc536`   | Invalid Two Factor verification code.                                                           |\n| `afc526`   | Please provide a Two Factor verification code.                                                  |\n| `afc516`   | The two factor pin is invalid                                                                   |\n| `ffffff`   | An unexpected issue occured.                                                                    |\n| `fcd8ef`   | Access denied.                                                                                  |\n| `fcd8ff`   | Access disabled.                                                                                |\n| `cabbeb`   | A card with the same identifiers was already enrolled.                                          |\n| `bb4fff`   | Please authorize Kisi for Bluetooth.                                                            |\n| `bb5bff`   | No nearby Kisi reader found. Try enabling Bluetooth on your device.                             |\n| `bb4bff`   | Please enable Bluetooth.                                                                        |\n| `a7793f`   | Please authorize Kisi for location services.                                                    |\n| `a3799f`   | Please enable your location services.                                                           |\n| `a3793f`   | Please enable your location services.                                                           |\n| `f298cf`   | The place has disabled all links for you.                                                       |\n| `f298df`   | Your access rights for this place do not include links.                                         |\n| `f298bf`   | Your access right is invalid.                                                                   |\n| `f01337`   | Your group's access rights for this place do not include apps.                                  |\n| `34bd8f`   | Your device is not the primary one.                                                             |\n| `facced`   | Unable to decode the certificate.                                                               |\n| `bbb99f`   | Your location is not valid.                                                                     |\n| `bbb93f`   | The location of the lock is invalid.                                                            |\n| `a3995f`   | You are too far away.                                                                           |\n| `bb4faa`   | You're not close enough to the door.                                                            |\n| `bbc93f`   | In-app access is disabled by the organization. Please tap your phone against the reader.        |\n| `34ffaa`   | Your access is not allowed at this moment, please try again later.                              |\n| `f35ade`   | Your access is no longer valid.                                                                 |\n| `f398de`   | Your access is invalid.,                                                                        |\n| `f358de`   | Your access is not yet valid, please try again later.                                           |\n| `fad334`   | An error occurred permitting the the elevator stop.                                             |\n| `fad121`   | The elevator stop was not found.                                                                |\n| `fad122`   | The elevator stop was not configured.                                                           |\n| `fad123`   | The elevator stops are locked down.                                                             |\n| `fad124`   | The elevator stop was on schedule.                                                              |\n| `fad002`   | The place is currently locked down.                                                             |\n| `ff420a`   | The door has no assigned Kisi controller.                                                       |\n| `fad001`   | The door is currently locked down.                                                              |\n| `fad105`   | The door is improperly configured.                                                              |\n| `fad10e`   | The door could not be found.                                                                    |\n| `fad110`   | The door is already scheduled to be unlocked.                                                   |\n| `fad137`   | The access was denied by the zone.                                                              |\n| `fad146`   | The third party zone was overriden but it is still armed.                                       |\n| `fad10f`   | An error occurred connecting to the wireless lock.                                              |\n| `fad106`   | An error occurred finding the wireless lock.                                                    |\n| `fad107`   | The wireless lock is offline.                                                                   |\n| `fad112`   | An unlock is already in progress for the wireless lock.                                         |\n| `fac001`   | The Kisi controller is currently unavailable.                                                   |\n| `fac002`   | The Kisi controller is currently unavailable.                                                   |\n| `fac003`   | The Kisi device is currently unavailable.                                                       |\n| `fac004`   | The Kisi device is currently unavailable.                                                       |\n| `fad108`   | The Kisi controller is not yet configured.                                                      |\n| `ecc123`   | The Kisi controller encountered an unhandled error.                                             |\n| `fbc000`   | The Kisi controller firmware is being updated. This will take a few seconds. Please retry then. |\n| `aaa345`   | The zone has no assigned zone controller.                                                       |\n| `fad126`   | The zone could not be found.                                                                    |\n| `fad129`   | The alarm controller is currently unavailable.                                                  |\n| `adf234`   | An error occurred resetting the zone.                                                           |\n| `fad144`   | The third party alarm is still in violation.                                                    |\n| `abbb11`   | The integration partner experienced an error.                                                   |\n| `abcc11`   | An integration partner resource could not be found.                                             |\n| `abdd11`   | The communication with the integration partner failed.                                          |\n| `abee11`   | Authorization with the integration partner failed.                                              |\n| `abfe11`   | The integration is not acceptable                                                               |\n| `abff11`   | The integration is disabled.                                                                    |\n"
+  contact:
+    name: Kisi Support
+    email: support@getkisi.com
+servers:
+- url: https://api.kisi.io
+  description: Kisi Production
+tags:
+- name: Events
+paths:
+  /events/meta:
+    get:
+      operationId: fetchEventMetadata
+      summary: Fetch Event Metadata
+      tags:
+      - Events
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      deprecated: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  object_type_to_action:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                required:
+                - object_type_to_action
+                description: A mapping between object type and action values
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /events/types:
+    get:
+      operationId: fetchEventTypes
+      summary: Fetch Event Types
+      tags:
+      - Events
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  description: An event type
+                  enum:
+                  - access_key.create
+                  - access_key.destroy
+                  - amenity.create
+                  - amenity.destroy
+                  - amenity.update
+                  - apple_pass.destroy
+                  - apple_pass_instance.destroy
+                  - apple_pass_instance.resume
+                  - apple_pass_instance.suspend
+                  - beacon.update
+                  - booking.cancel
+                  - booking.create
+                  - camera.create
+                  - camera.destroy
+                  - camera.import
+                  - camera.rate_limited
+                  - camera_snapshot_set.create
+                  - camera.update
+                  - card.activate_with_token
+                  - card.activate
+                  - card.assign
+                  - card.create
+                  - card.deactivate
+                  - card.deassign
+                  - card.destroy
+                  - card.update
+                  - communication_policy.update
+                  - controller.assign
+                  - controller.deassign
+                  - controller_input.closed
+                  - controller_input_connection.create
+                  - controller_input_connection.destroy
+                  - controller_input_connection.update
+                  - controller_input.opened
+                  - controller_input.tamper
+                  - controller_input.triggered
+                  - controller.reboot
+                  - controller_relay_connection.create
+                  - controller_relay_connection.destroy
+                  - controller_relay_connection.update
+                  - controller.tamper
+                  - controller.update
+                  - controller.wiegand_board_connect
+                  - controller.wiegand_board_disconnect
+                  - controller_wiegand_connection.create
+                  - controller_wiegand_connection.destroy
+                  - controller_wiegand_connection.excessive_pin_attempts
+                  - controller_wiegand_connection.update
+                  - csv_card_import.create
+                  - csv_user_import.create
+                  - custom_role.create
+                  - custom_role.destroy
+                  - custom_role.update
+                  - elevator.create
+                  - elevator.destroy
+                  - elevator.permit
+                  - elevator_stop.cancel_lockdown
+                  - elevator_stop.create
+                  - elevator_stop.destroy
+                  - elevator_stop.lock_down
+                  - elevator_stop.scheduled_permit_ended
+                  - elevator_stop.scheduled_permit_started
+                  - elevator_stop.update
+                  - elevator.update
+                  - event_retention_policy.create
+                  - event_retention_policy.destroy
+                  - event_retention_policy.update
+                  - floor.create
+                  - floor.destroy
+                  - floor.update
+                  - group.create
+                  - group.destroy
+                  - group_elevator_stop.create
+                  - group_elevator_stop.destroy
+                  - group_link.create
+                  - group_link.destroy
+                  - group_lock.create
+                  - group_lock.destroy
+                  - group_terminal.create
+                  - group_terminal.destroy
+                  - group.update
+                  - group_zone.create
+                  - group_zone.destroy
+                  - guest.create
+                  - guest.destroy
+                  - incident.create
+                  - incident_policy.create
+                  - incident_policy.destroy
+                  - incident_policy_subscription.create
+                  - incident_policy_subscription.destroy
+                  - incident_policy_subscription.update
+                  - incident_policy.update
+                  - incident.update
+                  - integration.create
+                  - integration.destroy
+                  - integration.disable_due_to_error
+                  - integration.update
+                  - integration.warn_due_to_error
+                  - intercom.answer_call
+                  - intercom.assign
+                  - intercom_assignment.create
+                  - intercom_assignment.destroy
+                  - intercom_completed_call.create
+                  - intercom.deassign
+                  - intercom.dismiss_call
+                  - intercom.finish_call
+                  - intercom.initiate_streaming
+                  - intercom.miss_call
+                  - intercom.timeout_call
+                  - intercom.trigger_call
+                  - intercom.update
+                  - invite.create
+                  - kiosk.assign
+                  - kiosk.deassign
+                  - kiosk_shortcut.create
+                  - kiosk_shortcut.destroy
+                  - kiosk.update
+                  - lock.cancel_lockdown
+                  - lock.closed
+                  - lock.create
+                  - lock.destroy
+                  - lock.first_to_arrive
+                  - lock.forced_open
+                  - lock.held_open
+                  - lock.last_to_leave
+                  - lock.lock_down
+                  - lock.locked
+                  - lock.opened
+                  - lock.scheduled_unlock_ended
+                  - lock.scheduled_unlock_started
+                  - lock.tailgate
+                  - lock.unlock
+                  - lock.update
+                  - login.create
+                  - login.destroy
+                  - login.promote
+                  - login.resolve
+                  - marketplace_app_share.create
+                  - marketplace_app_share.destroy
+                  - marketplace_installation.create
+                  - marketplace_installation.destroy
+                  - marketplace_installation.request_uninstall
+                  - marketplace_installation.update
+                  - marketplace_shortcut.create
+                  - marketplace_shortcut.destroy
+                  - marketplace_shortcut.update
+                  - member.create
+                  - member.destroy
+                  - member.update
+                  - third_party_hf_uid_read_configuration.create
+                  - third_party_hf_uid_read_configuration.destroy
+                  - mifare_classic_data_block_configuration.create
+                  - mifare_classic_data_block_configuration.destroy
+                  - mifare_desfire_extra_application_configuration.create
+                  - mifare_desfire_master_key_configuration.create
+                  - mobile_cache_policy.update
+                  - mobile_cache_policy.invalidate
+                  - organization.accept_transfer
+                  - organization.cancel_transfer
+                  - organization.create
+                  - organization.generate_next_certificate
+                  - organization.reject_transfer
+                  - organization.request_transfer
+                  - organization.reset_scim_token
+                  - organization.rotate_certificate
+                  - organization.update
+                  - place.cancel_lockdown
+                  - place_card.create
+                  - place_card.destroy
+                  - place.create
+                  - place.destroy
+                  - place.lock_down
+                  - place.occupancy_rate_limit_reach
+                  - place.update
+                  - reader.access
+                  - reader.assign
+                  - reader.deassign
+                  - reader.reboot
+                  - reader.reset_tamper
+                  - reader.tamper
+                  - reader.update
+                  - report.create
+                  - report.destroy
+                  - report.download
+                  - report.finish
+                  - role_assignment.create
+                  - role_assignment.destroy
+                  - role_assignment.update
+                  - schedule.create
+                  - schedule.destroy
+                  - schedule.update
+                  - scheduled_report.create
+                  - scheduled_report.destroy
+                  - scheduled_report.update
+                  - share.create
+                  - share.destroy
+                  - share.update
+                  - subscription.update
+                  - team.create
+                  - team.destroy
+                  - team_membership.create
+                  - team_membership.destroy
+                  - team.update
+                  - terminal.create
+                  - terminal.destroy
+                  - terminal.trigger
+                  - terminal.update
+                  - user.activate_2fa
+                  - user.create_backup_codes
+                  - user.create_password
+                  - user.create
+                  - user.deactivate_2fa
+                  - user.destroy
+                  - user.show_confirmation
+                  - user.update_password
+                  - user.update
+                  - visualization_page_reporter.create
+                  - visualization_page_reporter.destroy
+                  - visualization_page_share.create
+                  - visualization_page_share.destroy
+                  - wireless_lock.battery_warning
+                  - wireless_lock.closed
+                  - wireless_lock_connection.create
+                  - wireless_lock_connection.destroy
+                  - wireless_lock_connection.update
+                  - wireless_lock.disenroll
+                  - wireless_lock.locked
+                  - wireless_lock.opened
+                  - wireless_lock.tampered
+                  - wireless_lock.unlocked
+                  - wireless_lock.update
+                  - zone.create
+                  - zone.destroy
+                  - zone.external_mode_override
+                  - zone.override
+                  - zone.policy_activate
+                  - zone.policy_override
+                  - zone.policy_transition
+                  - zone.policy_violate
+                  - zone.reset
+                  - zone.update
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      description: Schema describing errors.
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error message.
+          example: Wrong email address or password.
+        code:
+          type: string
+          description: An identifier of the error.
+          example: afc516
+      required:
+      - error
+      - code
+  securitySchemes:
+    Webhook-Signature:
+      type: apiKey
+      in: header
+      name: X-Signature
+      description: 'Authorize using a signature of the request body. The signature is a HMAC-SHA256 hash of the request body using a secret key. <br><br>E.g. `X-Signature: 123`'
+    Kisi-Login:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a login. Prefix the value with `KISI-LOGIN`<br><br>Example: `Authorization: KISI-LOGIN 123`'
+    Kisi-Access-Key:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using an access key. Prefix the value with `KISI-ACCESS-KEY`<br><br>Example: `Authorization: KISI-ACCESS-KEY 123`'
+    Kisi-Group-Link:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a group link. Prefix the value with `KISI-GROUP-LINK`<br><br>Example: `Authorization: KISI-GROUP-LINK 123`'
+    Kisi-Service:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a service. Prefix the value with `KISI-SERVICE`<br><br>Example: `Authorization: KISI-SERVICE 123`'
+    OAuth2Basic:
+      type: http
+      scheme: basic
+      description: Username is the client id. Password is the client secret.
+    OAuth2:
+      type: oauth2
+      description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer youraccesstoken`'
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.kisi.io/oauth/authorize
+          tokenUrl: https://api.kisi.io/oauth/token
+          scopes: {}

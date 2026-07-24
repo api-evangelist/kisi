@@ -1,0 +1,702 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Kisi Calendars Controllers API
+  description: "## Introduction\n\nWelcome to the Kisi API documentation. Before you read further, please read\nthe general [Kisi Docs portal](https://docs.kisi.io/).\n\n<!-- theme: info -->\n> If you want to be notified by email about updates to our API, please subscribe to our\n> [newsletter](https://2e2bc.share.hsforms.com/2OsdqtC8xRHGQ2yaS16AF7w).\n\n### Format\n\nThe Kisi API supports JSON only, so please set `Accept` and `Content-Type`\nto `application/json`. All requests and responses will use JSON as the\nformat for any data encompassed in the body of requests and responses.\n\n```http\n<METHOD> <URL> HTTP/1.1\nAccept: application/json\nContent-Type: application/json\n```\n\n### Authentication\n\nMost calls to the API will require an authenticated user. If such a user\nis not present, you will receive a 401 response.\nFor more information about authentication, see the [Kisi Docs portal](https://docs.kisi.io/api/get_started/add_necessary_headers).\n\nAPI calls must be made using HTTPS. Any calls made over plain HTTP will fail.\n\n### Rate limits\n\nFor authenticated API requests, you can make up to 5 requests per second,\nper user. Note that the limit applies per user, so requests made using\ndifferent logins for the same user share the same quota.\n\nFor unauthenticated requests, you can make up to 5 requests per second, per\nIP address.\n\nThe following endpoints have custom rate limits:\n\n| Endpoint                   | Limit            |\n|----------------------------|------------------|\n| `POST /event_sets`         | 1 per second     |\n| `POST /signed_upload_urls` | 1 per 10 seconds |\n\nIf you exceed the rate limit, a 429 response will be returned.\n\nSome best practices:\n- If you're making requests for a single user, do so serially, *not* concurrently.\n- If you're making a large number of requests for a single user, wait at least one second between each request.\n\nWe reserve the right to change these limits as needed to ensure availability.\n\n### Deprecations\n\nIn the event that some part of the API has to be deprecated, we do the following:\n\n  1. Return the `Deprecation` header with the date of when the endpoint is deprecated.\n  2. Return the `Sunset` header with the date of when the endpoint can be expected to not function anymore.\n  3. When the `Sunset` date is reached, the endpoint may go away at any time.\n\nWe recommend listening to these headers to avoid disruptions.\n\n### Error codes\n\nSome endpoints return an error code and a message. In the table below all error codes are listed.\n\n| Error code | Message                                                                                         |\n|------------|-------------------------------------------------------------------------------------------------|\n| `afc507`   | The authentication link is not valid.                                                           |\n| `afc546`   | Invalid Two Factor backup code.                                                                 |\n| `faa9ff`   | The card is not activated.                                                                      |\n| `faa9ef`   | The card was not found.                                                                         |\n| `afc496`   | Access denied.                                                                                  |\n| `f29aef`   | Your link is invalid.                                                                           |\n| `afc516`   | Wrong email address or password.                                                                |\n| `afc536`   | Invalid Two Factor verification code.                                                           |\n| `afc526`   | Please provide a Two Factor verification code.                                                  |\n| `afc516`   | The two factor pin is invalid                                                                   |\n| `ffffff`   | An unexpected issue occured.                                                                    |\n| `fcd8ef`   | Access denied.                                                                                  |\n| `fcd8ff`   | Access disabled.                                                                                |\n| `cabbeb`   | A card with the same identifiers was already enrolled.                                          |\n| `bb4fff`   | Please authorize Kisi for Bluetooth.                                                            |\n| `bb5bff`   | No nearby Kisi reader found. Try enabling Bluetooth on your device.                             |\n| `bb4bff`   | Please enable Bluetooth.                                                                        |\n| `a7793f`   | Please authorize Kisi for location services.                                                    |\n| `a3799f`   | Please enable your location services.                                                           |\n| `a3793f`   | Please enable your location services.                                                           |\n| `f298cf`   | The place has disabled all links for you.                                                       |\n| `f298df`   | Your access rights for this place do not include links.                                         |\n| `f298bf`   | Your access right is invalid.                                                                   |\n| `f01337`   | Your group's access rights for this place do not include apps.                                  |\n| `34bd8f`   | Your device is not the primary one.                                                             |\n| `facced`   | Unable to decode the certificate.                                                               |\n| `bbb99f`   | Your location is not valid.                                                                     |\n| `bbb93f`   | The location of the lock is invalid.                                                            |\n| `a3995f`   | You are too far away.                                                                           |\n| `bb4faa`   | You're not close enough to the door.                                                            |\n| `bbc93f`   | In-app access is disabled by the organization. Please tap your phone against the reader.        |\n| `34ffaa`   | Your access is not allowed at this moment, please try again later.                              |\n| `f35ade`   | Your access is no longer valid.                                                                 |\n| `f398de`   | Your access is invalid.,                                                                        |\n| `f358de`   | Your access is not yet valid, please try again later.                                           |\n| `fad334`   | An error occurred permitting the the elevator stop.                                             |\n| `fad121`   | The elevator stop was not found.                                                                |\n| `fad122`   | The elevator stop was not configured.                                                           |\n| `fad123`   | The elevator stops are locked down.                                                             |\n| `fad124`   | The elevator stop was on schedule.                                                              |\n| `fad002`   | The place is currently locked down.                                                             |\n| `ff420a`   | The door has no assigned Kisi controller.                                                       |\n| `fad001`   | The door is currently locked down.                                                              |\n| `fad105`   | The door is improperly configured.                                                              |\n| `fad10e`   | The door could not be found.                                                                    |\n| `fad110`   | The door is already scheduled to be unlocked.                                                   |\n| `fad137`   | The access was denied by the zone.                                                              |\n| `fad146`   | The third party zone was overriden but it is still armed.                                       |\n| `fad10f`   | An error occurred connecting to the wireless lock.                                              |\n| `fad106`   | An error occurred finding the wireless lock.                                                    |\n| `fad107`   | The wireless lock is offline.                                                                   |\n| `fad112`   | An unlock is already in progress for the wireless lock.                                         |\n| `fac001`   | The Kisi controller is currently unavailable.                                                   |\n| `fac002`   | The Kisi controller is currently unavailable.                                                   |\n| `fac003`   | The Kisi device is currently unavailable.                                                       |\n| `fac004`   | The Kisi device is currently unavailable.                                                       |\n| `fad108`   | The Kisi controller is not yet configured.                                                      |\n| `ecc123`   | The Kisi controller encountered an unhandled error.                                             |\n| `fbc000`   | The Kisi controller firmware is being updated. This will take a few seconds. Please retry then. |\n| `aaa345`   | The zone has no assigned zone controller.                                                       |\n| `fad126`   | The zone could not be found.                                                                    |\n| `fad129`   | The alarm controller is currently unavailable.                                                  |\n| `adf234`   | An error occurred resetting the zone.                                                           |\n| `fad144`   | The third party alarm is still in violation.                                                    |\n| `abbb11`   | The integration partner experienced an error.                                                   |\n| `abcc11`   | An integration partner resource could not be found.                                             |\n| `abdd11`   | The communication with the integration partner failed.                                          |\n| `abee11`   | Authorization with the integration partner failed.                                              |\n| `abfe11`   | The integration is not acceptable                                                               |\n| `abff11`   | The integration is disabled.                                                                    |\n"
+  contact:
+    name: Kisi Support
+    email: support@getkisi.com
+servers:
+- url: https://api.kisi.io
+  description: Kisi Production
+tags:
+- name: Controllers
+paths:
+  /controllers:
+    get:
+      operationId: fetchControllers
+      summary: Fetch controllers
+      tags:
+      - Controllers
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: ids
+        in: query
+        schema:
+          type: string
+        description: Filter by object IDs
+      - name: query
+        in: query
+        schema:
+          type: string
+        description: 'Filter by a freetext string. Properties searched: `name`, `device_id`, `token`
+
+          '
+      - name: place_id
+        in: query
+        schema:
+          type: integer
+        description: Filter by place ID
+      - name: lock_id
+        in: query
+        schema:
+          type: integer
+        description: Filter by lock ID
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 10
+          maximum: 250
+        description: The number of objects to return
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+          maximum: 20000
+        description: The number of objects to offset
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - online
+          - offline
+        description: Filter by status
+      - name: sort
+        in: query
+        schema:
+          type: string
+          enum:
+          - name
+          - -name
+        description: 'Sort the results. Prepend `-` to sort in reverse order.
+
+
+          `name` - sort by group name, alphabetically
+
+          '
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  title: Controller
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the controller
+                    resource_type:
+                      type: string
+                      description: The resource type of the controller
+                      const: Controller
+                    name:
+                      type: string
+                      description: The name of the controller
+                    description:
+                      type:
+                      - string
+                      - 'null'
+                      description: The description of the controller
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the controller was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the controller was updated
+                    broadcast_ip_address:
+                      type:
+                      - string
+                      - 'null'
+                      description: The broadcast IP address of the controller
+                    configured:
+                      type: boolean
+                      description: Whether the controller is configured
+                    device_id:
+                      type: string
+                      pattern: ^[a-fA-F0-9]{16}$
+                      minLength: 16
+                      maxLength: 16
+                      description: 'The device ID of the controller
+
+                        '
+                    ethernet_mac:
+                      type: string
+                      description: The ethernet MAC address of the controller
+                    gateway_ip_address:
+                      type:
+                      - string
+                      - 'null'
+                      description: The gateway IP address of the controller
+                    ip_address:
+                      type:
+                      - string
+                      - 'null'
+                      description: The IP address of the controller
+                    model:
+                      type: string
+                      enum:
+                      - router-8.0
+                      - controller-pro-1.1
+                      - controller-pro-2.0
+                      description: The model of the controller
+                    network_interface:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - ethernet
+                      - wifi
+                      - null
+                      description: The network interface of the controller
+                    network:
+                      type:
+                      - string
+                      - 'null'
+                      description: The network of the controller
+                    online:
+                      type: boolean
+                      description: Whether the controller is online
+                    revision:
+                      type: string
+                      description: The revision of the controller
+                    token:
+                      type: string
+                      description: The token of the controller
+                    wifi_mac:
+                      type: string
+                      description: The wifi MAC address of the controller
+                    zone_controller:
+                      type: boolean
+                      description: Whether the controller is a zone_controller
+                    place_id:
+                      type: integer
+                      description: The place ID of the controller
+                    place:
+                      type: object
+                      title: Place
+                      description: The place of the controller
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the place
+                        resource_type:
+                          type: string
+                          description: The resource type of the place
+                          const: Place
+                        name:
+                          type: string
+                          description: The name of the place
+                      required:
+                      - id
+                      - resource_type
+                      - name
+                      additionalProperties: false
+                  required:
+                  - id
+                  - resource_type
+                  - name
+                  - description
+                  - created_at
+                  - updated_at
+                  - broadcast_ip_address
+                  - configured
+                  - device_id
+                  - ethernet_mac
+                  - gateway_ip_address
+                  - ip_address
+                  - model
+                  - network_interface
+                  - network
+                  - online
+                  - revision
+                  - token
+                  - wifi_mac
+                  - zone_controller
+                  - place_id
+                  - place
+                  additionalProperties: false
+          headers:
+            X-Collection-Range:
+              description: 'Pagination information for offset based pagination. `start-end` represents the range
+
+                of items requested. `total` represents the total count of items. If there is a total
+
+                of 15 items and an offset of 10 and limit of 10 is used, the resulting header is:
+
+                `10-19/15`.
+
+                '
+              schema:
+                type: string
+                pattern: ^(?<start>\d+)-(?<end>\d+)/(?<total>\d+)$
+              example: 0-9/200
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /controllers/{token}/assign:
+    post:
+      operationId: assignController
+      summary: Assign a controller by token
+      tags:
+      - Controllers
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: token
+        in: path
+        schema:
+          type: string
+        description: The token of the controller.
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Controller
+              properties:
+                controller:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the controller
+                    place_id:
+                      type: integer
+                      description: The place ID of the controller
+                  required:
+                  - name
+                  - place_id
+              required:
+              - controller
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /controllers/{id}/deassign:
+    post:
+      operationId: deassignController
+      summary: Deassign a controller
+      tags:
+      - Controllers
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: The ID of the object
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /controllers/{id}/reboot:
+    post:
+      operationId: rebootController
+      summary: Reboot a controller
+      tags:
+      - Controllers
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: The ID of the object
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /controllers/{id}:
+    get:
+      operationId: fetchController
+      summary: Fetch controller
+      tags:
+      - Controllers
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: The ID of the object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Controller
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the controller
+                  resource_type:
+                    type: string
+                    description: The resource type of the controller
+                    const: Controller
+                  name:
+                    type: string
+                    description: The name of the controller
+                  description:
+                    type:
+                    - string
+                    - 'null'
+                    description: The description of the controller
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: When the controller was created
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: When the controller was updated
+                  broadcast_ip_address:
+                    type:
+                    - string
+                    - 'null'
+                    description: The broadcast IP address of the controller
+                  configured:
+                    type: boolean
+                    description: Whether the controller is configured
+                  device_id:
+                    type: string
+                    pattern: ^[a-fA-F0-9]{16}$
+                    minLength: 16
+                    maxLength: 16
+                    description: 'The device ID of the controller
+
+                      '
+                  ethernet_mac:
+                    type: string
+                    description: The ethernet MAC address of the controller
+                  gateway_ip_address:
+                    type:
+                    - string
+                    - 'null'
+                    description: The gateway IP address of the controller
+                  ip_address:
+                    type:
+                    - string
+                    - 'null'
+                    description: The IP address of the controller
+                  model:
+                    type: string
+                    enum:
+                    - router-8.0
+                    - controller-pro-1.1
+                    - controller-pro-2.0
+                    description: The model of the controller
+                  network_interface:
+                    type:
+                    - string
+                    - 'null'
+                    enum:
+                    - ethernet
+                    - wifi
+                    - null
+                    description: The network interface of the controller
+                  network:
+                    type:
+                    - string
+                    - 'null'
+                    description: The network of the controller
+                  online:
+                    type: boolean
+                    description: Whether the controller is online
+                  revision:
+                    type: string
+                    description: The revision of the controller
+                  token:
+                    type: string
+                    description: The token of the controller
+                  wifi_mac:
+                    type: string
+                    description: The wifi MAC address of the controller
+                  zone_controller:
+                    type: boolean
+                    description: Whether the controller is a zone_controller
+                  place_id:
+                    type: integer
+                    description: The place ID of the controller
+                  place:
+                    type: object
+                    title: Place
+                    description: The place of the controller
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the place
+                      resource_type:
+                        type: string
+                        description: The resource type of the place
+                        const: Place
+                      name:
+                        type: string
+                        description: The name of the place
+                    required:
+                    - id
+                    - resource_type
+                    - name
+                    additionalProperties: false
+                required:
+                - id
+                - resource_type
+                - name
+                - description
+                - created_at
+                - updated_at
+                - broadcast_ip_address
+                - configured
+                - device_id
+                - ethernet_mac
+                - gateway_ip_address
+                - ip_address
+                - model
+                - network_interface
+                - network
+                - online
+                - revision
+                - token
+                - wifi_mac
+                - zone_controller
+                - place_id
+                - place
+                additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateController
+      summary: Update controller
+      tags:
+      - Controllers
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: The ID of the object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Controller
+              properties:
+                controller:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the controller
+                    description:
+                      type:
+                      - string
+                      - 'null'
+                      description: The description of the controller
+                    zone_controller:
+                      type: boolean
+                      description: Whether the controller is a zone_controller
+                  required: []
+              required:
+              - controller
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Errors:
+      description: Schema describing validation errors.
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          example:
+            email:
+            - can't be blank or invalid
+            password:
+            - can't be blank
+      required:
+      - errors
+    Error:
+      description: Schema describing errors.
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error message.
+          example: Wrong email address or password.
+        code:
+          type: string
+          description: An identifier of the error.
+          example: afc516
+      required:
+      - error
+      - code
+  securitySchemes:
+    Webhook-Signature:
+      type: apiKey
+      in: header
+      name: X-Signature
+      description: 'Authorize using a signature of the request body. The signature is a HMAC-SHA256 hash of the request body using a secret key. <br><br>E.g. `X-Signature: 123`'
+    Kisi-Login:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a login. Prefix the value with `KISI-LOGIN`<br><br>Example: `Authorization: KISI-LOGIN 123`'
+    Kisi-Access-Key:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using an access key. Prefix the value with `KISI-ACCESS-KEY`<br><br>Example: `Authorization: KISI-ACCESS-KEY 123`'
+    Kisi-Group-Link:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a group link. Prefix the value with `KISI-GROUP-LINK`<br><br>Example: `Authorization: KISI-GROUP-LINK 123`'
+    Kisi-Service:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a service. Prefix the value with `KISI-SERVICE`<br><br>Example: `Authorization: KISI-SERVICE 123`'
+    OAuth2Basic:
+      type: http
+      scheme: basic
+      description: Username is the client id. Password is the client secret.
+    OAuth2:
+      type: oauth2
+      description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer youraccesstoken`'
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.kisi.io/oauth/authorize
+          tokenUrl: https://api.kisi.io/oauth/token
+          scopes: {}

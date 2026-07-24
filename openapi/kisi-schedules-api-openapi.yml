@@ -1,0 +1,3715 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Kisi Calendars Schedules API
+  description: "## Introduction\n\nWelcome to the Kisi API documentation. Before you read further, please read\nthe general [Kisi Docs portal](https://docs.kisi.io/).\n\n<!-- theme: info -->\n> If you want to be notified by email about updates to our API, please subscribe to our\n> [newsletter](https://2e2bc.share.hsforms.com/2OsdqtC8xRHGQ2yaS16AF7w).\n\n### Format\n\nThe Kisi API supports JSON only, so please set `Accept` and `Content-Type`\nto `application/json`. All requests and responses will use JSON as the\nformat for any data encompassed in the body of requests and responses.\n\n```http\n<METHOD> <URL> HTTP/1.1\nAccept: application/json\nContent-Type: application/json\n```\n\n### Authentication\n\nMost calls to the API will require an authenticated user. If such a user\nis not present, you will receive a 401 response.\nFor more information about authentication, see the [Kisi Docs portal](https://docs.kisi.io/api/get_started/add_necessary_headers).\n\nAPI calls must be made using HTTPS. Any calls made over plain HTTP will fail.\n\n### Rate limits\n\nFor authenticated API requests, you can make up to 5 requests per second,\nper user. Note that the limit applies per user, so requests made using\ndifferent logins for the same user share the same quota.\n\nFor unauthenticated requests, you can make up to 5 requests per second, per\nIP address.\n\nThe following endpoints have custom rate limits:\n\n| Endpoint                   | Limit            |\n|----------------------------|------------------|\n| `POST /event_sets`         | 1 per second     |\n| `POST /signed_upload_urls` | 1 per 10 seconds |\n\nIf you exceed the rate limit, a 429 response will be returned.\n\nSome best practices:\n- If you're making requests for a single user, do so serially, *not* concurrently.\n- If you're making a large number of requests for a single user, wait at least one second between each request.\n\nWe reserve the right to change these limits as needed to ensure availability.\n\n### Deprecations\n\nIn the event that some part of the API has to be deprecated, we do the following:\n\n  1. Return the `Deprecation` header with the date of when the endpoint is deprecated.\n  2. Return the `Sunset` header with the date of when the endpoint can be expected to not function anymore.\n  3. When the `Sunset` date is reached, the endpoint may go away at any time.\n\nWe recommend listening to these headers to avoid disruptions.\n\n### Error codes\n\nSome endpoints return an error code and a message. In the table below all error codes are listed.\n\n| Error code | Message                                                                                         |\n|------------|-------------------------------------------------------------------------------------------------|\n| `afc507`   | The authentication link is not valid.                                                           |\n| `afc546`   | Invalid Two Factor backup code.                                                                 |\n| `faa9ff`   | The card is not activated.                                                                      |\n| `faa9ef`   | The card was not found.                                                                         |\n| `afc496`   | Access denied.                                                                                  |\n| `f29aef`   | Your link is invalid.                                                                           |\n| `afc516`   | Wrong email address or password.                                                                |\n| `afc536`   | Invalid Two Factor verification code.                                                           |\n| `afc526`   | Please provide a Two Factor verification code.                                                  |\n| `afc516`   | The two factor pin is invalid                                                                   |\n| `ffffff`   | An unexpected issue occured.                                                                    |\n| `fcd8ef`   | Access denied.                                                                                  |\n| `fcd8ff`   | Access disabled.                                                                                |\n| `cabbeb`   | A card with the same identifiers was already enrolled.                                          |\n| `bb4fff`   | Please authorize Kisi for Bluetooth.                                                            |\n| `bb5bff`   | No nearby Kisi reader found. Try enabling Bluetooth on your device.                             |\n| `bb4bff`   | Please enable Bluetooth.                                                                        |\n| `a7793f`   | Please authorize Kisi for location services.                                                    |\n| `a3799f`   | Please enable your location services.                                                           |\n| `a3793f`   | Please enable your location services.                                                           |\n| `f298cf`   | The place has disabled all links for you.                                                       |\n| `f298df`   | Your access rights for this place do not include links.                                         |\n| `f298bf`   | Your access right is invalid.                                                                   |\n| `f01337`   | Your group's access rights for this place do not include apps.                                  |\n| `34bd8f`   | Your device is not the primary one.                                                             |\n| `facced`   | Unable to decode the certificate.                                                               |\n| `bbb99f`   | Your location is not valid.                                                                     |\n| `bbb93f`   | The location of the lock is invalid.                                                            |\n| `a3995f`   | You are too far away.                                                                           |\n| `bb4faa`   | You're not close enough to the door.                                                            |\n| `bbc93f`   | In-app access is disabled by the organization. Please tap your phone against the reader.        |\n| `34ffaa`   | Your access is not allowed at this moment, please try again later.                              |\n| `f35ade`   | Your access is no longer valid.                                                                 |\n| `f398de`   | Your access is invalid.,                                                                        |\n| `f358de`   | Your access is not yet valid, please try again later.                                           |\n| `fad334`   | An error occurred permitting the the elevator stop.                                             |\n| `fad121`   | The elevator stop was not found.                                                                |\n| `fad122`   | The elevator stop was not configured.                                                           |\n| `fad123`   | The elevator stops are locked down.                                                             |\n| `fad124`   | The elevator stop was on schedule.                                                              |\n| `fad002`   | The place is currently locked down.                                                             |\n| `ff420a`   | The door has no assigned Kisi controller.                                                       |\n| `fad001`   | The door is currently locked down.                                                              |\n| `fad105`   | The door is improperly configured.                                                              |\n| `fad10e`   | The door could not be found.                                                                    |\n| `fad110`   | The door is already scheduled to be unlocked.                                                   |\n| `fad137`   | The access was denied by the zone.                                                              |\n| `fad146`   | The third party zone was overriden but it is still armed.                                       |\n| `fad10f`   | An error occurred connecting to the wireless lock.                                              |\n| `fad106`   | An error occurred finding the wireless lock.                                                    |\n| `fad107`   | The wireless lock is offline.                                                                   |\n| `fad112`   | An unlock is already in progress for the wireless lock.                                         |\n| `fac001`   | The Kisi controller is currently unavailable.                                                   |\n| `fac002`   | The Kisi controller is currently unavailable.                                                   |\n| `fac003`   | The Kisi device is currently unavailable.                                                       |\n| `fac004`   | The Kisi device is currently unavailable.                                                       |\n| `fad108`   | The Kisi controller is not yet configured.                                                      |\n| `ecc123`   | The Kisi controller encountered an unhandled error.                                             |\n| `fbc000`   | The Kisi controller firmware is being updated. This will take a few seconds. Please retry then. |\n| `aaa345`   | The zone has no assigned zone controller.                                                       |\n| `fad126`   | The zone could not be found.                                                                    |\n| `fad129`   | The alarm controller is currently unavailable.                                                  |\n| `adf234`   | An error occurred resetting the zone.                                                           |\n| `fad144`   | The third party alarm is still in violation.                                                    |\n| `abbb11`   | The integration partner experienced an error.                                                   |\n| `abcc11`   | An integration partner resource could not be found.                                             |\n| `abdd11`   | The communication with the integration partner failed.                                          |\n| `abee11`   | Authorization with the integration partner failed.                                              |\n| `abfe11`   | The integration is not acceptable                                                               |\n| `abff11`   | The integration is disabled.                                                                    |\n"
+  contact:
+    name: Kisi Support
+    email: support@getkisi.com
+servers:
+- url: https://api.kisi.io
+  description: Kisi Production
+tags:
+- name: Schedules
+paths:
+  /schedules:
+    get:
+      operationId: fetchSchedules
+      summary: Fetch schedules
+      description: "The schedule resource represents a simplified calendar event or event generation rule, and may be used to configure time based functionality:\n\n- When access is allowed or restricted (\"time restrictions\"), set `consequence` to `allow`\n- When elevator stops are kept accessible (\"permit timer\"), set `consequence` to `permit`\n- When locks are kept unlocked (\"unlock timer\"), set `consequence` to `unlock`\n- To override an allow, permit or unlock, set `override` to `true`. The schedule will then neutralize events of other schedules of the same consequence.\n\nPossible consequences for locks:\n  - allow\n  - unlock\n\nPossible consequences for elevator stops:\n  - allow\n  - permit\n\nPossible consequences for elevator groups:\n  - allow\n\nThere are four types of schedules:\n\n- Holiday calendar: events that are interpreted based on a region's holiday rules\n- Recurring event: events that are interpreted based on the current weekday based on the time zone of the place they are added to\n- Single event: an event that starts and ends on specific date times regardless of time zone\n- Single all day event: events that are interpreted based on the time zone of the place they're added to\n\nThe API makes a few assumptions:\n\n- If `region` or `observed` are set, schedules are treated as holiday calendars\n- If `starts_at` or `ends_at` are set, events are treated as single events\n- If `starts_at_date` or `ends_at_date` are set, events are treated as single all day events\n- Else, events are treated as recurring events\n\nValidations:\n\n- Holiday calendars require both `region` and `observed` to be set\n- Single events require both `starts_at` and `ends_at` as RFC3339 timestamps\n- Single events require both `starts_at` and `ends_at` as RFC3339 timestamps\n- Single all day events require both `starts_at_date` and `ends_at_date` in the `YYYY-MM-DD` format\n- Recurring events require at least one weekday, and may specify `starts_at_time` and `ends_at_time` in the `hh:mm` format\n- Starting dates/times must be before ending dates/times\n\nThe difference between single events and all day events are that single events are absolute, i.e. independent of\nthe time zone of the place. Single all day events carry no time zone information but are always interpreted based\non the time zone of the place.\n\nNote that holidays are interpreted relative to a time zone. It is therefore possible to specify e.g. US observances for a location in Europe.\n"
+      tags:
+      - Schedules
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: ids
+        in: query
+        schema:
+          type: string
+        description: Filter by object IDs
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 10
+          maximum: 250
+        description: The number of objects to return
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+          maximum: 20000
+        description: The number of objects to offset
+      - name: consequence
+        in: query
+        schema:
+          type: string
+          enum:
+          - allow
+          - first_to_arrive
+          - permit
+          - unlock
+        description: Filter by consequence
+      - name: scheduleable_type
+        in: query
+        schema:
+          type: string
+          enum:
+          - Group
+          - Lock
+          - ElevatorStop
+        description: Filter by the scheduleable type of the schedule. Either both or none of `scheduleable_id` and `scheduleable_type` are required.
+      - name: scheduleable_id
+        in: query
+        schema:
+          type: integer
+        description: Filter by the scheduleable id of the schedule. Either both or none of `scheduleable_id` and `scheduleable_type` are required.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  oneOf:
+                  - type: object
+                    title: Holiday Calendar
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the schedule
+                      resource_type:
+                        type: string
+                        description: The resource type of the schedule
+                        const: Schedule
+                      created_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule was created
+                      updated_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule was updated
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      consequence:
+                        type: string
+                        enum:
+                        - allow
+                        - first_to_arrive
+                        - permit
+                        - unlock
+                        description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                          The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                          The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                          '
+                      scheduleable_type:
+                        type: string
+                        enum:
+                        - Group
+                        - Lock
+                        - ElevatorStop
+                        description: The type of the schedulable
+                      scheduleable_id:
+                        type: integer
+                        description: The ID of the schedulable
+                      scheduleable:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the schedulable
+                          type:
+                            type: string
+                            enum:
+                            - Group
+                            - Lock
+                            - ElevatorStop
+                            description: The type of the schedulable
+                          name:
+                            type: string
+                            description: The name of the schedulable
+                        required:
+                        - id
+                        - type
+                        - name
+                      place_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The place ID of the schedule
+                      place:
+                        type: object
+                        title: Place
+                        description: The place of the schedule
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the place
+                          resource_type:
+                            type: string
+                            description: The resource type of the place
+                            const: Place
+                          name:
+                            type: string
+                            description: The name of the place
+                        required:
+                        - id
+                        - resource_type
+                        - name
+                        additionalProperties: false
+                      integration_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The integration ID of the schedule
+                      type:
+                        type: string
+                        const: holiday_calendar
+                        description: The type of the schedule
+                      region:
+                        type: string
+                        enum:
+                        - ar
+                        - at
+                        - au
+                        - au_act
+                        - au_nsw
+                        - au_nt
+                        - au_qld
+                        - au_sa
+                        - au_tas
+                        - au_vic
+                        - au_wa
+                        - bg
+                        - br
+                        - ca
+                        - ca_ab
+                        - ca_bc
+                        - ca_mb
+                        - ca_nb
+                        - ca_nl
+                        - ca_ns
+                        - ca_nt
+                        - ca_nu
+                        - ca_on
+                        - ca_pe
+                        - ca_qc
+                        - ca_sk
+                        - ca_yt
+                        - ch
+                        - ch_ag
+                        - ch_ai
+                        - ch_ar
+                        - ch_be
+                        - ch_bl
+                        - ch_bs
+                        - ch_fr
+                        - ch_ge
+                        - ch_gl
+                        - ch_gr
+                        - ch_ju
+                        - ch_lu
+                        - ch_ne
+                        - ch_nw
+                        - ch_ow
+                        - ch_sg
+                        - ch_sh
+                        - ch_so
+                        - ch_sz
+                        - ch_tg
+                        - ch_ti
+                        - ch_ur
+                        - ch_vd
+                        - ch_vs
+                        - ch_zg
+                        - ch_zh
+                        - cl
+                        - co
+                        - cr
+                        - cy
+                        - cz
+                        - de
+                        - de_bb
+                        - de_be
+                        - de_bw
+                        - de_by
+                        - de_hb
+                        - de_he
+                        - de_hh
+                        - de_mv
+                        - de_ni
+                        - de_nw
+                        - de_rp
+                        - de_sh
+                        - de_sl
+                        - de_sn
+                        - de_st
+                        - de_th
+                        - dk
+                        - ee
+                        - es
+                        - es_an
+                        - es_ar
+                        - es_ce
+                        - es_cl
+                        - es_cm
+                        - es_cn
+                        - es_ct
+                        - es_ex
+                        - es_ga
+                        - es_ib
+                        - es_lo
+                        - es_m
+                        - es_mu
+                        - es_na
+                        - es_o
+                        - es_pv
+                        - es_v
+                        - es_vc
+                        - fi
+                        - fr
+                        - gb
+                        - gb_con
+                        - gb_eng
+                        - gb_nir
+                        - gb_sct
+                        - gb_wls
+                        - ge
+                        - gr
+                        - hk
+                        - hr
+                        - hu
+                        - ie
+                        - il
+                        - in
+                        - in_ap
+                        - in_ar
+                        - in_as
+                        - in_br
+                        - in_cg
+                        - in_ga
+                        - in_gj
+                        - in_hp
+                        - in_hr
+                        - in_jh
+                        - in_jk
+                        - in_ka
+                        - in_kl
+                        - in_mh
+                        - in_mp
+                        - in_mz
+                        - in_nl
+                        - in_od
+                        - in_pb
+                        - in_py
+                        - in_sk
+                        - in_tr
+                        - in_ts
+                        - in_wb
+                        - is
+                        - it
+                        - it_bl
+                        - it_fi
+                        - it_ge
+                        - it_pd
+                        - it_rm
+                        - it_ro
+                        - it_to
+                        - it_tv
+                        - it_ve
+                        - it_vi
+                        - it_vr
+                        - jp
+                        - ke
+                        - kr
+                        - kz
+                        - li
+                        - lt
+                        - lu
+                        - lv
+                        - ma
+                        - mc
+                        - mx
+                        - mx_pue
+                        - my
+                        - ng
+                        - nl
+                        - 'no'
+                        - nz
+                        - pe
+                        - ph
+                        - pl
+                        - pt
+                        - ro
+                        - ru
+                        - se
+                        - sg
+                        - th
+                        - tn
+                        - tr
+                        - ua
+                        - us
+                        - us_ak
+                        - us_al
+                        - us_ar
+                        - us_az
+                        - us_ca
+                        - us_co
+                        - us_ct
+                        - us_dc
+                        - us_de
+                        - us_fl
+                        - us_ga
+                        - us_gu
+                        - us_hi
+                        - us_ia
+                        - us_id
+                        - us_il
+                        - us_in
+                        - us_ks
+                        - us_ky
+                        - us_la
+                        - us_ma
+                        - us_md
+                        - us_me
+                        - us_mi
+                        - us_mn
+                        - us_mo
+                        - us_ms
+                        - us_mt
+                        - us_nc
+                        - us_nd
+                        - us_ne
+                        - us_nh
+                        - us_nj
+                        - us_nm
+                        - us_nv
+                        - us_ny
+                        - us_oh
+                        - us_ok
+                        - us_or
+                        - us_pa
+                        - us_pr
+                        - us_ri
+                        - us_sc
+                        - us_sd
+                        - us_tn
+                        - us_tx
+                        - us_ut
+                        - us_va
+                        - us_vi
+                        - us_vt
+                        - us_wa
+                        - us_wi
+                        - us_wv
+                        - us_wy
+                        - vn
+                        - za
+                        description: Which region's holiday rules to follow for event generation. For details on regions, see the holiday calendar endpoint for regions.
+                      observed:
+                        type: boolean
+                        description: Whether the events should consider observances
+                      ignored_holidays:
+                        type: array
+                        description: The names of ignored holidays
+                        items:
+                          type: string
+                      holidays:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                              format: date
+                              description: When the next holiday occurs
+                            name:
+                              type: string
+                              description: The name of the next holiday
+                          required:
+                          - date
+                          - name
+                        deprecated: true
+                    required:
+                    - id
+                    - resource_type
+                    - created_at
+                    - updated_at
+                    - name
+                    - enabled
+                    - override
+                    - consequence
+                    - scheduleable_type
+                    - scheduleable_id
+                    - scheduleable
+                    - place_id
+                    - integration_id
+                    - type
+                    - region
+                    - observed
+                    - ignored_holidays
+                    - holidays
+                    additionalProperties: false
+                  - type: object
+                    title: Recurring Event
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the schedule
+                      resource_type:
+                        type: string
+                        description: The resource type of the schedule
+                        const: Schedule
+                      created_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule was created
+                      updated_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule was updated
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      consequence:
+                        type: string
+                        enum:
+                        - allow
+                        - first_to_arrive
+                        - permit
+                        - unlock
+                        description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                          The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                          The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                          '
+                      scheduleable_type:
+                        type: string
+                        enum:
+                        - Group
+                        - Lock
+                        - ElevatorStop
+                        description: The type of the schedulable
+                      scheduleable_id:
+                        type: integer
+                        description: The ID of the schedulable
+                      scheduleable:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the schedulable
+                          type:
+                            type: string
+                            enum:
+                            - Group
+                            - Lock
+                            - ElevatorStop
+                            description: The type of the schedulable
+                          name:
+                            type: string
+                            description: The name of the schedulable
+                        required:
+                        - id
+                        - type
+                        - name
+                      place_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The place ID of the schedule
+                      place:
+                        type: object
+                        title: Place
+                        description: The place of the schedule
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the place
+                          resource_type:
+                            type: string
+                            description: The resource type of the place
+                            const: Place
+                          name:
+                            type: string
+                            description: The name of the place
+                        required:
+                        - id
+                        - resource_type
+                        - name
+                        additionalProperties: false
+                      integration_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The integration ID of the schedule
+                      type:
+                        type: string
+                        const: recurring_event
+                        description: The type of the schedule
+                      monday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      tuesday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      wednesday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      thursday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      friday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      saturday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      sunday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      starts_at_time:
+                        type: string
+                        description: When the schedule starts at, in the `hh:mm` format
+                      ends_at_time:
+                        type: string
+                        description: When the schedule ends at, in the `hh:mm` format
+                      next_occurence:
+                        type: object
+                        deprecated: true
+                        properties:
+                          starts_at:
+                            type: string
+                            format: date-time
+                            description: When the next event starts at
+                          ends_at:
+                            type: string
+                            format: date-time
+                            description: When the next event ends at
+                        required:
+                        - starts_at
+                        - ends_at
+                    required:
+                    - id
+                    - resource_type
+                    - created_at
+                    - updated_at
+                    - name
+                    - enabled
+                    - override
+                    - consequence
+                    - scheduleable_type
+                    - scheduleable_id
+                    - scheduleable
+                    - place_id
+                    - integration_id
+                    - type
+                    - monday
+                    - tuesday
+                    - wednesday
+                    - thursday
+                    - friday
+                    - saturday
+                    - sunday
+                    - starts_at_time
+                    - ends_at_time
+                    - next_occurence
+                    additionalProperties: false
+                  - type: object
+                    title: Single All Day Event
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the schedule
+                      resource_type:
+                        type: string
+                        description: The resource type of the schedule
+                        const: Schedule
+                      created_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule was created
+                      updated_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule was updated
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      consequence:
+                        type: string
+                        enum:
+                        - allow
+                        - first_to_arrive
+                        - permit
+                        - unlock
+                        description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                          The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                          The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                          '
+                      scheduleable_type:
+                        type: string
+                        enum:
+                        - Group
+                        - Lock
+                        - ElevatorStop
+                        description: The type of the schedulable
+                      scheduleable_id:
+                        type: integer
+                        description: The ID of the schedulable
+                      scheduleable:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the schedulable
+                          type:
+                            type: string
+                            enum:
+                            - Group
+                            - Lock
+                            - ElevatorStop
+                            description: The type of the schedulable
+                          name:
+                            type: string
+                            description: The name of the schedulable
+                        required:
+                        - id
+                        - type
+                        - name
+                      place_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The place ID of the schedule
+                      place:
+                        type: object
+                        title: Place
+                        description: The place of the schedule
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the place
+                          resource_type:
+                            type: string
+                            description: The resource type of the place
+                            const: Place
+                          name:
+                            type: string
+                            description: The name of the place
+                        required:
+                        - id
+                        - resource_type
+                        - name
+                        additionalProperties: false
+                      integration_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The integration ID of the schedule
+                      type:
+                        type: string
+                        const: single_all_day_event
+                        description: The type of the schedule
+                      starts_at_date:
+                        type: string
+                        format: date
+                        description: When the schedule starts at
+                      ends_at_date:
+                        type: string
+                        format: date
+                        description: When the schedule ends at
+                    required:
+                    - id
+                    - resource_type
+                    - created_at
+                    - updated_at
+                    - name
+                    - enabled
+                    - override
+                    - consequence
+                    - scheduleable_type
+                    - scheduleable_id
+                    - scheduleable
+                    - place_id
+                    - integration_id
+                    - type
+                    - starts_at_date
+                    - ends_at_date
+                    additionalProperties: false
+                  - type: object
+                    title: Single Event
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the schedule
+                      resource_type:
+                        type: string
+                        description: The resource type of the schedule
+                        const: Schedule
+                      created_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule was created
+                      updated_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule was updated
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      consequence:
+                        type: string
+                        enum:
+                        - allow
+                        - first_to_arrive
+                        - permit
+                        - unlock
+                        description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                          The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                          The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                          '
+                      scheduleable_type:
+                        type: string
+                        enum:
+                        - Group
+                        - Lock
+                        - ElevatorStop
+                        description: The type of the schedulable
+                      scheduleable_id:
+                        type: integer
+                        description: The ID of the schedulable
+                      scheduleable:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the schedulable
+                          type:
+                            type: string
+                            enum:
+                            - Group
+                            - Lock
+                            - ElevatorStop
+                            description: The type of the schedulable
+                          name:
+                            type: string
+                            description: The name of the schedulable
+                        required:
+                        - id
+                        - type
+                        - name
+                      place_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The place ID of the schedule
+                      place:
+                        type: object
+                        title: Place
+                        description: The place of the schedule
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the place
+                          resource_type:
+                            type: string
+                            description: The resource type of the place
+                            const: Place
+                          name:
+                            type: string
+                            description: The name of the place
+                        required:
+                        - id
+                        - resource_type
+                        - name
+                        additionalProperties: false
+                      integration_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The integration ID of the schedule
+                      type:
+                        type: string
+                        const: single_event
+                        description: The type of the schedule
+                      starts_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule starts at. Seconds are ignored.
+                      ends_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule ends at. Seconds are ignored.
+                    required:
+                    - id
+                    - resource_type
+                    - created_at
+                    - updated_at
+                    - name
+                    - enabled
+                    - override
+                    - consequence
+                    - scheduleable_type
+                    - scheduleable_id
+                    - scheduleable
+                    - place_id
+                    - integration_id
+                    - type
+                    - starts_at
+                    - ends_at
+                    additionalProperties: false
+          headers:
+            X-Collection-Range:
+              description: 'Pagination information for offset based pagination. `start-end` represents the range
+
+                of items requested. `total` represents the total count of items. If there is a total
+
+                of 15 items and an offset of 10 and limit of 10 is used, the resulting header is:
+
+                `10-19/15`.
+
+                '
+              schema:
+                type: string
+                pattern: ^(?<start>\d+)-(?<end>\d+)/(?<total>\d+)$
+              example: 0-9/200
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: createSchedule
+      summary: Create schedule
+      tags:
+      - Schedules
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - type: object
+                title: Holiday Calendar
+                properties:
+                  schedule:
+                    type: object
+                    properties:
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      consequence:
+                        type: string
+                        enum:
+                        - allow
+                        - first_to_arrive
+                        - permit
+                        - unlock
+                        description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                          The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                          The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                          '
+                      scheduleable_type:
+                        type: string
+                        enum:
+                        - Group
+                        - Lock
+                        - ElevatorStop
+                        description: The type of the schedulable
+                      scheduleable_id:
+                        type: integer
+                        description: The ID of the schedulable
+                      type:
+                        type: string
+                        const: holiday_calendar
+                        description: The type of the schedule
+                      region:
+                        type: string
+                        enum:
+                        - ar
+                        - at
+                        - au
+                        - au_act
+                        - au_nsw
+                        - au_nt
+                        - au_qld
+                        - au_sa
+                        - au_tas
+                        - au_vic
+                        - au_wa
+                        - bg
+                        - br
+                        - ca
+                        - ca_ab
+                        - ca_bc
+                        - ca_mb
+                        - ca_nb
+                        - ca_nl
+                        - ca_ns
+                        - ca_nt
+                        - ca_nu
+                        - ca_on
+                        - ca_pe
+                        - ca_qc
+                        - ca_sk
+                        - ca_yt
+                        - ch
+                        - ch_ag
+                        - ch_ai
+                        - ch_ar
+                        - ch_be
+                        - ch_bl
+                        - ch_bs
+                        - ch_fr
+                        - ch_ge
+                        - ch_gl
+                        - ch_gr
+                        - ch_ju
+                        - ch_lu
+                        - ch_ne
+                        - ch_nw
+                        - ch_ow
+                        - ch_sg
+                        - ch_sh
+                        - ch_so
+                        - ch_sz
+                        - ch_tg
+                        - ch_ti
+                        - ch_ur
+                        - ch_vd
+                        - ch_vs
+                        - ch_zg
+                        - ch_zh
+                        - cl
+                        - co
+                        - cr
+                        - cy
+                        - cz
+                        - de
+                        - de_bb
+                        - de_be
+                        - de_bw
+                        - de_by
+                        - de_hb
+                        - de_he
+                        - de_hh
+                        - de_mv
+                        - de_ni
+                        - de_nw
+                        - de_rp
+                        - de_sh
+                        - de_sl
+                        - de_sn
+                        - de_st
+                        - de_th
+                        - dk
+                        - ee
+                        - es
+                        - es_an
+                        - es_ar
+                        - es_ce
+                        - es_cl
+                        - es_cm
+                        - es_cn
+                        - es_ct
+                        - es_ex
+                        - es_ga
+                        - es_ib
+                        - es_lo
+                        - es_m
+                        - es_mu
+                        - es_na
+                        - es_o
+                        - es_pv
+                        - es_v
+                        - es_vc
+                        - fi
+                        - fr
+                        - gb
+                        - gb_con
+                        - gb_eng
+                        - gb_nir
+                        - gb_sct
+                        - gb_wls
+                        - ge
+                        - gr
+                        - hk
+                        - hr
+                        - hu
+                        - ie
+                        - il
+                        - in
+                        - in_ap
+                        - in_ar
+                        - in_as
+                        - in_br
+                        - in_cg
+                        - in_ga
+                        - in_gj
+                        - in_hp
+                        - in_hr
+                        - in_jh
+                        - in_jk
+                        - in_ka
+                        - in_kl
+                        - in_mh
+                        - in_mp
+                        - in_mz
+                        - in_nl
+                        - in_od
+                        - in_pb
+                        - in_py
+                        - in_sk
+                        - in_tr
+                        - in_ts
+                        - in_wb
+                        - is
+                        - it
+                        - it_bl
+                        - it_fi
+                        - it_ge
+                        - it_pd
+                        - it_rm
+                        - it_ro
+                        - it_to
+                        - it_tv
+                        - it_ve
+                        - it_vi
+                        - it_vr
+                        - jp
+                        - ke
+                        - kr
+                        - kz
+                        - li
+                        - lt
+                        - lu
+                        - lv
+                        - ma
+                        - mc
+                        - mx
+                        - mx_pue
+                        - my
+                        - ng
+                        - nl
+                        - 'no'
+                        - nz
+                        - pe
+                        - ph
+                        - pl
+                        - pt
+                        - ro
+                        - ru
+                        - se
+                        - sg
+                        - th
+                        - tn
+                        - tr
+                        - ua
+                        - us
+                        - us_ak
+                        - us_al
+                        - us_ar
+                        - us_az
+                        - us_ca
+                        - us_co
+                        - us_ct
+                        - us_dc
+                        - us_de
+                        - us_fl
+                        - us_ga
+                        - us_gu
+                        - us_hi
+                        - us_ia
+                        - us_id
+                        - us_il
+                        - us_in
+                        - us_ks
+                        - us_ky
+                        - us_la
+                        - us_ma
+                        - us_md
+                        - us_me
+                        - us_mi
+                        - us_mn
+                        - us_mo
+                        - us_ms
+                        - us_mt
+                        - us_nc
+                        - us_nd
+                        - us_ne
+                        - us_nh
+                        - us_nj
+                        - us_nm
+                        - us_nv
+                        - us_ny
+                        - us_oh
+                        - us_ok
+                        - us_or
+                        - us_pa
+                        - us_pr
+                        - us_ri
+                        - us_sc
+                        - us_sd
+                        - us_tn
+                        - us_tx
+                        - us_ut
+                        - us_va
+                        - us_vi
+                        - us_vt
+                        - us_wa
+                        - us_wi
+                        - us_wv
+                        - us_wy
+                        - vn
+                        - za
+                        description: Which region's holiday rules to follow for event generation. For details on regions, see the holiday calendar endpoint for regions.
+                      observed:
+                        type: boolean
+                        description: Whether the events should consider observances
+                      ignored_holidays:
+                        type: array
+                        description: The names of ignored holidays
+                        items:
+                          type: string
+                    required:
+                    - enabled
+                    - consequence
+                    - scheduleable_type
+                    - scheduleable_id
+                    - region
+                    - observed
+                required:
+                - schedule
+              - type: object
+                title: Recurring Event
+                properties:
+                  schedule:
+                    type: object
+                    properties:
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      consequence:
+                        type: string
+                        enum:
+                        - allow
+                        - first_to_arrive
+                        - permit
+                        - unlock
+                        description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                          The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                          The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                          '
+                      scheduleable_type:
+                        type: string
+                        enum:
+                        - Group
+                        - Lock
+                        - ElevatorStop
+                        description: The type of the schedulable
+                      scheduleable_id:
+                        type: integer
+                        description: The ID of the schedulable
+                      type:
+                        type: string
+                        const: recurring_event
+                        description: The type of the schedule
+                      monday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      tuesday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      wednesday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      thursday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      friday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      saturday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      sunday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                    required:
+                    - enabled
+                    - consequence
+                    - scheduleable_type
+                    - scheduleable_id
+                    - type
+                    - monday
+                    - tuesday
+                    - wednesday
+                    - thursday
+                    - friday
+                    - saturday
+                    - sunday
+                required:
+                - schedule
+              - type: object
+                title: Single All Day Event
+                properties:
+                  schedule:
+                    type: object
+                    properties:
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      consequence:
+                        type: string
+                        enum:
+                        - allow
+                        - first_to_arrive
+                        - permit
+                        - unlock
+                        description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                          The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                          The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                          '
+                      scheduleable_type:
+                        type: string
+                        enum:
+                        - Group
+                        - Lock
+                        - ElevatorStop
+                        description: The type of the schedulable
+                      scheduleable_id:
+                        type: integer
+                        description: The ID of the schedulable
+                      type:
+                        type: string
+                        const: single_all_day_event
+                        description: The type of the schedule
+                      starts_at_date:
+                        type: string
+                        format: date
+                        description: When the schedule starts at
+                      ends_at_date:
+                        type: string
+                        format: date
+                        description: When the schedule ends at
+                    required:
+                    - enabled
+                    - consequence
+                    - scheduleable_type
+                    - scheduleable_id
+                    - type
+                    - starts_at_date
+                    - ends_at_date
+                required:
+                - schedule
+              - type: object
+                title: Single Event
+                properties:
+                  schedule:
+                    type: object
+                    properties:
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      consequence:
+                        type: string
+                        enum:
+                        - allow
+                        - first_to_arrive
+                        - permit
+                        - unlock
+                        description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                          The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                          The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                          '
+                      scheduleable_type:
+                        type: string
+                        enum:
+                        - Group
+                        - Lock
+                        - ElevatorStop
+                        description: The type of the schedulable
+                      scheduleable_id:
+                        type: integer
+                        description: The ID of the schedulable
+                      type:
+                        type: string
+                        const: single_event
+                        description: The type of the schedule
+                      starts_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule starts at. Seconds are ignored.
+                      ends_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule ends at. Seconds are ignored.
+                    required:
+                    - enabled
+                    - consequence
+                    - scheduleable_type
+                    - scheduleable_id
+                    - type
+                    - starts_at
+                    - ends_at
+                required:
+                - schedule
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                oneOf:
+                - type: object
+                  title: Holiday Calendar
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the schedule
+                    resource_type:
+                      type: string
+                      description: The resource type of the schedule
+                      const: Schedule
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was updated
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                      description: The name of the schedule
+                    enabled:
+                      type: boolean
+                      description: Whether the schedule is enabled
+                    override:
+                      type: boolean
+                      description: Whether to override other events of the same consequence
+                    consequence:
+                      type: string
+                      enum:
+                      - allow
+                      - first_to_arrive
+                      - permit
+                      - unlock
+                      description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                        The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                        The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                        '
+                    scheduleable_type:
+                      type: string
+                      enum:
+                      - Group
+                      - Lock
+                      - ElevatorStop
+                      description: The type of the schedulable
+                    scheduleable_id:
+                      type: integer
+                      description: The ID of the schedulable
+                    scheduleable:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the schedulable
+                        type:
+                          type: string
+                          enum:
+                          - Group
+                          - Lock
+                          - ElevatorStop
+                          description: The type of the schedulable
+                        name:
+                          type: string
+                          description: The name of the schedulable
+                      required:
+                      - id
+                      - type
+                      - name
+                    place_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The place ID of the schedule
+                    place:
+                      type: object
+                      title: Place
+                      description: The place of the schedule
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the place
+                        resource_type:
+                          type: string
+                          description: The resource type of the place
+                          const: Place
+                        name:
+                          type: string
+                          description: The name of the place
+                      required:
+                      - id
+                      - resource_type
+                      - name
+                      additionalProperties: false
+                    integration_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The integration ID of the schedule
+                    type:
+                      type: string
+                      const: holiday_calendar
+                      description: The type of the schedule
+                    region:
+                      type: string
+                      enum:
+                      - ar
+                      - at
+                      - au
+                      - au_act
+                      - au_nsw
+                      - au_nt
+                      - au_qld
+                      - au_sa
+                      - au_tas
+                      - au_vic
+                      - au_wa
+                      - bg
+                      - br
+                      - ca
+                      - ca_ab
+                      - ca_bc
+                      - ca_mb
+                      - ca_nb
+                      - ca_nl
+                      - ca_ns
+                      - ca_nt
+                      - ca_nu
+                      - ca_on
+                      - ca_pe
+                      - ca_qc
+                      - ca_sk
+                      - ca_yt
+                      - ch
+                      - ch_ag
+                      - ch_ai
+                      - ch_ar
+                      - ch_be
+                      - ch_bl
+                      - ch_bs
+                      - ch_fr
+                      - ch_ge
+                      - ch_gl
+                      - ch_gr
+                      - ch_ju
+                      - ch_lu
+                      - ch_ne
+                      - ch_nw
+                      - ch_ow
+                      - ch_sg
+                      - ch_sh
+                      - ch_so
+                      - ch_sz
+                      - ch_tg
+                      - ch_ti
+                      - ch_ur
+                      - ch_vd
+                      - ch_vs
+                      - ch_zg
+                      - ch_zh
+                      - cl
+                      - co
+                      - cr
+                      - cy
+                      - cz
+                      - de
+                      - de_bb
+                      - de_be
+                      - de_bw
+                      - de_by
+                      - de_hb
+                      - de_he
+                      - de_hh
+                      - de_mv
+                      - de_ni
+                      - de_nw
+                      - de_rp
+                      - de_sh
+                      - de_sl
+                      - de_sn
+                      - de_st
+                      - de_th
+                      - dk
+                      - ee
+                      - es
+                      - es_an
+                      - es_ar
+                      - es_ce
+                      - es_cl
+                      - es_cm
+                      - es_cn
+                      - es_ct
+                      - es_ex
+                      - es_ga
+                      - es_ib
+                      - es_lo
+                      - es_m
+                      - es_mu
+                      - es_na
+                      - es_o
+                      - es_pv
+                      - es_v
+                      - es_vc
+                      - fi
+                      - fr
+                      - gb
+                      - gb_con
+                      - gb_eng
+                      - gb_nir
+                      - gb_sct
+                      - gb_wls
+                      - ge
+                      - gr
+                      - hk
+                      - hr
+                      - hu
+                      - ie
+                      - il
+                      - in
+                      - in_ap
+                      - in_ar
+                      - in_as
+                      - in_br
+                      - in_cg
+                      - in_ga
+                      - in_gj
+                      - in_hp
+                      - in_hr
+                      - in_jh
+                      - in_jk
+                      - in_ka
+                      - in_kl
+                      - in_mh
+                      - in_mp
+                      - in_mz
+                      - in_nl
+                      - in_od
+                      - in_pb
+                      - in_py
+                      - in_sk
+                      - in_tr
+                      - in_ts
+                      - in_wb
+                      - is
+                      - it
+                      - it_bl
+                      - it_fi
+                      - it_ge
+                      - it_pd
+                      - it_rm
+                      - it_ro
+                      - it_to
+                      - it_tv
+                      - it_ve
+                      - it_vi
+                      - it_vr
+                      - jp
+                      - ke
+                      - kr
+                      - kz
+                      - li
+                      - lt
+                      - lu
+                      - lv
+                      - ma
+                      - mc
+                      - mx
+                      - mx_pue
+                      - my
+                      - ng
+                      - nl
+                      - 'no'
+                      - nz
+                      - pe
+                      - ph
+                      - pl
+                      - pt
+                      - ro
+                      - ru
+                      - se
+                      - sg
+                      - th
+                      - tn
+                      - tr
+                      - ua
+                      - us
+                      - us_ak
+                      - us_al
+                      - us_ar
+                      - us_az
+                      - us_ca
+                      - us_co
+                      - us_ct
+                      - us_dc
+                      - us_de
+                      - us_fl
+                      - us_ga
+                      - us_gu
+                      - us_hi
+                      - us_ia
+                      - us_id
+                      - us_il
+                      - us_in
+                      - us_ks
+                      - us_ky
+                      - us_la
+                      - us_ma
+                      - us_md
+                      - us_me
+                      - us_mi
+                      - us_mn
+                      - us_mo
+                      - us_ms
+                      - us_mt
+                      - us_nc
+                      - us_nd
+                      - us_ne
+                      - us_nh
+                      - us_nj
+                      - us_nm
+                      - us_nv
+                      - us_ny
+                      - us_oh
+                      - us_ok
+                      - us_or
+                      - us_pa
+                      - us_pr
+                      - us_ri
+                      - us_sc
+                      - us_sd
+                      - us_tn
+                      - us_tx
+                      - us_ut
+                      - us_va
+                      - us_vi
+                      - us_vt
+                      - us_wa
+                      - us_wi
+                      - us_wv
+                      - us_wy
+                      - vn
+                      - za
+                      description: Which region's holiday rules to follow for event generation. For details on regions, see the holiday calendar endpoint for regions.
+                    observed:
+                      type: boolean
+                      description: Whether the events should consider observances
+                    ignored_holidays:
+                      type: array
+                      description: The names of ignored holidays
+                      items:
+                        type: string
+                    holidays:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: string
+                            format: date
+                            description: When the next holiday occurs
+                          name:
+                            type: string
+                            description: The name of the next holiday
+                        required:
+                        - date
+                        - name
+                      deprecated: true
+                  required:
+                  - id
+                  - resource_type
+                  - created_at
+                  - updated_at
+                  - name
+                  - enabled
+                  - override
+                  - consequence
+                  - scheduleable_type
+                  - scheduleable_id
+                  - scheduleable
+                  - place_id
+                  - integration_id
+                  - type
+                  - region
+                  - observed
+                  - ignored_holidays
+                  - holidays
+                  additionalProperties: false
+                - type: object
+                  title: Recurring Event
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the schedule
+                    resource_type:
+                      type: string
+                      description: The resource type of the schedule
+                      const: Schedule
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was updated
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                      description: The name of the schedule
+                    enabled:
+                      type: boolean
+                      description: Whether the schedule is enabled
+                    override:
+                      type: boolean
+                      description: Whether to override other events of the same consequence
+                    consequence:
+                      type: string
+                      enum:
+                      - allow
+                      - first_to_arrive
+                      - permit
+                      - unlock
+                      description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                        The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                        The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                        '
+                    scheduleable_type:
+                      type: string
+                      enum:
+                      - Group
+                      - Lock
+                      - ElevatorStop
+                      description: The type of the schedulable
+                    scheduleable_id:
+                      type: integer
+                      description: The ID of the schedulable
+                    scheduleable:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the schedulable
+                        type:
+                          type: string
+                          enum:
+                          - Group
+                          - Lock
+                          - ElevatorStop
+                          description: The type of the schedulable
+                        name:
+                          type: string
+                          description: The name of the schedulable
+                      required:
+                      - id
+                      - type
+                      - name
+                    place_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The place ID of the schedule
+                    place:
+                      type: object
+                      title: Place
+                      description: The place of the schedule
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the place
+                        resource_type:
+                          type: string
+                          description: The resource type of the place
+                          const: Place
+                        name:
+                          type: string
+                          description: The name of the place
+                      required:
+                      - id
+                      - resource_type
+                      - name
+                      additionalProperties: false
+                    integration_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The integration ID of the schedule
+                    type:
+                      type: string
+                      const: recurring_event
+                      description: The type of the schedule
+                    monday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    tuesday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    wednesday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    thursday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    friday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    saturday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    sunday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    starts_at_time:
+                      type: string
+                      description: When the schedule starts at, in the `hh:mm` format
+                    ends_at_time:
+                      type: string
+                      description: When the schedule ends at, in the `hh:mm` format
+                    next_occurence:
+                      type: object
+                      deprecated: true
+                      properties:
+                        starts_at:
+                          type: string
+                          format: date-time
+                          description: When the next event starts at
+                        ends_at:
+                          type: string
+                          format: date-time
+                          description: When the next event ends at
+                      required:
+                      - starts_at
+                      - ends_at
+                  required:
+                  - id
+                  - resource_type
+                  - created_at
+                  - updated_at
+                  - name
+                  - enabled
+                  - override
+                  - consequence
+                  - scheduleable_type
+                  - scheduleable_id
+                  - scheduleable
+                  - place_id
+                  - integration_id
+                  - type
+                  - monday
+                  - tuesday
+                  - wednesday
+                  - thursday
+                  - friday
+                  - saturday
+                  - sunday
+                  - starts_at_time
+                  - ends_at_time
+                  - next_occurence
+                  additionalProperties: false
+                - type: object
+                  title: Single All Day Event
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the schedule
+                    resource_type:
+                      type: string
+                      description: The resource type of the schedule
+                      const: Schedule
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was updated
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                      description: The name of the schedule
+                    enabled:
+                      type: boolean
+                      description: Whether the schedule is enabled
+                    override:
+                      type: boolean
+                      description: Whether to override other events of the same consequence
+                    consequence:
+                      type: string
+                      enum:
+                      - allow
+                      - first_to_arrive
+                      - permit
+                      - unlock
+                      description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                        The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                        The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                        '
+                    scheduleable_type:
+                      type: string
+                      enum:
+                      - Group
+                      - Lock
+                      - ElevatorStop
+                      description: The type of the schedulable
+                    scheduleable_id:
+                      type: integer
+                      description: The ID of the schedulable
+                    scheduleable:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the schedulable
+                        type:
+                          type: string
+                          enum:
+                          - Group
+                          - Lock
+                          - ElevatorStop
+                          description: The type of the schedulable
+                        name:
+                          type: string
+                          description: The name of the schedulable
+                      required:
+                      - id
+                      - type
+                      - name
+                    place_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The place ID of the schedule
+                    place:
+                      type: object
+                      title: Place
+                      description: The place of the schedule
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the place
+                        resource_type:
+                          type: string
+                          description: The resource type of the place
+                          const: Place
+                        name:
+                          type: string
+                          description: The name of the place
+                      required:
+                      - id
+                      - resource_type
+                      - name
+                      additionalProperties: false
+                    integration_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The integration ID of the schedule
+                    type:
+                      type: string
+                      const: single_all_day_event
+                      description: The type of the schedule
+                    starts_at_date:
+                      type: string
+                      format: date
+                      description: When the schedule starts at
+                    ends_at_date:
+                      type: string
+                      format: date
+                      description: When the schedule ends at
+                  required:
+                  - id
+                  - resource_type
+                  - created_at
+                  - updated_at
+                  - name
+                  - enabled
+                  - override
+                  - consequence
+                  - scheduleable_type
+                  - scheduleable_id
+                  - scheduleable
+                  - place_id
+                  - integration_id
+                  - type
+                  - starts_at_date
+                  - ends_at_date
+                  additionalProperties: false
+                - type: object
+                  title: Single Event
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the schedule
+                    resource_type:
+                      type: string
+                      description: The resource type of the schedule
+                      const: Schedule
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was updated
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                      description: The name of the schedule
+                    enabled:
+                      type: boolean
+                      description: Whether the schedule is enabled
+                    override:
+                      type: boolean
+                      description: Whether to override other events of the same consequence
+                    consequence:
+                      type: string
+                      enum:
+                      - allow
+                      - first_to_arrive
+                      - permit
+                      - unlock
+                      description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                        The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                        The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                        '
+                    scheduleable_type:
+                      type: string
+                      enum:
+                      - Group
+                      - Lock
+                      - ElevatorStop
+                      description: The type of the schedulable
+                    scheduleable_id:
+                      type: integer
+                      description: The ID of the schedulable
+                    scheduleable:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the schedulable
+                        type:
+                          type: string
+                          enum:
+                          - Group
+                          - Lock
+                          - ElevatorStop
+                          description: The type of the schedulable
+                        name:
+                          type: string
+                          description: The name of the schedulable
+                      required:
+                      - id
+                      - type
+                      - name
+                    place_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The place ID of the schedule
+                    place:
+                      type: object
+                      title: Place
+                      description: The place of the schedule
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the place
+                        resource_type:
+                          type: string
+                          description: The resource type of the place
+                          const: Place
+                        name:
+                          type: string
+                          description: The name of the place
+                      required:
+                      - id
+                      - resource_type
+                      - name
+                      additionalProperties: false
+                    integration_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The integration ID of the schedule
+                    type:
+                      type: string
+                      const: single_event
+                      description: The type of the schedule
+                    starts_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule starts at. Seconds are ignored.
+                    ends_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule ends at. Seconds are ignored.
+                  required:
+                  - id
+                  - resource_type
+                  - created_at
+                  - updated_at
+                  - name
+                  - enabled
+                  - override
+                  - consequence
+                  - scheduleable_type
+                  - scheduleable_id
+                  - scheduleable
+                  - place_id
+                  - integration_id
+                  - type
+                  - starts_at
+                  - ends_at
+                  additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /schedules/{id}:
+    get:
+      operationId: fetchSchedule
+      summary: Fetch schedule
+      tags:
+      - Schedules
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: The ID of the object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                oneOf:
+                - type: object
+                  title: Holiday Calendar
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the schedule
+                    resource_type:
+                      type: string
+                      description: The resource type of the schedule
+                      const: Schedule
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was updated
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                      description: The name of the schedule
+                    enabled:
+                      type: boolean
+                      description: Whether the schedule is enabled
+                    override:
+                      type: boolean
+                      description: Whether to override other events of the same consequence
+                    consequence:
+                      type: string
+                      enum:
+                      - allow
+                      - first_to_arrive
+                      - permit
+                      - unlock
+                      description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                        The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                        The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                        '
+                    scheduleable_type:
+                      type: string
+                      enum:
+                      - Group
+                      - Lock
+                      - ElevatorStop
+                      description: The type of the schedulable
+                    scheduleable_id:
+                      type: integer
+                      description: The ID of the schedulable
+                    scheduleable:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the schedulable
+                        type:
+                          type: string
+                          enum:
+                          - Group
+                          - Lock
+                          - ElevatorStop
+                          description: The type of the schedulable
+                        name:
+                          type: string
+                          description: The name of the schedulable
+                      required:
+                      - id
+                      - type
+                      - name
+                    place_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The place ID of the schedule
+                    place:
+                      type: object
+                      title: Place
+                      description: The place of the schedule
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the place
+                        resource_type:
+                          type: string
+                          description: The resource type of the place
+                          const: Place
+                        name:
+                          type: string
+                          description: The name of the place
+                      required:
+                      - id
+                      - resource_type
+                      - name
+                      additionalProperties: false
+                    integration_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The integration ID of the schedule
+                    type:
+                      type: string
+                      const: holiday_calendar
+                      description: The type of the schedule
+                    region:
+                      type: string
+                      enum:
+                      - ar
+                      - at
+                      - au
+                      - au_act
+                      - au_nsw
+                      - au_nt
+                      - au_qld
+                      - au_sa
+                      - au_tas
+                      - au_vic
+                      - au_wa
+                      - bg
+                      - br
+                      - ca
+                      - ca_ab
+                      - ca_bc
+                      - ca_mb
+                      - ca_nb
+                      - ca_nl
+                      - ca_ns
+                      - ca_nt
+                      - ca_nu
+                      - ca_on
+                      - ca_pe
+                      - ca_qc
+                      - ca_sk
+                      - ca_yt
+                      - ch
+                      - ch_ag
+                      - ch_ai
+                      - ch_ar
+                      - ch_be
+                      - ch_bl
+                      - ch_bs
+                      - ch_fr
+                      - ch_ge
+                      - ch_gl
+                      - ch_gr
+                      - ch_ju
+                      - ch_lu
+                      - ch_ne
+                      - ch_nw
+                      - ch_ow
+                      - ch_sg
+                      - ch_sh
+                      - ch_so
+                      - ch_sz
+                      - ch_tg
+                      - ch_ti
+                      - ch_ur
+                      - ch_vd
+                      - ch_vs
+                      - ch_zg
+                      - ch_zh
+                      - cl
+                      - co
+                      - cr
+                      - cy
+                      - cz
+                      - de
+                      - de_bb
+                      - de_be
+                      - de_bw
+                      - de_by
+                      - de_hb
+                      - de_he
+                      - de_hh
+                      - de_mv
+                      - de_ni
+                      - de_nw
+                      - de_rp
+                      - de_sh
+                      - de_sl
+                      - de_sn
+                      - de_st
+                      - de_th
+                      - dk
+                      - ee
+                      - es
+                      - es_an
+                      - es_ar
+                      - es_ce
+                      - es_cl
+                      - es_cm
+                      - es_cn
+                      - es_ct
+                      - es_ex
+                      - es_ga
+                      - es_ib
+                      - es_lo
+                      - es_m
+                      - es_mu
+                      - es_na
+                      - es_o
+                      - es_pv
+                      - es_v
+                      - es_vc
+                      - fi
+                      - fr
+                      - gb
+                      - gb_con
+                      - gb_eng
+                      - gb_nir
+                      - gb_sct
+                      - gb_wls
+                      - ge
+                      - gr
+                      - hk
+                      - hr
+                      - hu
+                      - ie
+                      - il
+                      - in
+                      - in_ap
+                      - in_ar
+                      - in_as
+                      - in_br
+                      - in_cg
+                      - in_ga
+                      - in_gj
+                      - in_hp
+                      - in_hr
+                      - in_jh
+                      - in_jk
+                      - in_ka
+                      - in_kl
+                      - in_mh
+                      - in_mp
+                      - in_mz
+                      - in_nl
+                      - in_od
+                      - in_pb
+                      - in_py
+                      - in_sk
+                      - in_tr
+                      - in_ts
+                      - in_wb
+                      - is
+                      - it
+                      - it_bl
+                      - it_fi
+                      - it_ge
+                      - it_pd
+                      - it_rm
+                      - it_ro
+                      - it_to
+                      - it_tv
+                      - it_ve
+                      - it_vi
+                      - it_vr
+                      - jp
+                      - ke
+                      - kr
+                      - kz
+                      - li
+                      - lt
+                      - lu
+                      - lv
+                      - ma
+                      - mc
+                      - mx
+                      - mx_pue
+                      - my
+                      - ng
+                      - nl
+                      - 'no'
+                      - nz
+                      - pe
+                      - ph
+                      - pl
+                      - pt
+                      - ro
+                      - ru
+                      - se
+                      - sg
+                      - th
+                      - tn
+                      - tr
+                      - ua
+                      - us
+                      - us_ak
+                      - us_al
+                      - us_ar
+                      - us_az
+                      - us_ca
+                      - us_co
+                      - us_ct
+                      - us_dc
+                      - us_de
+                      - us_fl
+                      - us_ga
+                      - us_gu
+                      - us_hi
+                      - us_ia
+                      - us_id
+                      - us_il
+                      - us_in
+                      - us_ks
+                      - us_ky
+                      - us_la
+                      - us_ma
+                      - us_md
+                      - us_me
+                      - us_mi
+                      - us_mn
+                      - us_mo
+                      - us_ms
+                      - us_mt
+                      - us_nc
+                      - us_nd
+                      - us_ne
+                      - us_nh
+                      - us_nj
+                      - us_nm
+                      - us_nv
+                      - us_ny
+                      - us_oh
+                      - us_ok
+                      - us_or
+                      - us_pa
+                      - us_pr
+                      - us_ri
+                      - us_sc
+                      - us_sd
+                      - us_tn
+                      - us_tx
+                      - us_ut
+                      - us_va
+                      - us_vi
+                      - us_vt
+                      - us_wa
+                      - us_wi
+                      - us_wv
+                      - us_wy
+                      - vn
+                      - za
+                      description: Which region's holiday rules to follow for event generation. For details on regions, see the holiday calendar endpoint for regions.
+                    observed:
+                      type: boolean
+                      description: Whether the events should consider observances
+                    ignored_holidays:
+                      type: array
+                      description: The names of ignored holidays
+                      items:
+                        type: string
+                    holidays:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: string
+                            format: date
+                            description: When the next holiday occurs
+                          name:
+                            type: string
+                            description: The name of the next holiday
+                        required:
+                        - date
+                        - name
+                      deprecated: true
+                  required:
+                  - id
+                  - resource_type
+                  - created_at
+                  - updated_at
+                  - name
+                  - enabled
+                  - override
+                  - consequence
+                  - scheduleable_type
+                  - scheduleable_id
+                  - scheduleable
+                  - place_id
+                  - integration_id
+                  - type
+                  - region
+                  - observed
+                  - ignored_holidays
+                  - holidays
+                  additionalProperties: false
+                - type: object
+                  title: Recurring Event
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the schedule
+                    resource_type:
+                      type: string
+                      description: The resource type of the schedule
+                      const: Schedule
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was updated
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                      description: The name of the schedule
+                    enabled:
+                      type: boolean
+                      description: Whether the schedule is enabled
+                    override:
+                      type: boolean
+                      description: Whether to override other events of the same consequence
+                    consequence:
+                      type: string
+                      enum:
+                      - allow
+                      - first_to_arrive
+                      - permit
+                      - unlock
+                      description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                        The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                        The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                        '
+                    scheduleable_type:
+                      type: string
+                      enum:
+                      - Group
+                      - Lock
+                      - ElevatorStop
+                      description: The type of the schedulable
+                    scheduleable_id:
+                      type: integer
+                      description: The ID of the schedulable
+                    scheduleable:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the schedulable
+                        type:
+                          type: string
+                          enum:
+                          - Group
+                          - Lock
+                          - ElevatorStop
+                          description: The type of the schedulable
+                        name:
+                          type: string
+                          description: The name of the schedulable
+                      required:
+                      - id
+                      - type
+                      - name
+                    place_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The place ID of the schedule
+                    place:
+                      type: object
+                      title: Place
+                      description: The place of the schedule
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the place
+                        resource_type:
+                          type: string
+                          description: The resource type of the place
+                          const: Place
+                        name:
+                          type: string
+                          description: The name of the place
+                      required:
+                      - id
+                      - resource_type
+                      - name
+                      additionalProperties: false
+                    integration_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The integration ID of the schedule
+                    type:
+                      type: string
+                      const: recurring_event
+                      description: The type of the schedule
+                    monday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    tuesday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    wednesday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    thursday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    friday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    saturday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    sunday:
+                      type: boolean
+                      description: Whether the schedule occurs on this day
+                    starts_at_time:
+                      type: string
+                      description: When the schedule starts at, in the `hh:mm` format
+                    ends_at_time:
+                      type: string
+                      description: When the schedule ends at, in the `hh:mm` format
+                    next_occurence:
+                      type: object
+                      deprecated: true
+                      properties:
+                        starts_at:
+                          type: string
+                          format: date-time
+                          description: When the next event starts at
+                        ends_at:
+                          type: string
+                          format: date-time
+                          description: When the next event ends at
+                      required:
+                      - starts_at
+                      - ends_at
+                  required:
+                  - id
+                  - resource_type
+                  - created_at
+                  - updated_at
+                  - name
+                  - enabled
+                  - override
+                  - consequence
+                  - scheduleable_type
+                  - scheduleable_id
+                  - scheduleable
+                  - place_id
+                  - integration_id
+                  - type
+                  - monday
+                  - tuesday
+                  - wednesday
+                  - thursday
+                  - friday
+                  - saturday
+                  - sunday
+                  - starts_at_time
+                  - ends_at_time
+                  - next_occurence
+                  additionalProperties: false
+                - type: object
+                  title: Single All Day Event
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the schedule
+                    resource_type:
+                      type: string
+                      description: The resource type of the schedule
+                      const: Schedule
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was updated
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                      description: The name of the schedule
+                    enabled:
+                      type: boolean
+                      description: Whether the schedule is enabled
+                    override:
+                      type: boolean
+                      description: Whether to override other events of the same consequence
+                    consequence:
+                      type: string
+                      enum:
+                      - allow
+                      - first_to_arrive
+                      - permit
+                      - unlock
+                      description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                        The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                        The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                        '
+                    scheduleable_type:
+                      type: string
+                      enum:
+                      - Group
+                      - Lock
+                      - ElevatorStop
+                      description: The type of the schedulable
+                    scheduleable_id:
+                      type: integer
+                      description: The ID of the schedulable
+                    scheduleable:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the schedulable
+                        type:
+                          type: string
+                          enum:
+                          - Group
+                          - Lock
+                          - ElevatorStop
+                          description: The type of the schedulable
+                        name:
+                          type: string
+                          description: The name of the schedulable
+                      required:
+                      - id
+                      - type
+                      - name
+                    place_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The place ID of the schedule
+                    place:
+                      type: object
+                      title: Place
+                      description: The place of the schedule
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the place
+                        resource_type:
+                          type: string
+                          description: The resource type of the place
+                          const: Place
+                        name:
+                          type: string
+                          description: The name of the place
+                      required:
+                      - id
+                      - resource_type
+                      - name
+                      additionalProperties: false
+                    integration_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The integration ID of the schedule
+                    type:
+                      type: string
+                      const: single_all_day_event
+                      description: The type of the schedule
+                    starts_at_date:
+                      type: string
+                      format: date
+                      description: When the schedule starts at
+                    ends_at_date:
+                      type: string
+                      format: date
+                      description: When the schedule ends at
+                  required:
+                  - id
+                  - resource_type
+                  - created_at
+                  - updated_at
+                  - name
+                  - enabled
+                  - override
+                  - consequence
+                  - scheduleable_type
+                  - scheduleable_id
+                  - scheduleable
+                  - place_id
+                  - integration_id
+                  - type
+                  - starts_at_date
+                  - ends_at_date
+                  additionalProperties: false
+                - type: object
+                  title: Single Event
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the schedule
+                    resource_type:
+                      type: string
+                      description: The resource type of the schedule
+                      const: Schedule
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule was updated
+                    name:
+                      type:
+                      - string
+                      - 'null'
+                      description: The name of the schedule
+                    enabled:
+                      type: boolean
+                      description: Whether the schedule is enabled
+                    override:
+                      type: boolean
+                      description: Whether to override other events of the same consequence
+                    consequence:
+                      type: string
+                      enum:
+                      - allow
+                      - first_to_arrive
+                      - permit
+                      - unlock
+                      description: 'Defines what happens to the `scheduleable` when the schedule is occuring.
+
+                        The `unlock` value only applies to schedules with `scheduleable_type` set to `Lock`.
+
+                        The `permit` value only applies to schedules with `scheduleable_type` set to `ElevatorStop`.
+
+                        '
+                    scheduleable_type:
+                      type: string
+                      enum:
+                      - Group
+                      - Lock
+                      - ElevatorStop
+                      description: The type of the schedulable
+                    scheduleable_id:
+                      type: integer
+                      description: The ID of the schedulable
+                    scheduleable:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the schedulable
+                        type:
+                          type: string
+                          enum:
+                          - Group
+                          - Lock
+                          - ElevatorStop
+                          description: The type of the schedulable
+                        name:
+                          type: string
+                          description: The name of the schedulable
+                      required:
+                      - id
+                      - type
+                      - name
+                    place_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The place ID of the schedule
+                    place:
+                      type: object
+                      title: Place
+                      description: The place of the schedule
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the place
+                        resource_type:
+                          type: string
+                          description: The resource type of the place
+                          const: Place
+                        name:
+                          type: string
+                          description: The name of the place
+                      required:
+                      - id
+                      - resource_type
+                      - name
+                      additionalProperties: false
+                    integration_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The integration ID of the schedule
+                    type:
+                      type: string
+                      const: single_event
+                      description: The type of the schedule
+                    starts_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule starts at. Seconds are ignored.
+                    ends_at:
+                      type: string
+                      format: date-time
+                      description: When the schedule ends at. Seconds are ignored.
+                  required:
+                  - id
+                  - resource_type
+                  - created_at
+                  - updated_at
+                  - name
+                  - enabled
+                  - override
+                  - consequence
+                  - scheduleable_type
+                  - scheduleable_id
+                  - scheduleable
+                  - place_id
+                  - integration_id
+                  - type
+                  - starts_at
+                  - ends_at
+                  additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateSchedule
+      summary: Update schedule
+      tags:
+      - Schedules
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: The ID of the object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - type: object
+                title: Holiday Calendar
+                properties:
+                  schedule:
+                    type: object
+                    properties:
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      type:
+                        type: string
+                        const: holiday_calendar
+                        description: The type of the schedule
+                      region:
+                        type: string
+                        enum:
+                        - ar
+                        - at
+                        - au
+                        - au_act
+                        - au_nsw
+                        - au_nt
+                        - au_qld
+                        - au_sa
+                        - au_tas
+                        - au_vic
+                        - au_wa
+                        - bg
+                        - br
+                        - ca
+                        - ca_ab
+                        - ca_bc
+                        - ca_mb
+                        - ca_nb
+                        - ca_nl
+                        - ca_ns
+                        - ca_nt
+                        - ca_nu
+                        - ca_on
+                        - ca_pe
+                        - ca_qc
+                        - ca_sk
+                        - ca_yt
+                        - ch
+                        - ch_ag
+                        - ch_ai
+                        - ch_ar
+                        - ch_be
+                        - ch_bl
+                        - ch_bs
+                        - ch_fr
+                        - ch_ge
+                        - ch_gl
+                        - ch_gr
+                        - ch_ju
+                        - ch_lu
+                        - ch_ne
+                        - ch_nw
+                        - ch_ow
+                        - ch_sg
+                        - ch_sh
+                        - ch_so
+                        - ch_sz
+                        - ch_tg
+                        - ch_ti
+                        - ch_ur
+                        - ch_vd
+                        - ch_vs
+                        - ch_zg
+                        - ch_zh
+                        - cl
+                        - co
+                        - cr
+                        - cy
+                        - cz
+                        - de
+                        - de_bb
+                        - de_be
+                        - de_bw
+                        - de_by
+                        - de_hb
+                        - de_he
+                        - de_hh
+                        - de_mv
+                        - de_ni
+                        - de_nw
+                        - de_rp
+                        - de_sh
+                        - de_sl
+                        - de_sn
+                        - de_st
+                        - de_th
+                        - dk
+                        - ee
+                        - es
+                        - es_an
+                        - es_ar
+                        - es_ce
+                        - es_cl
+                        - es_cm
+                        - es_cn
+                        - es_ct
+                        - es_ex
+                        - es_ga
+                        - es_ib
+                        - es_lo
+                        - es_m
+                        - es_mu
+                        - es_na
+                        - es_o
+                        - es_pv
+                        - es_v
+                        - es_vc
+                        - fi
+                        - fr
+                        - gb
+                        - gb_con
+                        - gb_eng
+                        - gb_nir
+                        - gb_sct
+                        - gb_wls
+                        - ge
+                        - gr
+                        - hk
+                        - hr
+                        - hu
+                        - ie
+                        - il
+                        - in
+                        - in_ap
+                        - in_ar
+                        - in_as
+                        - in_br
+                        - in_cg
+                        - in_ga
+                        - in_gj
+                        - in_hp
+                        - in_hr
+                        - in_jh
+                        - in_jk
+                        - in_ka
+                        - in_kl
+                        - in_mh
+                        - in_mp
+                        - in_mz
+                        - in_nl
+                        - in_od
+                        - in_pb
+                        - in_py
+                        - in_sk
+                        - in_tr
+                        - in_ts
+                        - in_wb
+                        - is
+                        - it
+                        - it_bl
+                        - it_fi
+                        - it_ge
+                        - it_pd
+                        - it_rm
+                        - it_ro
+                        - it_to
+                        - it_tv
+                        - it_ve
+                        - it_vi
+                        - it_vr
+                        - jp
+                        - ke
+                        - kr
+                        - kz
+                        - li
+                        - lt
+                        - lu
+                        - lv
+                        - ma
+                        - mc
+                        - mx
+                        - mx_pue
+                        - my
+                        - ng
+                        - nl
+                        - 'no'
+                        - nz
+                        - pe
+                        - ph
+                        - pl
+                        - pt
+                        - ro
+                        - ru
+                        - se
+                        - sg
+                        - th
+                        - tn
+                        - tr
+                        - ua
+                        - us
+                        - us_ak
+                        - us_al
+                        - us_ar
+                        - us_az
+                        - us_ca
+                        - us_co
+                        - us_ct
+                        - us_dc
+                        - us_de
+                        - us_fl
+                        - us_ga
+                        - us_gu
+                        - us_hi
+                        - us_ia
+                        - us_id
+                        - us_il
+                        - us_in
+                        - us_ks
+                        - us_ky
+                        - us_la
+                        - us_ma
+                        - us_md
+                        - us_me
+                        - us_mi
+                        - us_mn
+                        - us_mo
+                        - us_ms
+                        - us_mt
+                        - us_nc
+                        - us_nd
+                        - us_ne
+                        - us_nh
+                        - us_nj
+                        - us_nm
+                        - us_nv
+                        - us_ny
+                        - us_oh
+                        - us_ok
+                        - us_or
+                        - us_pa
+                        - us_pr
+                        - us_ri
+                        - us_sc
+                        - us_sd
+                        - us_tn
+                        - us_tx
+                        - us_ut
+                        - us_va
+                        - us_vi
+                        - us_vt
+                        - us_wa
+                        - us_wi
+                        - us_wv
+                        - us_wy
+                        - vn
+                        - za
+                        description: Which region's holiday rules to follow for event generation. For details on regions, see the holiday calendar endpoint for regions.
+                      observed:
+                        type: boolean
+                        description: Whether the events should consider observances
+                      ignored_holidays:
+                        type: array
+                        description: The names of ignored holidays
+                        items:
+                          type: string
+                    required: []
+                required:
+                - schedule
+              - type: object
+                title: Recurring Event
+                properties:
+                  schedule:
+                    type: object
+                    properties:
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      type:
+                        type: string
+                        const: recurring_event
+                        description: The type of the schedule
+                      monday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      tuesday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      wednesday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      thursday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      friday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      saturday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                      sunday:
+                        type: boolean
+                        description: Whether the schedule occurs on this day
+                    required: []
+                required:
+                - schedule
+              - type: object
+                title: Single All Day Event
+                properties:
+                  schedule:
+                    type: object
+                    properties:
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      type:
+                        type: string
+                        const: single_all_day_event
+                        description: The type of the schedule
+                      starts_at_date:
+                        type: string
+                        format: date
+                        description: When the schedule starts at
+                      ends_at_date:
+                        type: string
+                        format: date
+                        description: When the schedule ends at
+                    required: []
+                required:
+                - schedule
+              - type: object
+                title: Single Event
+                properties:
+                  schedule:
+                    type: object
+                    properties:
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                        description: The name of the schedule
+                      enabled:
+                        type: boolean
+                        description: Whether the schedule is enabled
+                      override:
+                        type: boolean
+                        description: Whether to override other events of the same consequence
+                      type:
+                        type: string
+                        const: single_event
+                        description: The type of the schedule
+                      starts_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule starts at. Seconds are ignored.
+                      ends_at:
+                        type: string
+                        format: date-time
+                        description: When the schedule ends at. Seconds are ignored.
+                    required: []
+                required:
+                - schedule
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      operationId: deleteSchedule
+      summary: Delete schedule
+      tags:
+      - Schedules
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: The ID of the object
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Errors:
+      description: Schema describing validation errors.
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          example:
+            email:
+            - can't be blank or invalid
+            password:
+            - can't be blank
+      required:
+      - errors
+    Error:
+      description: Schema describing errors.
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error message.
+          example: Wrong email address or password.
+        code:
+          type: string
+          description: An identifier of the error.
+          example: afc516
+      required:
+      - error
+      - code
+  securitySchemes:
+    Webhook-Signature:
+      type: apiKey
+      in: header
+      name: X-Signature
+      description: 'Authorize using a signature of the request body. The signature is a HMAC-SHA256 hash of the request body using a secret key. <br><br>E.g. `X-Signature: 123`'
+    Kisi-Login:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a login. Prefix the value with `KISI-LOGIN`<br><br>Example: `Authorization: KISI-LOGIN 123`'
+    Kisi-Access-Key:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using an access key. Prefix the value with `KISI-ACCESS-KEY`<br><br>Example: `Authorization: KISI-ACCESS-KEY 123`'
+    Kisi-Group-Link:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a group link. Prefix the value with `KISI-GROUP-LINK`<br><br>Example: `Authorization: KISI-GROUP-LINK 123`'
+    Kisi-Service:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a service. Prefix the value with `KISI-SERVICE`<br><br>Example: `Authorization: KISI-SERVICE 123`'
+    OAuth2Basic:
+      type: http
+      scheme: basic
+      description: Username is the client id. Password is the client secret.
+    OAuth2:
+      type: oauth2
+      description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer youraccesstoken`'
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.kisi.io/oauth/authorize
+          tokenUrl: https://api.kisi.io/oauth/token
+          scopes: {}

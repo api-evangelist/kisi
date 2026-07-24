@@ -1,0 +1,1672 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Kisi Calendars Organizations API
+  description: "## Introduction\n\nWelcome to the Kisi API documentation. Before you read further, please read\nthe general [Kisi Docs portal](https://docs.kisi.io/).\n\n<!-- theme: info -->\n> If you want to be notified by email about updates to our API, please subscribe to our\n> [newsletter](https://2e2bc.share.hsforms.com/2OsdqtC8xRHGQ2yaS16AF7w).\n\n### Format\n\nThe Kisi API supports JSON only, so please set `Accept` and `Content-Type`\nto `application/json`. All requests and responses will use JSON as the\nformat for any data encompassed in the body of requests and responses.\n\n```http\n<METHOD> <URL> HTTP/1.1\nAccept: application/json\nContent-Type: application/json\n```\n\n### Authentication\n\nMost calls to the API will require an authenticated user. If such a user\nis not present, you will receive a 401 response.\nFor more information about authentication, see the [Kisi Docs portal](https://docs.kisi.io/api/get_started/add_necessary_headers).\n\nAPI calls must be made using HTTPS. Any calls made over plain HTTP will fail.\n\n### Rate limits\n\nFor authenticated API requests, you can make up to 5 requests per second,\nper user. Note that the limit applies per user, so requests made using\ndifferent logins for the same user share the same quota.\n\nFor unauthenticated requests, you can make up to 5 requests per second, per\nIP address.\n\nThe following endpoints have custom rate limits:\n\n| Endpoint                   | Limit            |\n|----------------------------|------------------|\n| `POST /event_sets`         | 1 per second     |\n| `POST /signed_upload_urls` | 1 per 10 seconds |\n\nIf you exceed the rate limit, a 429 response will be returned.\n\nSome best practices:\n- If you're making requests for a single user, do so serially, *not* concurrently.\n- If you're making a large number of requests for a single user, wait at least one second between each request.\n\nWe reserve the right to change these limits as needed to ensure availability.\n\n### Deprecations\n\nIn the event that some part of the API has to be deprecated, we do the following:\n\n  1. Return the `Deprecation` header with the date of when the endpoint is deprecated.\n  2. Return the `Sunset` header with the date of when the endpoint can be expected to not function anymore.\n  3. When the `Sunset` date is reached, the endpoint may go away at any time.\n\nWe recommend listening to these headers to avoid disruptions.\n\n### Error codes\n\nSome endpoints return an error code and a message. In the table below all error codes are listed.\n\n| Error code | Message                                                                                         |\n|------------|-------------------------------------------------------------------------------------------------|\n| `afc507`   | The authentication link is not valid.                                                           |\n| `afc546`   | Invalid Two Factor backup code.                                                                 |\n| `faa9ff`   | The card is not activated.                                                                      |\n| `faa9ef`   | The card was not found.                                                                         |\n| `afc496`   | Access denied.                                                                                  |\n| `f29aef`   | Your link is invalid.                                                                           |\n| `afc516`   | Wrong email address or password.                                                                |\n| `afc536`   | Invalid Two Factor verification code.                                                           |\n| `afc526`   | Please provide a Two Factor verification code.                                                  |\n| `afc516`   | The two factor pin is invalid                                                                   |\n| `ffffff`   | An unexpected issue occured.                                                                    |\n| `fcd8ef`   | Access denied.                                                                                  |\n| `fcd8ff`   | Access disabled.                                                                                |\n| `cabbeb`   | A card with the same identifiers was already enrolled.                                          |\n| `bb4fff`   | Please authorize Kisi for Bluetooth.                                                            |\n| `bb5bff`   | No nearby Kisi reader found. Try enabling Bluetooth on your device.                             |\n| `bb4bff`   | Please enable Bluetooth.                                                                        |\n| `a7793f`   | Please authorize Kisi for location services.                                                    |\n| `a3799f`   | Please enable your location services.                                                           |\n| `a3793f`   | Please enable your location services.                                                           |\n| `f298cf`   | The place has disabled all links for you.                                                       |\n| `f298df`   | Your access rights for this place do not include links.                                         |\n| `f298bf`   | Your access right is invalid.                                                                   |\n| `f01337`   | Your group's access rights for this place do not include apps.                                  |\n| `34bd8f`   | Your device is not the primary one.                                                             |\n| `facced`   | Unable to decode the certificate.                                                               |\n| `bbb99f`   | Your location is not valid.                                                                     |\n| `bbb93f`   | The location of the lock is invalid.                                                            |\n| `a3995f`   | You are too far away.                                                                           |\n| `bb4faa`   | You're not close enough to the door.                                                            |\n| `bbc93f`   | In-app access is disabled by the organization. Please tap your phone against the reader.        |\n| `34ffaa`   | Your access is not allowed at this moment, please try again later.                              |\n| `f35ade`   | Your access is no longer valid.                                                                 |\n| `f398de`   | Your access is invalid.,                                                                        |\n| `f358de`   | Your access is not yet valid, please try again later.                                           |\n| `fad334`   | An error occurred permitting the the elevator stop.                                             |\n| `fad121`   | The elevator stop was not found.                                                                |\n| `fad122`   | The elevator stop was not configured.                                                           |\n| `fad123`   | The elevator stops are locked down.                                                             |\n| `fad124`   | The elevator stop was on schedule.                                                              |\n| `fad002`   | The place is currently locked down.                                                             |\n| `ff420a`   | The door has no assigned Kisi controller.                                                       |\n| `fad001`   | The door is currently locked down.                                                              |\n| `fad105`   | The door is improperly configured.                                                              |\n| `fad10e`   | The door could not be found.                                                                    |\n| `fad110`   | The door is already scheduled to be unlocked.                                                   |\n| `fad137`   | The access was denied by the zone.                                                              |\n| `fad146`   | The third party zone was overriden but it is still armed.                                       |\n| `fad10f`   | An error occurred connecting to the wireless lock.                                              |\n| `fad106`   | An error occurred finding the wireless lock.                                                    |\n| `fad107`   | The wireless lock is offline.                                                                   |\n| `fad112`   | An unlock is already in progress for the wireless lock.                                         |\n| `fac001`   | The Kisi controller is currently unavailable.                                                   |\n| `fac002`   | The Kisi controller is currently unavailable.                                                   |\n| `fac003`   | The Kisi device is currently unavailable.                                                       |\n| `fac004`   | The Kisi device is currently unavailable.                                                       |\n| `fad108`   | The Kisi controller is not yet configured.                                                      |\n| `ecc123`   | The Kisi controller encountered an unhandled error.                                             |\n| `fbc000`   | The Kisi controller firmware is being updated. This will take a few seconds. Please retry then. |\n| `aaa345`   | The zone has no assigned zone controller.                                                       |\n| `fad126`   | The zone could not be found.                                                                    |\n| `fad129`   | The alarm controller is currently unavailable.                                                  |\n| `adf234`   | An error occurred resetting the zone.                                                           |\n| `fad144`   | The third party alarm is still in violation.                                                    |\n| `abbb11`   | The integration partner experienced an error.                                                   |\n| `abcc11`   | An integration partner resource could not be found.                                             |\n| `abdd11`   | The communication with the integration partner failed.                                          |\n| `abee11`   | Authorization with the integration partner failed.                                              |\n| `abfe11`   | The integration is not acceptable                                                               |\n| `abff11`   | The integration is disabled.                                                                    |\n"
+  contact:
+    name: Kisi Support
+    email: support@getkisi.com
+servers:
+- url: https://api.kisi.io
+  description: Kisi Production
+tags:
+- name: Organizations
+paths:
+  /organizations:
+    get:
+      operationId: fetchOrganizations
+      summary: Fetch organizations
+      tags:
+      - Organizations
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  oneOf:
+                  - type: object
+                    title: Organization - when authenticated by group link
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the organization
+                      resource_type:
+                        type: string
+                        description: The resource type of the organization
+                        const: Organization
+                      name:
+                        type: string
+                        description: The name of the organization
+                      domain:
+                        type: string
+                        description: The domain of the organization.
+                      logo:
+                        type:
+                        - string
+                        - 'null'
+                        format: uri
+                        description: The URL to the logo of the organization.
+                      address:
+                        type:
+                        - string
+                        - 'null'
+                        description: The address of the organization.
+                      description:
+                        type:
+                        - string
+                        - 'null'
+                        description: The description of the organization
+                      time_zone:
+                        type:
+                        - string
+                        example: Europe/London
+                        description: 'The time zone of the organization.
+
+                          It should be a <a href="https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones"> valid IANA time zone name.</a>
+
+                          '
+                      transfer_to_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The transfer_to ID of the organization
+                      transfer_to:
+                        type: object
+                        title: User
+                        description: The transfer_to of the organization
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the user
+                          resource_type:
+                            type: string
+                            description: The resource type of the user
+                            const: User
+                          email:
+                            type: string
+                            format: email
+                            description: The email of the user.
+                          name:
+                            type: string
+                            description: The name of the user
+                        required:
+                        - id
+                        - resource_type
+                        - email
+                        - name
+                        additionalProperties: false
+                      image:
+                        deprecated: true
+                        type:
+                        - string
+                        - 'null'
+                      color:
+                        deprecated: true
+                        type:
+                        - string
+                        - 'null'
+                    required:
+                    - id
+                    - resource_type
+                    - name
+                    - domain
+                    - logo
+                    - address
+                    - description
+                    - time_zone
+                    - transfer_to_id
+                    - image
+                    - color
+                    additionalProperties: false
+                  - type: object
+                    title: Organization
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the organization
+                      resource_type:
+                        type: string
+                        description: The resource type of the organization
+                        const: Organization
+                      name:
+                        type: string
+                        description: The name of the organization
+                      domain:
+                        type: string
+                        description: The domain of the organization.
+                      logo:
+                        type:
+                        - string
+                        - 'null'
+                        format: uri
+                        description: The URL to the logo of the organization.
+                      address:
+                        type:
+                        - string
+                        - 'null'
+                        description: The address of the organization.
+                      description:
+                        type:
+                        - string
+                        - 'null'
+                        description: The description of the organization
+                      device_logins_expire_after:
+                        type:
+                        - integer
+                        - 'null'
+                        default: 1209600
+                        minimum: 0
+                        maximum: 31536000
+                        description: 'The device login expiration in seconds.
+
+                          If not defined, it defaults to 2 weeks of inactivity.
+
+                          '
+                      places_count:
+                        type: integer
+                        description: Count of all the places within the organization.
+                      scim_enabled:
+                        type: boolean
+                        description: Whether SCIM is enabled for the organization.
+                      sso_flow_enabled:
+                        type: boolean
+                        description: 'Whether the organization has SSO flow enabled. Mutually exclusive with password flow.
+
+                          '
+                      sso_expiration_override_enabled:
+                        type: boolean
+                        description: 'Whether the organization should override length of SSO session.
+
+                          '
+                      sso_expiration_override:
+                        type:
+                        - integer
+                        - 'null'
+                        description: 'The length of the SSO session (in seconds) that will override the default passed from Identity Provider.
+
+                          '
+                      metadata:
+                        type:
+                        - string
+                        - 'null'
+                        description: The SSO metadata of the organization.
+                      time_zone:
+                        type:
+                        - string
+                        example: Europe/London
+                        description: 'The time zone of the organization.
+
+                          It should be a <a href="https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones"> valid IANA time zone name.</a>
+
+                          '
+                      web_authentication_api_enabled:
+                        type: boolean
+                        description: 'Whether web authentication api is enabled.
+
+                          Only for organizations using SSO and IdP authentication is done using WebAuthn.
+
+                          '
+                      apple_pass_enabled:
+                        type: boolean
+                        description: Whether Apple Pass is enabled for the organization.
+                      created_at:
+                        type: string
+                        format: date-time
+                        description: When the organization was created
+                      updated_at:
+                        type: string
+                        format: date-time
+                        description: When the organization was updated
+                      user_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The user ID of the organization
+                      transfer_to_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The transfer_to ID of the organization
+                      transfer_to:
+                        type: object
+                        title: User
+                        description: The transfer_to of the organization
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the user
+                          resource_type:
+                            type: string
+                            description: The resource type of the user
+                            const: User
+                          email:
+                            type: string
+                            format: email
+                            description: The email of the user.
+                          name:
+                            type: string
+                            description: The name of the user
+                        required:
+                        - id
+                        - resource_type
+                        - email
+                        - name
+                        additionalProperties: false
+                      image:
+                        deprecated: true
+                        type:
+                        - string
+                        - 'null'
+                      color:
+                        deprecated: true
+                        type:
+                        - string
+                        - 'null'
+                    required:
+                    - id
+                    - resource_type
+                    - name
+                    - domain
+                    - logo
+                    - address
+                    - description
+                    - device_logins_expire_after
+                    - places_count
+                    - scim_enabled
+                    - sso_flow_enabled
+                    - sso_expiration_override_enabled
+                    - sso_expiration_override
+                    - metadata
+                    - time_zone
+                    - web_authentication_api_enabled
+                    - apple_pass_enabled
+                    - created_at
+                    - updated_at
+                    - user_id
+                    - transfer_to_id
+                    - image
+                    - color
+                    additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /organizations/{domain}/public:
+    get:
+      operationId: fetchPublicOrganization
+      summary: Fetch public organization
+      tags:
+      - Organizations
+      parameters:
+      - name: domain
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The domain of the organization.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Organization
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the organization
+                  resource_type:
+                    type: string
+                    description: The resource type of the organization
+                    const: Organization
+                  name:
+                    type: string
+                    description: The name of the organization
+                  domain:
+                    type: string
+                    description: The domain of the organization.
+                  places_count:
+                    type: integer
+                    description: Count of all the places within the organization.
+                  logo:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                    description: The URL to the logo of the organization.
+                  sso_flow_enabled:
+                    type: boolean
+                    description: 'Whether the organization has SSO flow enabled. Mutually exclusive with password flow.
+
+                      '
+                  web_authentication_api_enabled:
+                    type: boolean
+                    description: 'Whether web authentication api is enabled.
+
+                      Only for organizations using SSO and IdP authentication is done using WebAuthn.
+
+                      '
+                  image:
+                    deprecated: true
+                    type:
+                    - string
+                    - 'null'
+                  color:
+                    deprecated: true
+                    type:
+                    - string
+                    - 'null'
+                required:
+                - id
+                - resource_type
+                - name
+                - domain
+                - places_count
+                - logo
+                - sso_flow_enabled
+                - web_authentication_api_enabled
+                - image
+                - color
+                additionalProperties: false
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /organizations/find:
+    post:
+      operationId: findOrganizations
+      summary: Find my organizations
+      description: Sends an email to the user including a list of all their organizations.
+      tags:
+      - Organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                      description: The user's email.
+                  required:
+                  - email
+              required:
+              - user
+      responses:
+        '204':
+          description: No Content
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /organization:
+    get:
+      operationId: fetchCurrentOrganization
+      summary: Fetch current organization
+      tags:
+      - Organizations
+      security:
+      - Kisi-Login: []
+      - Kisi-Group-Link: []
+      - Kisi-Access-Key: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                oneOf:
+                - type: object
+                  title: Organization - when authenticated by group link
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the organization
+                    resource_type:
+                      type: string
+                      description: The resource type of the organization
+                      const: Organization
+                    name:
+                      type: string
+                      description: The name of the organization
+                    domain:
+                      type: string
+                      description: The domain of the organization.
+                    logo:
+                      type:
+                      - string
+                      - 'null'
+                      format: uri
+                      description: The URL to the logo of the organization.
+                    address:
+                      type:
+                      - string
+                      - 'null'
+                      description: The address of the organization.
+                    description:
+                      type:
+                      - string
+                      - 'null'
+                      description: The description of the organization
+                    time_zone:
+                      type:
+                      - string
+                      example: Europe/London
+                      description: 'The time zone of the organization.
+
+                        It should be a <a href="https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones"> valid IANA time zone name.</a>
+
+                        '
+                    transfer_to_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The transfer_to ID of the organization
+                    transfer_to:
+                      type: object
+                      title: User
+                      description: The transfer_to of the organization
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the user
+                        resource_type:
+                          type: string
+                          description: The resource type of the user
+                          const: User
+                        email:
+                          type: string
+                          format: email
+                          description: The email of the user.
+                        name:
+                          type: string
+                          description: The name of the user
+                      required:
+                      - id
+                      - resource_type
+                      - email
+                      - name
+                      additionalProperties: false
+                    image:
+                      deprecated: true
+                      type:
+                      - string
+                      - 'null'
+                    color:
+                      deprecated: true
+                      type:
+                      - string
+                      - 'null'
+                  required:
+                  - id
+                  - resource_type
+                  - name
+                  - domain
+                  - logo
+                  - address
+                  - description
+                  - time_zone
+                  - transfer_to_id
+                  - image
+                  - color
+                  additionalProperties: false
+                - type: object
+                  title: Organization
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the organization
+                    resource_type:
+                      type: string
+                      description: The resource type of the organization
+                      const: Organization
+                    name:
+                      type: string
+                      description: The name of the organization
+                    domain:
+                      type: string
+                      description: The domain of the organization.
+                    logo:
+                      type:
+                      - string
+                      - 'null'
+                      format: uri
+                      description: The URL to the logo of the organization.
+                    address:
+                      type:
+                      - string
+                      - 'null'
+                      description: The address of the organization.
+                    description:
+                      type:
+                      - string
+                      - 'null'
+                      description: The description of the organization
+                    device_logins_expire_after:
+                      type:
+                      - integer
+                      - 'null'
+                      default: 1209600
+                      minimum: 0
+                      maximum: 31536000
+                      description: 'The device login expiration in seconds.
+
+                        If not defined, it defaults to 2 weeks of inactivity.
+
+                        '
+                    places_count:
+                      type: integer
+                      description: Count of all the places within the organization.
+                    scim_enabled:
+                      type: boolean
+                      description: Whether SCIM is enabled for the organization.
+                    sso_flow_enabled:
+                      type: boolean
+                      description: 'Whether the organization has SSO flow enabled. Mutually exclusive with password flow.
+
+                        '
+                    sso_expiration_override_enabled:
+                      type: boolean
+                      description: 'Whether the organization should override length of SSO session.
+
+                        '
+                    sso_expiration_override:
+                      type:
+                      - integer
+                      - 'null'
+                      description: 'The length of the SSO session (in seconds) that will override the default passed from Identity Provider.
+
+                        '
+                    metadata:
+                      type:
+                      - string
+                      - 'null'
+                      description: The SSO metadata of the organization.
+                    time_zone:
+                      type:
+                      - string
+                      example: Europe/London
+                      description: 'The time zone of the organization.
+
+                        It should be a <a href="https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones"> valid IANA time zone name.</a>
+
+                        '
+                    web_authentication_api_enabled:
+                      type: boolean
+                      description: 'Whether web authentication api is enabled.
+
+                        Only for organizations using SSO and IdP authentication is done using WebAuthn.
+
+                        '
+                    apple_pass_enabled:
+                      type: boolean
+                      description: Whether Apple Pass is enabled for the organization.
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the organization was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the organization was updated
+                    user_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The user ID of the organization
+                    transfer_to_id:
+                      type:
+                      - integer
+                      - 'null'
+                      description: The transfer_to ID of the organization
+                    transfer_to:
+                      type: object
+                      title: User
+                      description: The transfer_to of the organization
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the user
+                        resource_type:
+                          type: string
+                          description: The resource type of the user
+                          const: User
+                        email:
+                          type: string
+                          format: email
+                          description: The email of the user.
+                        name:
+                          type: string
+                          description: The name of the user
+                      required:
+                      - id
+                      - resource_type
+                      - email
+                      - name
+                      additionalProperties: false
+                    image:
+                      deprecated: true
+                      type:
+                      - string
+                      - 'null'
+                    color:
+                      deprecated: true
+                      type:
+                      - string
+                      - 'null'
+                  required:
+                  - id
+                  - resource_type
+                  - name
+                  - domain
+                  - logo
+                  - address
+                  - description
+                  - device_logins_expire_after
+                  - places_count
+                  - scim_enabled
+                  - sso_flow_enabled
+                  - sso_expiration_override_enabled
+                  - sso_expiration_override
+                  - metadata
+                  - time_zone
+                  - web_authentication_api_enabled
+                  - apple_pass_enabled
+                  - created_at
+                  - updated_at
+                  - user_id
+                  - transfer_to_id
+                  - image
+                  - color
+                  additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateCurrentOrganization
+      summary: Update current organization
+      tags:
+      - Organizations
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Organization
+              properties:
+                organization:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the organization
+                    logo:
+                      type:
+                      - string
+                      - 'null'
+                      format: uri
+                      description: The URL to the logo of the organization.
+                    address:
+                      type:
+                      - string
+                      - 'null'
+                      description: The address of the organization.
+                    description:
+                      type:
+                      - string
+                      - 'null'
+                      description: The description of the organization
+                    device_logins_expire_after:
+                      type:
+                      - integer
+                      - 'null'
+                      default: 1209600
+                      minimum: 0
+                      maximum: 31536000
+                      description: 'The device login expiration in seconds.
+
+                        If not defined, it defaults to 2 weeks of inactivity.
+
+                        '
+                    time_zone:
+                      type:
+                      - string
+                      example: Europe/London
+                      description: 'The time zone of the organization.
+
+                        It should be a <a href="https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones"> valid IANA time zone name.</a>
+
+                        '
+                    metadata:
+                      type:
+                      - string
+                      - 'null'
+                      description: The SSO metadata of the organization.
+                    scim_enabled:
+                      type: boolean
+                      description: Whether SCIM is enabled for the organization.
+                    web_authentication_api_enabled:
+                      type: boolean
+                      description: 'Whether web authentication api is enabled.
+
+                        Only for organizations using SSO and IdP authentication is done using WebAuthn.
+
+                        '
+                    identity_provider_issuer_url:
+                      type: string
+                      format: uri
+                      description: The identity provider issuer url for the organization.
+                  required: []
+              required:
+              - organization
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /organization/settings:
+    get:
+      operationId: fetchCurrentOrganizationSettings
+      summary: Fetch current organization settings
+      tags:
+      - Organizations
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Organization
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the organization
+                  resource_type:
+                    type: string
+                    description: The resource type of the organization
+                    const: Organization
+                  name:
+                    type: string
+                    description: The name of the organization
+                  domain:
+                    type: string
+                    description: The domain of the organization.
+                  logo:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                    description: The URL to the logo of the organization.
+                  address:
+                    type:
+                    - string
+                    - 'null'
+                    description: The address of the organization.
+                  description:
+                    type:
+                    - string
+                    - 'null'
+                    description: The description of the organization
+                  device_logins_expire_after:
+                    type:
+                    - integer
+                    - 'null'
+                    default: 1209600
+                    minimum: 0
+                    maximum: 31536000
+                    description: 'The device login expiration in seconds.
+
+                      If not defined, it defaults to 2 weeks of inactivity.
+
+                      '
+                  places_count:
+                    type: integer
+                    description: Count of all the places within the organization.
+                  scim_enabled:
+                    type: boolean
+                    description: Whether SCIM is enabled for the organization.
+                  sso_flow_enabled:
+                    type: boolean
+                    description: 'Whether the organization has SSO flow enabled. Mutually exclusive with password flow.
+
+                      '
+                  sso_expiration_override_enabled:
+                    type: boolean
+                    description: 'Whether the organization should override length of SSO session.
+
+                      '
+                  sso_expiration_override:
+                    type:
+                    - integer
+                    - 'null'
+                    description: 'The length of the SSO session (in seconds) that will override the default passed from Identity Provider.
+
+                      '
+                  metadata:
+                    type:
+                    - string
+                    - 'null'
+                    description: The SSO metadata of the organization.
+                  time_zone:
+                    type:
+                    - string
+                    example: Europe/London
+                    description: 'The time zone of the organization.
+
+                      It should be a <a href="https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones"> valid IANA time zone name.</a>
+
+                      '
+                  web_authentication_api_enabled:
+                    type: boolean
+                    description: 'Whether web authentication api is enabled.
+
+                      Only for organizations using SSO and IdP authentication is done using WebAuthn.
+
+                      '
+                  apple_pass_enabled:
+                    type: boolean
+                    description: Whether Apple Pass is enabled for the organization.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: When the organization was created
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: When the organization was updated
+                  user_id:
+                    type: integer
+                    description: The user ID of the organization
+                  transfer_to_id:
+                    type:
+                    - integer
+                    - 'null'
+                    description: The transfer_to ID of the organization
+                  transfer_to:
+                    type: object
+                    title: User
+                    description: The transfer_to of the organization
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the user
+                      resource_type:
+                        type: string
+                        description: The resource type of the user
+                        const: User
+                      email:
+                        type: string
+                        format: email
+                        description: The email of the user.
+                      name:
+                        type: string
+                        description: The name of the user
+                    required:
+                    - id
+                    - resource_type
+                    - email
+                    - name
+                    additionalProperties: false
+                  image:
+                    deprecated: true
+                    type:
+                    - string
+                    - 'null'
+                  color:
+                    deprecated: true
+                    type:
+                    - string
+                    - 'null'
+                  sp_certificate_expires_at:
+                    type:
+                    - string
+                    - 'null'
+                    description: When the encryption certificate expires at.
+                  sp_certificate_required:
+                    type: boolean
+                    description: 'Whether an encryption certificate is required.
+
+                      '
+                  sp_certificate:
+                    type:
+                    - string
+                    - 'null'
+                    description: The encryption certificate of the organization.
+                  identity_provider_issuer_url:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                    description: 'The identity provider issuer url for the organization.
+
+                      '
+                  sso_configured:
+                    type:
+                    - boolean
+                    - 'null'
+                    description: 'Whether the SSO configuration is set and working. It will be set to `true` after the first sign-in via SSO.
+
+                      Changing the SSO configuration will reset it back to `false`.
+
+                      '
+                  scim_configured:
+                    type:
+                    - boolean
+                    - 'null'
+                    description: 'Whether the SCIM configuration is set and working. It will be set to `true` after first successful SCIM request.
+
+                      Resetting the SCIM token will set it back to `false`.
+
+                      '
+                  user:
+                    type: object
+                    title: User
+                    description: The user of the organization
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the user
+                      resource_type:
+                        type: string
+                        description: The resource type of the user
+                        const: User
+                      email:
+                        type: string
+                        format: email
+                        description: The email of the user.
+                      name:
+                        type: string
+                        description: The name of the user
+                    required:
+                    - id
+                    - resource_type
+                    - email
+                    - name
+                    additionalProperties: false
+                required:
+                - id
+                - resource_type
+                - name
+                - domain
+                - logo
+                - address
+                - description
+                - device_logins_expire_after
+                - places_count
+                - scim_enabled
+                - sso_flow_enabled
+                - sso_expiration_override_enabled
+                - sso_expiration_override
+                - metadata
+                - time_zone
+                - web_authentication_api_enabled
+                - apple_pass_enabled
+                - created_at
+                - updated_at
+                - user_id
+                - transfer_to_id
+                - image
+                - color
+                - sp_certificate_expires_at
+                - sp_certificate_required
+                - sp_certificate
+                - identity_provider_issuer_url
+                - sso_configured
+                - scim_configured
+                - user
+                additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /organization/dashboard:
+    get:
+      operationId: fetchCurrentOrganizationDashboard
+      summary: Fetch current organization dashboard
+      tags:
+      - Organizations
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Organization
+                properties:
+                  apple_passes_count:
+                    type: integer
+                    description: The count of Apple Passes within the organization.
+                  cameras_count:
+                    type: integer
+                    description: The count of cameras within the organization.
+                  users_count:
+                    type: integer
+                    description: The count of users within the organization.
+                  places_count:
+                    type: integer
+                    description: The count of places within the organization.
+                  locks_count:
+                    type: integer
+                    description: The count of locks within the organization.
+                  groups_count:
+                    type: integer
+                    description: The count of groups within the organization.
+                  members_count:
+                    deprecated: true
+                    type: integer
+                    description: The count of members within the organization.
+                required:
+                - apple_passes_count
+                - cameras_count
+                - users_count
+                - places_count
+                - locks_count
+                - groups_count
+                - members_count
+                additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /organization/generate_next_certificate:
+    post:
+      operationId: generateNextCertificate
+      summary: Generate next certificate
+      tags:
+      - Organizations
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Organization
+                properties:
+                  next_sp_certificate:
+                    type: string
+                    format: pem
+                    description: 'The certificate generated by calling `POST /organization/generate_next_certificate` will be used as the current encryption certificate.
+
+                      '
+                required:
+                - next_sp_certificate
+                additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /organization/rotate_certificate:
+    post:
+      operationId: rotateCertificate
+      summary: Rotate certificate
+      tags:
+      - Organizations
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /organization/transfers:
+    get:
+      operationId: fetchOrganizationTransfers
+      summary: Fetch current user's organization transfers
+      tags:
+      - Organizations
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  oneOf:
+                  - type: object
+                    title: Organization - when authenticated by group link
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the organization
+                      resource_type:
+                        type: string
+                        description: The resource type of the organization
+                        const: Organization
+                      name:
+                        type: string
+                        description: The name of the organization
+                      domain:
+                        type: string
+                        description: The domain of the organization.
+                      logo:
+                        type:
+                        - string
+                        - 'null'
+                        format: uri
+                        description: The URL to the logo of the organization.
+                      address:
+                        type:
+                        - string
+                        - 'null'
+                        description: The address of the organization.
+                      description:
+                        type:
+                        - string
+                        - 'null'
+                        description: The description of the organization
+                      time_zone:
+                        type:
+                        - string
+                        example: Europe/London
+                        description: 'The time zone of the organization.
+
+                          It should be a <a href="https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones"> valid IANA time zone name.</a>
+
+                          '
+                      transfer_to_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The transfer_to ID of the organization
+                      transfer_to:
+                        type: object
+                        title: User
+                        description: The transfer_to of the organization
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the user
+                          resource_type:
+                            type: string
+                            description: The resource type of the user
+                            const: User
+                          email:
+                            type: string
+                            format: email
+                            description: The email of the user.
+                          name:
+                            type: string
+                            description: The name of the user
+                        required:
+                        - id
+                        - resource_type
+                        - email
+                        - name
+                        additionalProperties: false
+                      image:
+                        deprecated: true
+                        type:
+                        - string
+                        - 'null'
+                      color:
+                        deprecated: true
+                        type:
+                        - string
+                        - 'null'
+                    required:
+                    - id
+                    - resource_type
+                    - name
+                    - domain
+                    - logo
+                    - address
+                    - description
+                    - time_zone
+                    - transfer_to_id
+                    - image
+                    - color
+                    additionalProperties: false
+                  - type: object
+                    title: Organization
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the organization
+                      resource_type:
+                        type: string
+                        description: The resource type of the organization
+                        const: Organization
+                      name:
+                        type: string
+                        description: The name of the organization
+                      domain:
+                        type: string
+                        description: The domain of the organization.
+                      logo:
+                        type:
+                        - string
+                        - 'null'
+                        format: uri
+                        description: The URL to the logo of the organization.
+                      address:
+                        type:
+                        - string
+                        - 'null'
+                        description: The address of the organization.
+                      description:
+                        type:
+                        - string
+                        - 'null'
+                        description: The description of the organization
+                      device_logins_expire_after:
+                        type:
+                        - integer
+                        - 'null'
+                        default: 1209600
+                        minimum: 0
+                        maximum: 31536000
+                        description: 'The device login expiration in seconds.
+
+                          If not defined, it defaults to 2 weeks of inactivity.
+
+                          '
+                      places_count:
+                        type: integer
+                        description: Count of all the places within the organization.
+                      scim_enabled:
+                        type: boolean
+                        description: Whether SCIM is enabled for the organization.
+                      sso_flow_enabled:
+                        type: boolean
+                        description: 'Whether the organization has SSO flow enabled. Mutually exclusive with password flow.
+
+                          '
+                      sso_expiration_override_enabled:
+                        type: boolean
+                        description: 'Whether the organization should override length of SSO session.
+
+                          '
+                      sso_expiration_override:
+                        type:
+                        - integer
+                        - 'null'
+                        description: 'The length of the SSO session (in seconds) that will override the default passed from Identity Provider.
+
+                          '
+                      metadata:
+                        type:
+                        - string
+                        - 'null'
+                        description: The SSO metadata of the organization.
+                      time_zone:
+                        type:
+                        - string
+                        example: Europe/London
+                        description: 'The time zone of the organization.
+
+                          It should be a <a href="https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones"> valid IANA time zone name.</a>
+
+                          '
+                      web_authentication_api_enabled:
+                        type: boolean
+                        description: 'Whether web authentication api is enabled.
+
+                          Only for organizations using SSO and IdP authentication is done using WebAuthn.
+
+                          '
+                      apple_pass_enabled:
+                        type: boolean
+                        description: Whether Apple Pass is enabled for the organization.
+                      created_at:
+                        type: string
+                        format: date-time
+                        description: When the organization was created
+                      updated_at:
+                        type: string
+                        format: date-time
+                        description: When the organization was updated
+                      user_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The user ID of the organization
+                      transfer_to_id:
+                        type:
+                        - integer
+                        - 'null'
+                        description: The transfer_to ID of the organization
+                      transfer_to:
+                        type: object
+                        title: User
+                        description: The transfer_to of the organization
+                        properties:
+                          id:
+                            type: integer
+                            description: The ID of the user
+                          resource_type:
+                            type: string
+                            description: The resource type of the user
+                            const: User
+                          email:
+                            type: string
+                            format: email
+                            description: The email of the user.
+                          name:
+                            type: string
+                            description: The name of the user
+                        required:
+                        - id
+                        - resource_type
+                        - email
+                        - name
+                        additionalProperties: false
+                      image:
+                        deprecated: true
+                        type:
+                        - string
+                        - 'null'
+                      color:
+                        deprecated: true
+                        type:
+                        - string
+                        - 'null'
+                    required:
+                    - id
+                    - resource_type
+                    - name
+                    - domain
+                    - logo
+                    - address
+                    - description
+                    - device_logins_expire_after
+                    - places_count
+                    - scim_enabled
+                    - sso_flow_enabled
+                    - sso_expiration_override_enabled
+                    - sso_expiration_override
+                    - metadata
+                    - time_zone
+                    - web_authentication_api_enabled
+                    - apple_pass_enabled
+                    - created_at
+                    - updated_at
+                    - user_id
+                    - transfer_to_id
+                    - image
+                    - color
+                    additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /organization/request_transfer:
+    post:
+      operationId: requestTransfer
+      summary: Request transfer
+      description: Request transfer of the organization ownership to another user
+      tags:
+      - Organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: Organization
+              properties:
+                organization:
+                  type: object
+                  properties:
+                    transfer_to_id:
+                      type: integer
+                      description: The ID of the user to whom the organization will be transfered(if user accepts the transfer). Not required if `transfer_to_email` is provided.
+                    transfer_to_email:
+                      type: string
+                      format: email
+                      description: The email of the user to whom the organization will be transfered(if user accepts the transfer). Not required if `transfer_to_id` is provided.
+                  required: []
+              required:
+              - organization
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /organization/accept_transfer:
+    post:
+      operationId: acceptTransfer
+      summary: Accept transfer
+      description: Accept transfer of the organization ownership
+      tags:
+      - Organizations
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /organization/reject_transfer:
+    post:
+      operationId: rejectTransfer
+      summary: Reject transfer
+      description: Reject transfer of the organization ownership
+      tags:
+      - Organizations
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /organization/cancel_transfer:
+    post:
+      operationId: cancelTransfer
+      summary: Cancel transfer
+      description: Cancel transfer of the organization ownership
+      tags:
+      - Organizations
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Errors:
+      description: Schema describing validation errors.
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          example:
+            email:
+            - can't be blank or invalid
+            password:
+            - can't be blank
+      required:
+      - errors
+    Error:
+      description: Schema describing errors.
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error message.
+          example: Wrong email address or password.
+        code:
+          type: string
+          description: An identifier of the error.
+          example: afc516
+      required:
+      - error
+      - code
+  securitySchemes:
+    Webhook-Signature:
+      type: apiKey
+      in: header
+      name: X-Signature
+      description: 'Authorize using a signature of the request body. The signature is a HMAC-SHA256 hash of the request body using a secret key. <br><br>E.g. `X-Signature: 123`'
+    Kisi-Login:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a login. Prefix the value with `KISI-LOGIN`<br><br>Example: `Authorization: KISI-LOGIN 123`'
+    Kisi-Access-Key:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using an access key. Prefix the value with `KISI-ACCESS-KEY`<br><br>Example: `Authorization: KISI-ACCESS-KEY 123`'
+    Kisi-Group-Link:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a group link. Prefix the value with `KISI-GROUP-LINK`<br><br>Example: `Authorization: KISI-GROUP-LINK 123`'
+    Kisi-Service:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a service. Prefix the value with `KISI-SERVICE`<br><br>Example: `Authorization: KISI-SERVICE 123`'
+    OAuth2Basic:
+      type: http
+      scheme: basic
+      description: Username is the client id. Password is the client secret.
+    OAuth2:
+      type: oauth2
+      description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer youraccesstoken`'
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.kisi.io/oauth/authorize
+          tokenUrl: https://api.kisi.io/oauth/token
+          scopes: {}

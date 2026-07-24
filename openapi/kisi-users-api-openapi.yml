@@ -1,0 +1,1545 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Kisi Calendars Users API
+  description: "## Introduction\n\nWelcome to the Kisi API documentation. Before you read further, please read\nthe general [Kisi Docs portal](https://docs.kisi.io/).\n\n<!-- theme: info -->\n> If you want to be notified by email about updates to our API, please subscribe to our\n> [newsletter](https://2e2bc.share.hsforms.com/2OsdqtC8xRHGQ2yaS16AF7w).\n\n### Format\n\nThe Kisi API supports JSON only, so please set `Accept` and `Content-Type`\nto `application/json`. All requests and responses will use JSON as the\nformat for any data encompassed in the body of requests and responses.\n\n```http\n<METHOD> <URL> HTTP/1.1\nAccept: application/json\nContent-Type: application/json\n```\n\n### Authentication\n\nMost calls to the API will require an authenticated user. If such a user\nis not present, you will receive a 401 response.\nFor more information about authentication, see the [Kisi Docs portal](https://docs.kisi.io/api/get_started/add_necessary_headers).\n\nAPI calls must be made using HTTPS. Any calls made over plain HTTP will fail.\n\n### Rate limits\n\nFor authenticated API requests, you can make up to 5 requests per second,\nper user. Note that the limit applies per user, so requests made using\ndifferent logins for the same user share the same quota.\n\nFor unauthenticated requests, you can make up to 5 requests per second, per\nIP address.\n\nThe following endpoints have custom rate limits:\n\n| Endpoint                   | Limit            |\n|----------------------------|------------------|\n| `POST /event_sets`         | 1 per second     |\n| `POST /signed_upload_urls` | 1 per 10 seconds |\n\nIf you exceed the rate limit, a 429 response will be returned.\n\nSome best practices:\n- If you're making requests for a single user, do so serially, *not* concurrently.\n- If you're making a large number of requests for a single user, wait at least one second between each request.\n\nWe reserve the right to change these limits as needed to ensure availability.\n\n### Deprecations\n\nIn the event that some part of the API has to be deprecated, we do the following:\n\n  1. Return the `Deprecation` header with the date of when the endpoint is deprecated.\n  2. Return the `Sunset` header with the date of when the endpoint can be expected to not function anymore.\n  3. When the `Sunset` date is reached, the endpoint may go away at any time.\n\nWe recommend listening to these headers to avoid disruptions.\n\n### Error codes\n\nSome endpoints return an error code and a message. In the table below all error codes are listed.\n\n| Error code | Message                                                                                         |\n|------------|-------------------------------------------------------------------------------------------------|\n| `afc507`   | The authentication link is not valid.                                                           |\n| `afc546`   | Invalid Two Factor backup code.                                                                 |\n| `faa9ff`   | The card is not activated.                                                                      |\n| `faa9ef`   | The card was not found.                                                                         |\n| `afc496`   | Access denied.                                                                                  |\n| `f29aef`   | Your link is invalid.                                                                           |\n| `afc516`   | Wrong email address or password.                                                                |\n| `afc536`   | Invalid Two Factor verification code.                                                           |\n| `afc526`   | Please provide a Two Factor verification code.                                                  |\n| `afc516`   | The two factor pin is invalid                                                                   |\n| `ffffff`   | An unexpected issue occured.                                                                    |\n| `fcd8ef`   | Access denied.                                                                                  |\n| `fcd8ff`   | Access disabled.                                                                                |\n| `cabbeb`   | A card with the same identifiers was already enrolled.                                          |\n| `bb4fff`   | Please authorize Kisi for Bluetooth.                                                            |\n| `bb5bff`   | No nearby Kisi reader found. Try enabling Bluetooth on your device.                             |\n| `bb4bff`   | Please enable Bluetooth.                                                                        |\n| `a7793f`   | Please authorize Kisi for location services.                                                    |\n| `a3799f`   | Please enable your location services.                                                           |\n| `a3793f`   | Please enable your location services.                                                           |\n| `f298cf`   | The place has disabled all links for you.                                                       |\n| `f298df`   | Your access rights for this place do not include links.                                         |\n| `f298bf`   | Your access right is invalid.                                                                   |\n| `f01337`   | Your group's access rights for this place do not include apps.                                  |\n| `34bd8f`   | Your device is not the primary one.                                                             |\n| `facced`   | Unable to decode the certificate.                                                               |\n| `bbb99f`   | Your location is not valid.                                                                     |\n| `bbb93f`   | The location of the lock is invalid.                                                            |\n| `a3995f`   | You are too far away.                                                                           |\n| `bb4faa`   | You're not close enough to the door.                                                            |\n| `bbc93f`   | In-app access is disabled by the organization. Please tap your phone against the reader.        |\n| `34ffaa`   | Your access is not allowed at this moment, please try again later.                              |\n| `f35ade`   | Your access is no longer valid.                                                                 |\n| `f398de`   | Your access is invalid.,                                                                        |\n| `f358de`   | Your access is not yet valid, please try again later.                                           |\n| `fad334`   | An error occurred permitting the the elevator stop.                                             |\n| `fad121`   | The elevator stop was not found.                                                                |\n| `fad122`   | The elevator stop was not configured.                                                           |\n| `fad123`   | The elevator stops are locked down.                                                             |\n| `fad124`   | The elevator stop was on schedule.                                                              |\n| `fad002`   | The place is currently locked down.                                                             |\n| `ff420a`   | The door has no assigned Kisi controller.                                                       |\n| `fad001`   | The door is currently locked down.                                                              |\n| `fad105`   | The door is improperly configured.                                                              |\n| `fad10e`   | The door could not be found.                                                                    |\n| `fad110`   | The door is already scheduled to be unlocked.                                                   |\n| `fad137`   | The access was denied by the zone.                                                              |\n| `fad146`   | The third party zone was overriden but it is still armed.                                       |\n| `fad10f`   | An error occurred connecting to the wireless lock.                                              |\n| `fad106`   | An error occurred finding the wireless lock.                                                    |\n| `fad107`   | The wireless lock is offline.                                                                   |\n| `fad112`   | An unlock is already in progress for the wireless lock.                                         |\n| `fac001`   | The Kisi controller is currently unavailable.                                                   |\n| `fac002`   | The Kisi controller is currently unavailable.                                                   |\n| `fac003`   | The Kisi device is currently unavailable.                                                       |\n| `fac004`   | The Kisi device is currently unavailable.                                                       |\n| `fad108`   | The Kisi controller is not yet configured.                                                      |\n| `ecc123`   | The Kisi controller encountered an unhandled error.                                             |\n| `fbc000`   | The Kisi controller firmware is being updated. This will take a few seconds. Please retry then. |\n| `aaa345`   | The zone has no assigned zone controller.                                                       |\n| `fad126`   | The zone could not be found.                                                                    |\n| `fad129`   | The alarm controller is currently unavailable.                                                  |\n| `adf234`   | An error occurred resetting the zone.                                                           |\n| `fad144`   | The third party alarm is still in violation.                                                    |\n| `abbb11`   | The integration partner experienced an error.                                                   |\n| `abcc11`   | An integration partner resource could not be found.                                             |\n| `abdd11`   | The communication with the integration partner failed.                                          |\n| `abee11`   | Authorization with the integration partner failed.                                              |\n| `abfe11`   | The integration is not acceptable                                                               |\n| `abff11`   | The integration is disabled.                                                                    |\n"
+  contact:
+    name: Kisi Support
+    email: support@getkisi.com
+servers:
+- url: https://api.kisi.io
+  description: Kisi Production
+tags:
+- name: Users
+paths:
+  /users:
+    get:
+      operationId: fetchUsers
+      summary: Fetch users
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: ids
+        in: query
+        schema:
+          type: string
+        description: Filter by object IDs
+      - name: place_id
+        in: query
+        schema:
+          type: integer
+        description: 'Filters users that have access to given place.
+
+          '
+      - name: email
+        in: query
+        schema:
+          type: string
+        description: Filter by email.
+      - name: place_id
+        in: query
+        schema:
+          type: integer
+        description: 'Filters users that have access to given place.
+
+          '
+      - name: group_id
+        in: query
+        schema:
+          type: integer
+        description: Filter by group ID
+      - name: query
+        in: query
+        schema:
+          type: string
+        description: 'Filter by a freetext string. Properties searched: `email`, `name`, `notes`
+
+          '
+      - name: user_id
+        in: query
+        schema:
+          type:
+          - integer
+          - string
+        description: Filter by user ID or by current user if value is `me`.
+      - name: sort
+        in: query
+        schema:
+          type: string
+          enum:
+          - name
+          - -name
+          - unlock
+          - -unlock
+          - access_enabled
+          - -access_enabled
+        description: 'Sort the results. Prepend `-` to sort in reverse order.
+
+
+          `name` - sort by user name, alphabetically<br>
+
+          `unlock` - sort by last unlock; no unlocks first, then oldest to most recent
+
+          '
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 50
+          maximum: 100
+        description: The number of objects to return
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+          maximum: 20000
+        description: The number of objects to offset
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  title: User
+                  properties:
+                    id:
+                      type: integer
+                      description: The ID of the user
+                    resource_type:
+                      type: string
+                      description: The resource type of the user
+                      const: User
+                    name:
+                      type: string
+                      description: The name of the user
+                    email:
+                      type: string
+                      format: email
+                      description: The email of the user.
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: When the user was created
+                    updated_at:
+                      type: string
+                      format: date-time
+                      description: When the user was updated
+                    metadata:
+                      type: object
+                      description: 'The metadata for the user.
+
+                        - Only basic types are allowed: string, null, integer, float, boolean.
+
+                        - Keys have a limit of 50 characters.
+
+                        - Values have a limit of 500 characters.
+
+                        - Keys number is limited to 50.
+
+                        '
+                    image:
+                      type:
+                      - string
+                      - 'null'
+                      format: uri
+                      description: The url to the image of the user.
+                    otp_required_for_login:
+                      type: boolean
+                      description: Whether OTP/2FA is required for login.
+                    password_flow_enabled:
+                      type: boolean
+                      description: Whether the user can login with password flow. Only relevant for organizations.
+                    access_enabled:
+                      type: boolean
+                      description: 'Whether the user is allowed to access locks and elevators.
+
+
+                        If the user is managed by SCIM, user access will be disabled
+
+                        unless *both* the `access_enabled` field and
+
+                        `scim_access_enabled` fields are set to `true`.
+
+                        '
+                    last_accessed_at:
+                      type:
+                      - string
+                      - 'null'
+                      format: date-time
+                      description: When the user last accessed a door.
+                    scim_access_enabled:
+                      type: boolean
+                      description: 'Whether the user is allowed to access locks and elevators.
+
+
+                        This field is read-only and can only be managed using SCIM. (See `access_enabled`)
+
+
+                        It will always be set to `true` if the user is not managed by SCIM.
+
+                        '
+                    notes:
+                      type:
+                      - string
+                      - 'null'
+                      description: The notes for the user.
+                    organization_id:
+                      type: integer
+                      description: The organization ID of the user
+                    confirmed:
+                      deprecated: true
+                      type: boolean
+                    groups_count:
+                      deprecated: true
+                      type: integer
+                  required:
+                  - id
+                  - resource_type
+                  - name
+                  - email
+                  - created_at
+                  - updated_at
+                  - metadata
+                  - image
+                  - otp_required_for_login
+                  - password_flow_enabled
+                  - access_enabled
+                  - last_accessed_at
+                  - scim_access_enabled
+                  - notes
+                  - organization_id
+                  - confirmed
+                  - groups_count
+                  additionalProperties: false
+          headers:
+            X-Collection-Range:
+              description: 'Pagination information for offset based pagination. `start-end` represents the range
+
+                of items requested. `total` represents the total count of items. If there is a total
+
+                of 15 items and an offset of 10 and limit of 10 is used, the resulting header is:
+
+                `10-19/15`.
+
+                '
+              schema:
+                type: string
+                pattern: ^(?<start>\d+)-(?<end>\d+)/(?<total>\d+)$
+              example: 0-9/200
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: createUser
+      summary: Create user
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: User
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the user
+                    image:
+                      type:
+                      - string
+                      - 'null'
+                      format: uri
+                      description: The url to the image of the user.
+                    send_emails:
+                      type: boolean
+                      description: Whether the user should receive emails. Can only be specified for organization users.
+                    confirm:
+                      type: boolean
+                      description: 'Whether the user''s corresponding user should be auto-confirmed on creation.
+
+                        Can only be specified for organization users.
+
+                        '
+                    access_enabled:
+                      type: boolean
+                      description: 'Whether the user is allowed to access locks and elevators.
+
+
+                        If the user is managed by SCIM, user access will be disabled
+
+                        unless *both* the `access_enabled` field and
+
+                        `scim_access_enabled` fields are set to `true`.
+
+                        '
+                    password_flow_enabled:
+                      type: boolean
+                      description: Whether the user can login with password flow. Only relevant for organizations.
+                    metadata:
+                      type: object
+                      description: 'The metadata for the user.
+
+                        - Only basic types are allowed: string, null, integer, float, boolean.
+
+                        - Keys have a limit of 50 characters.
+
+                        - Values have a limit of 500 characters.
+
+                        - Keys number is limited to 50.
+
+                        '
+                    notes:
+                      type:
+                      - string
+                      - 'null'
+                      description: The notes for the user.
+                    email:
+                      type: string
+                      format: email
+                      description: The email of the user.
+                  required:
+                  - email
+              required:
+              - user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: User
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the user
+                  resource_type:
+                    type: string
+                    description: The resource type of the user
+                    const: User
+                  name:
+                    type: string
+                    description: The name of the user
+                  email:
+                    type: string
+                    format: email
+                    description: The email of the user.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: When the user was created
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: When the user was updated
+                  metadata:
+                    type: object
+                    description: 'The metadata for the user.
+
+                      - Only basic types are allowed: string, null, integer, float, boolean.
+
+                      - Keys have a limit of 50 characters.
+
+                      - Values have a limit of 500 characters.
+
+                      - Keys number is limited to 50.
+
+                      '
+                  image:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                    description: The url to the image of the user.
+                  otp_required_for_login:
+                    type: boolean
+                    description: Whether OTP/2FA is required for login.
+                  password_flow_enabled:
+                    type: boolean
+                    description: Whether the user can login with password flow. Only relevant for organizations.
+                  access_enabled:
+                    type: boolean
+                    description: 'Whether the user is allowed to access locks and elevators.
+
+
+                      If the user is managed by SCIM, user access will be disabled
+
+                      unless *both* the `access_enabled` field and
+
+                      `scim_access_enabled` fields are set to `true`.
+
+                      '
+                  last_accessed_at:
+                    type:
+                    - string
+                    - 'null'
+                    format: date-time
+                    description: When the user last accessed a door.
+                  scim_access_enabled:
+                    type: boolean
+                    description: 'Whether the user is allowed to access locks and elevators.
+
+
+                      This field is read-only and can only be managed using SCIM. (See `access_enabled`)
+
+
+                      It will always be set to `true` if the user is not managed by SCIM.
+
+                      '
+                  notes:
+                    type:
+                    - string
+                    - 'null'
+                    description: The notes for the user.
+                  organization_id:
+                    type: integer
+                    description: The organization ID of the user
+                  confirmed:
+                    deprecated: true
+                    type: boolean
+                  groups_count:
+                    deprecated: true
+                    type: integer
+                required:
+                - id
+                - resource_type
+                - name
+                - email
+                - created_at
+                - updated_at
+                - metadata
+                - image
+                - otp_required_for_login
+                - password_flow_enabled
+                - access_enabled
+                - last_accessed_at
+                - scim_access_enabled
+                - notes
+                - organization_id
+                - confirmed
+                - groups_count
+                additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /users/{id}:
+    get:
+      operationId: fetchUser
+      summary: Fetch user
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: The ID of the object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: User
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the user
+                  resource_type:
+                    type: string
+                    description: The resource type of the user
+                    const: User
+                  name:
+                    type: string
+                    description: The name of the user
+                  email:
+                    type: string
+                    format: email
+                    description: The email of the user.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: When the user was created
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: When the user was updated
+                  metadata:
+                    type: object
+                    description: 'The metadata for the user.
+
+                      - Only basic types are allowed: string, null, integer, float, boolean.
+
+                      - Keys have a limit of 50 characters.
+
+                      - Values have a limit of 500 characters.
+
+                      - Keys number is limited to 50.
+
+                      '
+                  image:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                    description: The url to the image of the user.
+                  otp_required_for_login:
+                    type: boolean
+                    description: Whether OTP/2FA is required for login.
+                  password_flow_enabled:
+                    type: boolean
+                    description: Whether the user can login with password flow. Only relevant for organizations.
+                  access_enabled:
+                    type: boolean
+                    description: 'Whether the user is allowed to access locks and elevators.
+
+
+                      If the user is managed by SCIM, user access will be disabled
+
+                      unless *both* the `access_enabled` field and
+
+                      `scim_access_enabled` fields are set to `true`.
+
+                      '
+                  last_accessed_at:
+                    type:
+                    - string
+                    - 'null'
+                    format: date-time
+                    description: When the user last accessed a door.
+                  scim_access_enabled:
+                    type: boolean
+                    description: 'Whether the user is allowed to access locks and elevators.
+
+
+                      This field is read-only and can only be managed using SCIM. (See `access_enabled`)
+
+
+                      It will always be set to `true` if the user is not managed by SCIM.
+
+                      '
+                  notes:
+                    type:
+                    - string
+                    - 'null'
+                    description: The notes for the user.
+                  organization_id:
+                    type: integer
+                    description: The organization ID of the user
+                  confirmed:
+                    deprecated: true
+                    type: boolean
+                  groups_count:
+                    deprecated: true
+                    type: integer
+                required:
+                - id
+                - resource_type
+                - name
+                - email
+                - created_at
+                - updated_at
+                - metadata
+                - image
+                - otp_required_for_login
+                - password_flow_enabled
+                - access_enabled
+                - last_accessed_at
+                - scim_access_enabled
+                - notes
+                - organization_id
+                - confirmed
+                - groups_count
+                additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateUser
+      summary: Update user
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: The ID of the object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: User
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the user
+                    image:
+                      type:
+                      - string
+                      - 'null'
+                      format: uri
+                      description: The url to the image of the user.
+                    access_enabled:
+                      type: boolean
+                      description: 'Whether the user is allowed to access locks and elevators.
+
+
+                        If the user is managed by SCIM, user access will be disabled
+
+                        unless *both* the `access_enabled` field and
+
+                        `scim_access_enabled` fields are set to `true`.
+
+                        '
+                    password_flow_enabled:
+                      type: boolean
+                      description: Whether the user can login with password flow. Only relevant for organizations.
+                    metadata:
+                      type: object
+                      description: 'The metadata for the user.
+
+                        - Only basic types are allowed: string, null, integer, float, boolean.
+
+                        - Keys have a limit of 50 characters.
+
+                        - Values have a limit of 500 characters.
+
+                        - Keys number is limited to 50.
+
+                        '
+                    notes:
+                      type:
+                      - string
+                      - 'null'
+                      description: The notes for the user.
+                  required: []
+              required:
+              - user
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      operationId: deleteUser
+      summary: Delete user
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+        description: The ID of the object
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /user:
+    get:
+      operationId: fetchCurrentUser
+      summary: Fetch current user
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: User
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the user
+                  resource_type:
+                    type: string
+                    description: The resource type of the user
+                    const: User
+                  name:
+                    type: string
+                    description: The name of the user
+                  email:
+                    type: string
+                    format: email
+                    description: The email of the user.
+                  image:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                    description: The url to the image of the user.
+                  locale:
+                    enum:
+                    - en
+                    - fr
+                    - es
+                    - de
+                    - null
+                    type:
+                    - string
+                    - 'null'
+                    description: The preferred language of the user
+                  notifications_unread_count:
+                    type: integer
+                    minimum: 0
+                    description: The count of unread notifications.
+                  otp_required_for_login:
+                    type: boolean
+                    description: Whether OTP/2FA is required for login.
+                  otp_enabled_at:
+                    type:
+                    - string
+                    - 'null'
+                    format: date-time
+                    description: When was the OTP/2FA enabled.
+                  primary_login_exists:
+                    type: boolean
+                    description: Whether the user has a primary login.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: When the user was created
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: When the user was updated
+                  announcements_last_seen_at:
+                    deprecated: true
+                    type:
+                    - string
+                    - 'null'
+                    format: date-time
+                  last_read_at:
+                    type:
+                    - object
+                    - 'null'
+                    maxProperties: 50
+                    additionalProperties:
+                      type: string
+                      format: date-time
+                    description: When the user read various notifications. At most 50 fields can be stored.
+                  notes:
+                    type:
+                    - string
+                    - 'null'
+                    description: The notes for the user.
+                  organization_id:
+                    type: integer
+                    description: The organization ID of the user
+                  organization:
+                    type: object
+                    title: Organization
+                    description: The organization of the user
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the organization
+                      resource_type:
+                        type: string
+                        description: The resource type of the organization
+                        const: Organization
+                      name:
+                        type: string
+                        description: The name of the organization
+                      domain:
+                        type: string
+                        description: The domain of the organization.
+                    required:
+                    - id
+                    - resource_type
+                    - name
+                    - domain
+                    additionalProperties: false
+                required:
+                - id
+                - resource_type
+                - name
+                - email
+                - image
+                - locale
+                - notifications_unread_count
+                - otp_required_for_login
+                - otp_enabled_at
+                - primary_login_exists
+                - created_at
+                - updated_at
+                - announcements_last_seen_at
+                - last_read_at
+                - notes
+                - organization_id
+                - organization
+                additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateCurrentUser
+      summary: Update current user
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: User
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the user
+                    image:
+                      type:
+                      - string
+                      - 'null'
+                      format: uri
+                      description: The url to the image of the user.
+                    last_read_at:
+                      type:
+                      - object
+                      - 'null'
+                      maxProperties: 50
+                      additionalProperties:
+                        type: string
+                        format: date-time
+                      description: When the user read various notifications. At most 50 fields can be stored.
+                    announcements_last_seen_at:
+                      deprecated: true
+                      type:
+                      - string
+                      - 'null'
+                      format: date-time
+                    locale:
+                      enum:
+                      - en
+                      - fr
+                      - es
+                      - de
+                      - null
+                      type:
+                      - string
+                      - 'null'
+                      description: The preferred language of the user
+                    current_password:
+                      type: string
+                      description: The current password of the user. Required when updating password.
+                      minLength: 8
+                      maxLength: 128
+                    password:
+                      type: string
+                      minLength: 8
+                      maxLength: 128
+                      description: 'The new password of the user. Required when updating password.
+
+                        Users of organizations with sso flow enabled won''t be able to update this field.
+
+                        '
+                    password_confirmation:
+                      type: string
+                      minLength: 8
+                      maxLength: 128
+                      description: The confirmation of the new password.
+                  required: []
+              required:
+              - user
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+    delete:
+      operationId: deleteCurrentUser
+      summary: Delete current user
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/2fa/otp_secret:
+    post:
+      operationId: fetchOTP
+      summary: Fetch user OTP secret
+      description: 'Organization users will be able to access this endpoint only if their organization has sso flow disabled.
+
+
+        Requires additional `Basic` authorization. Check [Authentication section](#section/Setup/Authentication) for the details.
+
+        '
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: User
+                properties:
+                  otp_secret:
+                    type: string
+                    description: The OTP secret.
+                  uri:
+                    type: string
+                    format: uri
+                    description: The OTP provisioning url. Used as a source for QR code.
+                    example: otpauth://totp/Kisi:example.com?secret=otp_secret&issuer=Kisi
+                required: []
+                additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /user/2fa/activate:
+    post:
+      operationId: activate2fa
+      summary: Activate 2FA for user
+      description: 'Organization users will be able to access this endpoint only if their organization has sso flow disabled.
+
+
+        Requires additional `Basic` authorization. Check [Authentication section](#section/Setup/Authentication) for the details.
+
+        '
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: User
+              properties:
+                user:
+                  type: object
+                  properties:
+                    otp_attempt:
+                      type: integer
+                      pattern: ^d{6}$
+                      description: The token provided in reset password email.
+                  required:
+                  - otp_attempt
+              required:
+              - user
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /user/2fa/deactivate:
+    post:
+      operationId: deactivate2fa
+      summary: Deactivate 2FA for user
+      description: 'Organization users will be able to access this endpoint only if their organization has sso flow disabled.
+
+
+        Requires additional `Basic` authorization. Check [Authentication section](#section/Setup/Authentication) for the details.
+
+        '
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: User
+              properties:
+                user:
+                  type: object
+                  properties:
+                    otp_attempt:
+                      type: integer
+                      pattern: ^d{6}$
+                      description: The token provided in reset password email.
+                  required:
+                  - otp_attempt
+              required:
+              - user
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /user/2fa/backup_codes:
+    post:
+      operationId: fetchBackupCodes
+      summary: Fetch 2FA backup codes
+      description: 'Organization users will be able to access this endpoint only if their organization has sso flow disabled.
+
+
+        Requires additional `Basic` authorization. Check [Authentication section](#section/Setup/Authentication) for the details.
+
+        '
+      tags:
+      - Users
+      security:
+      - Kisi-Login: []
+      - OAuth2: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: User
+                properties:
+                  backup_codes:
+                    type: array
+                    items:
+                      type: string
+                      pattern: ^[a-z0-9]{6}$
+                    description: The backup codes for 2fa authentication.
+                required: []
+                additionalProperties: false
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users/password:
+    post:
+      operationId: requestPasswordReset
+      summary: Request password reset
+      description: 'Organization users will be able to access this endpoint only
+
+        if their organization has sso flow disabled.
+
+        '
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: User
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                      description: The email of the user.
+                    domain:
+                      type: string
+                      description: The domain of the organization.
+                  required:
+                  - email
+                  - domain
+              required:
+              - user
+      responses:
+        '204':
+          description: No Content
+    patch:
+      operationId: passwordReset
+      summary: Reset password
+      description: 'Organization users will be able to access this endpoint only
+
+        if their organization has sso flow disabled.
+
+        '
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: User
+              properties:
+                user:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                      description: The new password.
+                      minLength: 8
+                      maxLength: 128
+                    password_confirmation:
+                      type: string
+                      description: The confirmation of the new password.
+                      minLength: 8
+                      maxLength: 128
+                    reset_password_token:
+                      type: string
+                      description: The token provided in reset password email.
+                  required:
+                  - password
+                  - password_confirmation
+                  - reset_password_token
+              required:
+              - user
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+  /users/sign_up:
+    post:
+      operationId: signUpUser
+      summary: Register user
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: User
+              properties:
+                user:
+                  type: object
+                  title: User
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the user
+                    image:
+                      type:
+                      - string
+                      - 'null'
+                      format: uri
+                      description: The url to the image of the user.
+                    password:
+                      type: string
+                      minLength: 8
+                      maxLength: 128
+                      description: The password of the user.
+                    terms_and_conditions:
+                      type: boolean
+                      description: Whether the user accepted the terms and conditions.
+                  required:
+                  - password
+                  - terms_and_conditions
+                  additionalProperties: false
+                token:
+                  type: string
+                  format: jwt
+                  description: The authentication token. If provided, the user email is not required.
+              required:
+              - user
+              - token
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: User
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the user
+                  resource_type:
+                    type: string
+                    description: The resource type of the user
+                    const: User
+                  name:
+                    type: string
+                    description: The name of the user
+                  email:
+                    type: string
+                    format: email
+                    description: The email of the user.
+                  image:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                    description: The url to the image of the user.
+                  locale:
+                    enum:
+                    - en
+                    - fr
+                    - es
+                    - de
+                    - null
+                    type:
+                    - string
+                    - 'null'
+                    description: The preferred language of the user
+                  notifications_unread_count:
+                    type: integer
+                    minimum: 0
+                    description: The count of unread notifications.
+                  otp_required_for_login:
+                    type: boolean
+                    description: Whether OTP/2FA is required for login.
+                  otp_enabled_at:
+                    type:
+                    - string
+                    - 'null'
+                    format: date-time
+                    description: When was the OTP/2FA enabled.
+                  primary_login_exists:
+                    type: boolean
+                    description: Whether the user has a primary login.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: When the user was created
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: When the user was updated
+                  announcements_last_seen_at:
+                    deprecated: true
+                    type:
+                    - string
+                    - 'null'
+                    format: date-time
+                  last_read_at:
+                    type:
+                    - object
+                    - 'null'
+                    maxProperties: 50
+                    additionalProperties:
+                      type: string
+                      format: date-time
+                    description: When the user read various notifications. At most 50 fields can be stored.
+                  notes:
+                    type:
+                    - string
+                    - 'null'
+                    description: The notes for the user.
+                  organization_id:
+                    type: integer
+                    description: The organization ID of the user
+                  organization:
+                    type: object
+                    title: Organization
+                    description: The organization of the user
+                    properties:
+                      id:
+                        type: integer
+                        description: The ID of the organization
+                      resource_type:
+                        type: string
+                        description: The resource type of the organization
+                        const: Organization
+                      name:
+                        type: string
+                        description: The name of the organization
+                      domain:
+                        type: string
+                        description: The domain of the organization.
+                    required:
+                    - id
+                    - resource_type
+                    - name
+                    - domain
+                    additionalProperties: false
+                required:
+                - id
+                - resource_type
+                - name
+                - email
+                - image
+                - locale
+                - notifications_unread_count
+                - otp_required_for_login
+                - otp_enabled_at
+                - primary_login_exists
+                - created_at
+                - updated_at
+                - announcements_last_seen_at
+                - last_read_at
+                - notes
+                - organization_id
+                - organization
+                additionalProperties: false
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+components:
+  schemas:
+    Errors:
+      description: Schema describing validation errors.
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          example:
+            email:
+            - can't be blank or invalid
+            password:
+            - can't be blank
+      required:
+      - errors
+    Error:
+      description: Schema describing errors.
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error message.
+          example: Wrong email address or password.
+        code:
+          type: string
+          description: An identifier of the error.
+          example: afc516
+      required:
+      - error
+      - code
+  securitySchemes:
+    Webhook-Signature:
+      type: apiKey
+      in: header
+      name: X-Signature
+      description: 'Authorize using a signature of the request body. The signature is a HMAC-SHA256 hash of the request body using a secret key. <br><br>E.g. `X-Signature: 123`'
+    Kisi-Login:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a login. Prefix the value with `KISI-LOGIN`<br><br>Example: `Authorization: KISI-LOGIN 123`'
+    Kisi-Access-Key:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using an access key. Prefix the value with `KISI-ACCESS-KEY`<br><br>Example: `Authorization: KISI-ACCESS-KEY 123`'
+    Kisi-Group-Link:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a group link. Prefix the value with `KISI-GROUP-LINK`<br><br>Example: `Authorization: KISI-GROUP-LINK 123`'
+    Kisi-Service:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Authorize using a service. Prefix the value with `KISI-SERVICE`<br><br>Example: `Authorization: KISI-SERVICE 123`'
+    OAuth2Basic:
+      type: http
+      scheme: basic
+      description: Username is the client id. Password is the client secret.
+    OAuth2:
+      type: oauth2
+      description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer youraccesstoken`'
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.kisi.io/oauth/authorize
+          tokenUrl: https://api.kisi.io/oauth/token
+          scopes: {}
