@@ -1,8 +1,30 @@
 aid: kisi
 name: KISI
-description: KISI is a company surfaced as a portfolio company of point-nine and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Kisi is a cloud-based physical access control platform that combines hardware
+  controllers and readers with software dashboards and a full REST API to manage
+  building access, doors, locks, elevators, groups, members, access cards,
+  visitor management, video surveillance, and security analytics. The Kisi API
+  (OpenAPI 3.1, production host https://api.kisi.io) exposes 227 operations
+  across 47 resource families, with header/OAuth2 authentication, offset/limit
+  pagination, documented rate limits, RFC 8594 deprecation signaling, and a
+  published Trust Center (SOC 2 Type 2, ISO/IEC 27001:2022, GDPR, NDAA). Kisi is
+  a Point Nine portfolio company; this profile was enriched from Kisi's public
+  developer surface.
 url: https://raw.githubusercontent.com/api-evangelist/kisi/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://getkisi.com/favicon.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -11,15 +33,1336 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Physical Access Control
+- Security
+- Identity
+- IoT
+- Building Management
+- Access Control
+- SaaS
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: kisi:kisi-calendars-api
+  name: KISI Calendars API
+  description: The Calendars API from KISI — 1 operation(s) for calendars.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Calendars
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-calendars-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-cameras-api
+  name: KISI Cameras API
+  description: The Cameras API from KISI — 3 operation(s) for cameras.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Cameras
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-cameras-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-card-assignments-api
+  name: KISI Card assignments API
+  description: The Card assignments API from KISI — 5 operation(s) for card assignments.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Card assignments
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-card-assignments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-cards-api
+  name: KISI Cards API
+  description: The Cards API from KISI — 7 operation(s) for cards.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Cards
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-cards-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-controller-input-connections-api
+  name: KISI Controller Input Connections API
+  description: >-
+    The Controller Input Connections API from KISI — 2 operation(s) for controller input connections.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Controller Input Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-controller-input-connections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-controller-inputs-api
+  name: KISI Controller Inputs API
+  description: The Controller Inputs API from KISI — 1 operation(s) for controller inputs.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Controller Inputs
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-controller-inputs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-controller-relay-connections-api
+  name: KISI Controller Relay Connections API
+  description: >-
+    The Controller Relay Connections API from KISI — 2 operation(s) for controller relay connections.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Controller Relay Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-controller-relay-connections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-controller-relays-api
+  name: KISI Controller Relays API
+  description: The Controller Relays API from KISI — 1 operation(s) for controller relays.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Controller Relays
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-controller-relays-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-controller-wiegand-connections-api
+  name: KISI Controller Wiegand Connections API
+  description: >-
+    The Controller Wiegand Connections API from KISI — 2 operation(s) for controller wiegand connections.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Controller Wiegand Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-controller-wiegand-connections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-controller-wiegands-api
+  name: KISI Controller Wiegands API
+  description: The Controller Wiegands API from KISI — 1 operation(s) for controller wiegands.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Controller Wiegands
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-controller-wiegands-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-controllers-api
+  name: KISI Controllers API
+  description: The Controllers API from KISI — 5 operation(s) for controllers.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Controllers
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-controllers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-csv-card-imports-api
+  name: KISI CSV card imports API
+  description: The CSV card imports API from KISI — 2 operation(s) for csv card imports.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - CSV card imports
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-csv-card-imports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-csv-user-imports-api
+  name: KISI CSV user imports API
+  description: The CSV user imports API from KISI — 2 operation(s) for csv user imports.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - CSV user imports
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-csv-user-imports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-elevator-stops-api
+  name: KISI Elevator stops API
+  description: The Elevator stops API from KISI — 4 operation(s) for elevator stops.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Elevator stops
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-elevator-stops-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-elevators-api
+  name: KISI Elevators API
+  description: The Elevators API from KISI — 2 operation(s) for elevators.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Elevators
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-elevators-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-event-sets-api
+  name: KISI Event sets API
+  description: The Event sets API from KISI — 2 operation(s) for event sets.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Event sets
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-event-sets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-events-api
+  name: KISI Events API
+  description: The Events API from KISI — 2 operation(s) for events.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-events-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-floors-api
+  name: KISI Floors API
+  description: The Floors API from KISI — 2 operation(s) for floors.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Floors
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-floors-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-group-elevator-stops-api
+  name: KISI Group elevator stops API
+  description: The Group elevator stops API from KISI — 2 operation(s) for group elevator stops.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Group elevator stops
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-group-elevator-stops-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-group-links-api
+  name: KISI Group links API
+  description: The Group links API from KISI — 2 operation(s) for group links.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Group links
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-group-links-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-group-locks-api
+  name: KISI Group locks API
+  description: The Group locks API from KISI — 2 operation(s) for group locks.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Group locks
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-group-locks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-group-terminals-api
+  name: KISI Group terminals API
+  description: The Group terminals API from KISI — 2 operation(s) for group terminals.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Group terminals
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-group-terminals-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-group-zones-api
+  name: KISI Group zones API
+  description: The Group zones API from KISI — 2 operation(s) for group zones.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Group zones
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-group-zones-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-groups-api
+  name: KISI Groups API
+  description: The Groups API from KISI — 2 operation(s) for groups.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-guests-api
+  name: KISI Guests API
+  description: The Guests API from KISI — 2 operation(s) for guests.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Guests
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-guests-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-holiday-calendars-api
+  name: KISI Holiday calendars API
+  description: The Holiday calendars API from KISI — 2 operation(s) for holiday calendars.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Holiday calendars
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-holiday-calendars-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-integrations-api
+  name: KISI Integrations API
+  description: The Integrations API from KISI — 2 operation(s) for integrations.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-integrations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-invites-api
+  name: KISI Invites API
+  description: The Invites API from KISI — 1 operation(s) for invites.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Invites
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-invites-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-locks-api
+  name: KISI Locks API
+  description: The Locks API from KISI — 9 operation(s) for locks.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Locks
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-locks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-logins-api
+  name: KISI Logins API
+  description: The Logins API from KISI — 7 operation(s) for logins.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Logins
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-logins-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-members-api
+  name: KISI Members API
+  description: The Members API from KISI — 2 operation(s) for members.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Members
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-members-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-organizations-api
+  name: KISI Organizations API
+  description: The Organizations API from KISI — 13 operation(s) for organizations.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-places-api
+  name: KISI Places API
+  description: The Places API from KISI — 6 operation(s) for places.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Places
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-places-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-presences-api
+  name: KISI Presences API
+  description: The Presences API from KISI — 1 operation(s) for presences.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Presences
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-presences-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-readers-api
+  name: KISI Readers API
+  description: The Readers API from KISI — 6 operation(s) for readers.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Readers
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-readers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-reports-api
+  name: KISI Reports API
+  description: The Reports API from KISI — 3 operation(s) for reports.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-reports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-role-assignments-api
+  name: KISI Role assignments API
+  description: The Role assignments API from KISI — 2 operation(s) for role assignments.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Role assignments
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-role-assignments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-roles-api
+  name: KISI Roles API
+  description: The Roles API from KISI — 2 operation(s) for roles.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-roles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-scheduled-reports-api
+  name: KISI Scheduled reports API
+  description: The Scheduled reports API from KISI — 2 operation(s) for scheduled reports.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Scheduled reports
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-scheduled-reports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-schedules-api
+  name: KISI Schedules API
+  description: The Schedules API from KISI — 2 operation(s) for schedules.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-schedules-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-scram-api
+  name: KISI SCRAM API
+  description: The SCRAM API from KISI — 1 operation(s) for scram.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - SCRAM
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-scram-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-shares-api
+  name: KISI Shares API
+  description: The Shares API from KISI — 2 operation(s) for shares.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Shares
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-shares-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-signed-upload-urls-api
+  name: KISI Signed upload URLs API
+  description: The Signed upload URLs API from KISI — 1 operation(s) for signed upload urls.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Signed upload URLs
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-signed-upload-urls-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-team-memberships-api
+  name: KISI Team memberships API
+  description: The Team memberships API from KISI — 2 operation(s) for team memberships.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Team memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-team-memberships-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-teams-api
+  name: KISI Teams API
+  description: The Teams API from KISI — 2 operation(s) for teams.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-teams-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-terminals-api
+  name: KISI Terminals API
+  description: The Terminals API from KISI — 3 operation(s) for terminals.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Terminals
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-terminals-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-users-api
+  name: KISI Users API
+  description: The Users API from KISI — 9 operation(s) for users.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+- aid: kisi:kisi-wireless-locks-api
+  name: KISI Wireless locks API
+  description: The Wireless locks API from KISI — 1 operation(s) for wireless locks.
+  humanURL: https://api.getkisi.com/docs
+  baseURL: https://api.kisi.io
+  tags:
+  - Wireless locks
+  properties:
+  - type: OpenAPI
+    url: openapi/kisi-wireless-locks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kisi.io/
+  - type: APIReference
+    url: https://api.getkisi.com/docs
+  - type: Authentication
+    url: authentication/kisi-authentication.yml
+  - type: OAuthScopes
+    url: scopes/kisi-scopes.yml
+  - type: Conventions
+    url: conventions/kisi-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kisi-error-codes.yml
+  - type: RateLimits
+    url: rate-limits/kisi-rate-limits.yml
+  - type: DataModel
+    url: data-model/kisi-data-model.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1
 common:
 - type: Website
   url: https://getkisi.com
+- type: DeveloperPortal
+  url: https://docs.kisi.io/
+- type: Documentation
+  url: https://docs.kisi.io/
+- type: APIReference
+  url: https://api.getkisi.com/docs
+- type: GettingStarted
+  url: https://docs.kisi.io/quick_start/admins/
+- type: Support
+  url: https://help.kisi.io/hc/en-us
+- type: Blog
+  url: https://www.getkisi.com/blog
+- type: Pricing
+  url: https://www.getkisi.com/pricing
+- type: SignUp
+  url: https://web.kisi.io/
+- type: TermsOfService
+  url: https://www.getkisi.com/legal/terms
+- type: PrivacyPolicy
+  url: https://www.getkisi.com/legal/privacy
+- type: GitHubOrganization
+  url: https://github.com/kisi-inc
+- type: StatusPage
+  url: https://status.kisi.io
+- type: Deprecation
+  url: lifecycle/kisi-lifecycle.yml
+- type: Lifecycle
+  url: lifecycle/kisi-lifecycle.yml
+- type: TrustCenter
+  url: https://trust.getkisi.com/
+- type: Compliance
+  url: https://trust.getkisi.com/
+- type: Conformance
+  url: conformance/kisi-conformance.yml
+- type: DomainSecurity
+  url: security/kisi-domain-security.yml
+- type: Authentication
+  url: authentication/kisi-authentication.yml
+- type: OAuthScopes
+  url: scopes/kisi-scopes.yml
+- type: Conventions
+  url: conventions/kisi-conventions.yml
+- type: ErrorCatalog
+  url: errors/kisi-error-codes.yml
+- type: RateLimits
+  url: rate-limits/kisi-rate-limits.yml
+- type: DataModel
+  url: data-model/kisi-data-model.yml
+- type: AgenticAccess
+  url: agentic-access/kisi-agentic-access.yml
+- type: MCPServer
+  url: mcp/kisi-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/kisi-llms.txt
+- type: Overlay
+  url: overlays/kisi-openapi-overlay.yaml
