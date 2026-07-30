@@ -1,0 +1,26 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Kisi API
+  version: 1.0.0
+extends: openapi/kisi-openapi-original.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-20'
+      x-apievangelist-provider: kisi
+      x-apievangelist-artifacts:
+        authentication: authentication/kisi-authentication.yml
+        conventions: conventions/kisi-conventions.yml
+        error-codes: errors/kisi-error-codes.yml
+        problem-types: errors/kisi-problem-types.yml
+        rate-limits: rate-limits/kisi-rate-limits.yml
+        lifecycle: lifecycle/kisi-lifecycle.yml
+        data-model: data-model/kisi-data-model.yml
+        conformance: conformance/kisi-conformance.yml
+        agentic-access: agentic-access/kisi-agentic-access.yml
+  - target: $.info
+    update:
+      x-apievangelist-rate-limit: 5 requests/second per user (429 on exceed)
+      x-apievangelist-pagination: offset-limit with X-Collection-Range header
+      x-apievangelist-deprecation: RFC 8594 Deprecation + Sunset headers
+      x-apievangelist-status-page: https://status.kisi.io

@@ -1,0 +1,57 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.getkisi.com/docs
+docs: https://docs.kisi.io/api/get_started/add_necessary_headers
+summary: >-
+  Cross-cutting request/response semantics for the Kisi API, captured from the
+  OpenAPI 3.1 spec and the API documentation portal. JSON-only, HTTPS-only,
+  header-based auth, offset/limit pagination with a range header, a simple
+  {code,error} error envelope, and RFC 8594 Deprecation/Sunset signaling.
+media_type:
+  request: application/json
+  response: application/json
+  note: JSON only. Set both Accept and Content-Type to application/json. HTTP (non-TLS) calls fail.
+authentication:
+  style: header
+  header: Authorization
+  schemes: [Kisi-Login, Kisi-Access-Key, Kisi-Group-Link, Kisi-Service, OAuth2, OAuth2Basic]
+  detail: authentication/kisi-authentication.yml
+  unauthenticated_status: 401
+idempotency:
+  supported: false
+  note: >-
+    Kisi does not document an idempotency-key mechanism; no Idempotency-Key header
+    or parameter appears in the OpenAPI. Writes are not idempotent-by-key.
+pagination:
+  style: offset-limit
+  params:
+    limit: Maximum number of records to return.
+    offset: Number of records to skip.
+  response_header: X-Collection-Range
+  note: List endpoints accept limit/offset and return an X-Collection-Range header describing the returned slice.
+filtering_sorting:
+  filter_params: [ids, place_id, group_id, lock_id, user_id, controller_id, query, status, favorite]
+  sort_param: sort
+  search_param: query
+versioning:
+  scheme: unversioned-host
+  current: '1.0.0'
+  host: https://api.kisi.io
+  note: Single production host, no version prefix in the path; changes are communicated via Deprecation/Sunset headers.
+deprecation:
+  standard: RFC 8594
+  headers: [Deprecation, Sunset]
+  detail: lifecycle/kisi-lifecycle.yml
+  note: Deprecated endpoints return a Deprecation header (deprecation date) and Sunset header (removal date).
+error_envelope:
+  schema: components.schemas.Error
+  fields: [code, error]
+  validation_schema: components.schemas.Errors
+  validation_shape: '{ errors: { <field>: [messages] } }'
+  oauth_error_schema: components.schemas.OauthError
+  detail: errors/kisi-problem-types.yml
+  code_registry: errors/kisi-error-codes.yml
+rate_limiting:
+  default: 5 requests per second (per user when authenticated, per IP when not)
+  exceeded_status: 429
+  detail: rate-limits/kisi-rate-limits.yml

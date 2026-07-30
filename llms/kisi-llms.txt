@@ -1,0 +1,43 @@
+# Kisi
+
+> Kisi is a cloud-based physical access control platform — hardware controllers/readers plus software — for managing building access, doors, elevators, visitor management, video surveillance, and security analytics. The Kisi API (OpenAPI 3.1, production host https://api.kisi.io) exposes 227 operations across 47 resource families for organizations, places, doors/locks, groups, members, cards, controllers, readers, events, and reports.
+
+## API
+- [Kisi API Reference](https://api.getkisi.com/docs): Stoplight-hosted OpenAPI 3.1 reference (227 operations).
+- [Kisi Docs Portal](https://docs.kisi.io/): Product and developer documentation.
+- [Getting Started (Admins)](https://docs.kisi.io/quick_start/admins/): Admin quick start.
+- [Authentication headers](https://docs.kisi.io/api/get_started/add_necessary_headers): How to authenticate requests.
+
+## Specs
+- [OpenAPI 3.1 (original)](openapi/kisi-openapi-original.yml): Harvested Kisi API description; server https://api.kisi.io.
+- [OpenAPI Overlay](overlays/kisi-openapi-overlay.yaml): API Evangelist enhancements.
+
+## Conventions & Semantics
+- [Conventions](conventions/kisi-conventions.yml): JSON-only, header auth, offset/limit pagination (X-Collection-Range), no idempotency-key.
+- [Authentication](authentication/kisi-authentication.yml): apiKey (Authorization header) + OAuth2 authorizationCode.
+- [OAuth Scopes](scopes/kisi-scopes.yml): OAuth2 authorizationCode flow (authorize/token at api.kisi.io).
+- [Rate Limits](rate-limits/kisi-rate-limits.yml): 5 req/s per user; 429 on exceed; custom limits on event_sets and signed_upload_urls.
+- [Error Codes](errors/kisi-error-codes.yml): 70 application error codes ({code,error} envelope).
+- [Problem Types](errors/kisi-problem-types.yml): HTTP 4xx/5xx catalog derived from OpenAPI.
+- [Lifecycle](lifecycle/kisi-lifecycle.yml): RFC 8594 Deprecation/Sunset headers; status page.
+- [Data Model](data-model/kisi-data-model.yml): Entity/relationship graph.
+- [Conformance](conformance/kisi-conformance.yml): OAuth2, RFC 8594, webhook signing; not RFC 9457.
+- [Agentic Access](agentic-access/kisi-agentic-access.yml): Recommended x-agentic-access contracts per operation.
+
+## Agent Skills
+- [Onboard a member and grant door access](skills/kisi-onboard-member-access.md)
+- [Issue and activate an access card](skills/kisi-issue-and-activate-card.md)
+- [Export and page through access events](skills/kisi-export-access-events.md)
+
+## Operations & Trust
+- [Status Page](https://status.kisi.io): Atlassian Statuspage.
+- [Trust Center](https://trust.getkisi.com/): SOC 2 Type 2, ISO/IEC 27001:2022, GDPR, NDAA.
+- [Help Center](https://help.kisi.io/hc/en-us): Support.
+- [GitHub](https://github.com/kisi-inc): Kisi open-source org.
+
+## Company
+- [Website](https://getkisi.com)
+- [Pricing](https://www.getkisi.com/pricing)
+- [Blog](https://www.getkisi.com/blog)
+- [Terms](https://www.getkisi.com/legal/terms)
+- [Privacy](https://www.getkisi.com/legal/privacy)

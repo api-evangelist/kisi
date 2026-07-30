@@ -1,0 +1,113 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/kisi-openapi-original.yml
+note: 'Entity graph derived from Kisi OpenAPI resource tags and id-reference query parameters (place_id,
+  group_id, lock_id, ...). Core domain: Organizations own Places; Places have Locks/Doors, Groups, Members,
+  Cards; access is controlled by Controllers/Readers.'
+entities:
+- CSV card imports
+- CSV user imports
+- Calendars
+- Cameras
+- Card assignments
+- Cards
+- Controller Input Connections
+- Controller Inputs
+- Controller Relay Connections
+- Controller Relays
+- Controller Wiegand Connections
+- Controller Wiegands
+- Controllers
+- Elevator stops
+- Elevators
+- Event sets
+- Events
+- Floors
+- Group elevator stops
+- Group links
+- Group locks
+- Group terminals
+- Group zones
+- Groups
+- Guests
+- Holiday calendars
+- Integrations
+- Invites
+- Locks
+- Logins
+- Members
+- Organizations
+- Places
+- Presences
+- Readers
+- Reports
+- Role assignments
+- Roles
+- SCRAM
+- Scheduled reports
+- Schedules
+- Shares
+- Signed upload URLs
+- Team memberships
+- Teams
+- Terminals
+- Users
+- Wireless locks
+relationships:
+- via: place_id
+  references: places
+  usages: 16
+- via: group_id
+  references: groups
+  usages: 12
+- via: lock_id
+  references: locks
+  usages: 7
+- via: user_id
+  references: users
+  usages: 7
+- via: controller_id
+  references: controllers
+  usages: 7
+- via: elevator_stop_id
+  references: elevator_stops
+  usages: 3
+- via: assignee_id
+  references: assignees
+  usages: 2
+- via: card_id
+  references: cards
+  usages: 2
+- via: floor_id
+  references: floors
+  usages: 2
+- via: role_id
+  references: roles
+  usages: 2
+- via: member_id
+  references: members
+  usages: 2
+- via: guest_id
+  references: guests
+  usages: 1
+- via: elevator_id
+  references: elevators
+  usages: 1
+- via: terminal_id
+  references: terminals
+  usages: 1
+- via: zone_id
+  references: zones
+  usages: 1
+- via: applies_to_id
+  references: applies_tos
+  usages: 1
+- via: scheduleable_id
+  references: scheduleables
+  usages: 1
+- via: team_id
+  references: teams
+  usages: 1
+- via: gateway_id
+  references: gateways
+  usages: 1

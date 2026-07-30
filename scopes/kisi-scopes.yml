@@ -1,0 +1,13 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/kisi-openapi-original.yml
+schemes:
+- name: OAuth2
+  source: openapi/kisi-openapi-original.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+scopes: []

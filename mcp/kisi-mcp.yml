@@ -1,0 +1,693 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/kisi-openapi-original.yml
+note: No official Kisi MCP server was found. This is a candidate tool surface derived 1:1 from the 227
+  Kisi API operations; not a published server.
+server:
+  name: kisi
+  transport: http
+  base_url: https://api.kisi.io
+tool_count: 227
+tools:
+- name: fetchSummary
+  description: Fetch summary of the events of a scheduleable's schedules
+  source_operation: openapi/kisi-openapi-original.yml#fetchSummary
+- name: fetchCameras
+  description: Fetch cameras
+  source_operation: openapi/kisi-openapi-original.yml#fetchCameras
+- name: createCamera
+  description: Create camera
+  source_operation: openapi/kisi-openapi-original.yml#createCamera
+- name: fetchCamera
+  description: Fetch a camera
+  source_operation: openapi/kisi-openapi-original.yml#fetchCamera
+- name: updateCamera
+  description: Update a camera
+  source_operation: openapi/kisi-openapi-original.yml#updateCamera
+- name: deleteCamera
+  description: Delete a camera
+  source_operation: openapi/kisi-openapi-original.yml#deleteCamera
+- name: fetchVideoLink
+  description: Fetch a camera video link
+  source_operation: openapi/kisi-openapi-original.yml#fetchVideoLink
+- name: fetchCardAssignments
+  description: Fetch card assignments
+  source_operation: openapi/kisi-openapi-original.yml#fetchCardAssignments
+- name: createCardAssignment
+  description: Create card assignment
+  source_operation: openapi/kisi-openapi-original.yml#createCardAssignment
+- name: fetchCardAssignment
+  description: Fetch card assignment
+  source_operation: openapi/kisi-openapi-original.yml#fetchCardAssignment
+- name: updateCardAssignment
+  description: Update card assignment
+  source_operation: openapi/kisi-openapi-original.yml#updateCardAssignment
+- name: deleteCardAssignment
+  description: Delete card assignment
+  source_operation: openapi/kisi-openapi-original.yml#deleteCardAssignment
+- name: activateCardAssignment
+  description: Activate card assignment by id
+  source_operation: openapi/kisi-openapi-original.yml#activateCardAssignment
+- name: deactivateCardAssignment
+  description: Deactivate card assignment by id
+  source_operation: openapi/kisi-openapi-original.yml#deactivateCardAssignment
+- name: activateCardAssignmentWithActivationToken
+  description: Activate card assignment with activation token
+  source_operation: openapi/kisi-openapi-original.yml#activateCardAssignmentWithActivationToken
+- name: fetchCards
+  description: Fetch cards
+  source_operation: openapi/kisi-openapi-original.yml#fetchCards
+- name: createCard
+  description: Create card
+  source_operation: openapi/kisi-openapi-original.yml#createCard
+- name: fetchCard
+  description: Fetch card
+  source_operation: openapi/kisi-openapi-original.yml#fetchCard
+- name: deleteCard
+  description: Delete card
+  source_operation: openapi/kisi-openapi-original.yml#deleteCard
+- name: updateCard
+  description: Update card
+  source_operation: openapi/kisi-openapi-original.yml#updateCard
+- name: assignCard
+  description: Assign card
+  source_operation: openapi/kisi-openapi-original.yml#assignCard
+- name: deassignCard
+  description: Deassign card
+  source_operation: openapi/kisi-openapi-original.yml#deassignCard
+- name: activateCard
+  description: Activate card by id
+  source_operation: openapi/kisi-openapi-original.yml#activateCard
+- name: activateCardByToken
+  description: Activate card by activation token
+  source_operation: openapi/kisi-openapi-original.yml#activateCardByToken
+- name: deactivateCard
+  description: Deactivate card by id
+  source_operation: openapi/kisi-openapi-original.yml#deactivateCard
+- name: fetchControllerInputConnections
+  description: Fetch controller input connections
+  source_operation: openapi/kisi-openapi-original.yml#fetchControllerInputConnections
+- name: createControllerInputConnection
+  description: Create a controller input connection
+  source_operation: openapi/kisi-openapi-original.yml#createControllerInputConnection
+- name: fetchControllerInputConnection
+  description: Fetch a controller input connection
+  source_operation: openapi/kisi-openapi-original.yml#fetchControllerInputConnection
+- name: updateControllerInputConnection
+  description: Update a controller input connection
+  source_operation: openapi/kisi-openapi-original.yml#updateControllerInputConnection
+- name: deleteControllerInputConnection
+  description: Delete a controller input connection
+  source_operation: openapi/kisi-openapi-original.yml#deleteControllerInputConnection
+- name: fetchControllerInputs
+  description: Fetch controller inputs
+  source_operation: openapi/kisi-openapi-original.yml#fetchControllerInputs
+- name: fetchControllerRelayConnections
+  description: Fetch controller relay connections
+  source_operation: openapi/kisi-openapi-original.yml#fetchControllerRelayConnections
+- name: createControllerRelayConnection
+  description: Create a controller relay connection
+  source_operation: openapi/kisi-openapi-original.yml#createControllerRelayConnection
+- name: fetchControllerRelayConnection
+  description: Fetch a controller relay connection
+  source_operation: openapi/kisi-openapi-original.yml#fetchControllerRelayConnection
+- name: updateControllerRelayConnection
+  description: Update a controller relay connection
+  source_operation: openapi/kisi-openapi-original.yml#updateControllerRelayConnection
+- name: deleteControllerRelayConnection
+  description: Delete a controller relay connection
+  source_operation: openapi/kisi-openapi-original.yml#deleteControllerRelayConnection
+- name: fetchControllerRelays
+  description: Fetch controller relays
+  source_operation: openapi/kisi-openapi-original.yml#fetchControllerRelays
+- name: fetchControllers
+  description: Fetch controllers
+  source_operation: openapi/kisi-openapi-original.yml#fetchControllers
+- name: assignController
+  description: Assign a controller by token
+  source_operation: openapi/kisi-openapi-original.yml#assignController
+- name: deassignController
+  description: Deassign a controller
+  source_operation: openapi/kisi-openapi-original.yml#deassignController
+- name: rebootController
+  description: Reboot a controller
+  source_operation: openapi/kisi-openapi-original.yml#rebootController
+- name: fetchController
+  description: Fetch controller
+  source_operation: openapi/kisi-openapi-original.yml#fetchController
+- name: updateController
+  description: Update controller
+  source_operation: openapi/kisi-openapi-original.yml#updateController
+- name: fetchControllerWiegandConnections
+  description: Fetch controller wiegand connections
+  source_operation: openapi/kisi-openapi-original.yml#fetchControllerWiegandConnections
+- name: createControllerWiegandConnection
+  description: Create a controller wiegand connection
+  source_operation: openapi/kisi-openapi-original.yml#createControllerWiegandConnection
+- name: fetchControllerWiegandConnection
+  description: Fetch a controller wiegand connection
+  source_operation: openapi/kisi-openapi-original.yml#fetchControllerWiegandConnection
+- name: deleteControllerWiegandConnection
+  description: Delete a controller wiegand connection
+  source_operation: openapi/kisi-openapi-original.yml#deleteControllerWiegandConnection
+- name: updateControllerWiegandConnection
+  description: Update a controller wiegand connection
+  source_operation: openapi/kisi-openapi-original.yml#updateControllerWiegandConnection
+- name: fetchControllerWiegands
+  description: Fetch controller wiegands
+  source_operation: openapi/kisi-openapi-original.yml#fetchControllerWiegands
+- name: createCsvCardImport
+  description: Create CsvCardImport
+  source_operation: openapi/kisi-openapi-original.yml#createCsvCardImport
+- name: fetchCsvCardImport
+  description: Fetch CsvCardImport
+  source_operation: openapi/kisi-openapi-original.yml#fetchCsvCardImport
+- name: createCsvUserImport
+  description: Create CsvUserImport
+  source_operation: openapi/kisi-openapi-original.yml#createCsvUserImport
+- name: fetchCsvUserImport
+  description: Fetch CsvUserImport
+  source_operation: openapi/kisi-openapi-original.yml#fetchCsvUserImport
+- name: fetchElevators
+  description: Fetch elevators
+  source_operation: openapi/kisi-openapi-original.yml#fetchElevators
+- name: createElevator
+  description: Create elevator
+  source_operation: openapi/kisi-openapi-original.yml#createElevator
+- name: fetchElevator
+  description: Fetch elevator
+  source_operation: openapi/kisi-openapi-original.yml#fetchElevator
+- name: updateElevator
+  description: Update Elevator
+  source_operation: openapi/kisi-openapi-original.yml#updateElevator
+- name: deleteElevator
+  description: Delete elevator
+  source_operation: openapi/kisi-openapi-original.yml#deleteElevator
+- name: fetchElevatorStops
+  description: Fetch elevator stops
+  source_operation: openapi/kisi-openapi-original.yml#fetchElevatorStops
+- name: createElevatorStop
+  description: Create elevator stop
+  source_operation: openapi/kisi-openapi-original.yml#createElevatorStop
+- name: fetchElevatorStop
+  description: Fetch elevator stop
+  source_operation: openapi/kisi-openapi-original.yml#fetchElevatorStop
+- name: updateElevatorStop
+  description: Update elevator stop
+  source_operation: openapi/kisi-openapi-original.yml#updateElevatorStop
+- name: deleteElevatorStop
+  description: Delete elevator stop
+  source_operation: openapi/kisi-openapi-original.yml#deleteElevatorStop
+- name: lockDownElevatorStop
+  description: Lock down elevator stop
+  source_operation: openapi/kisi-openapi-original.yml#lockDownElevatorStop
+- name: cancelElevatorStopLockdown
+  description: Cancel lockdown of elevator stop
+  source_operation: openapi/kisi-openapi-original.yml#cancelElevatorStopLockdown
+- name: createEventSet
+  description: Create event set
+  source_operation: openapi/kisi-openapi-original.yml#createEventSet
+- name: fetchEventSet
+  description: Fetch event set
+  source_operation: openapi/kisi-openapi-original.yml#fetchEventSet
+- name: fetchEventMetadata
+  description: Fetch Event Metadata
+  source_operation: openapi/kisi-openapi-original.yml#fetchEventMetadata
+- name: fetchEventTypes
+  description: Fetch Event Types
+  source_operation: openapi/kisi-openapi-original.yml#fetchEventTypes
+- name: fetchFloors
+  description: Fetch floors
+  source_operation: openapi/kisi-openapi-original.yml#fetchFloors
+- name: createFloor
+  description: Create floor
+  source_operation: openapi/kisi-openapi-original.yml#createFloor
+- name: fetchFloor
+  description: Fetch floor
+  source_operation: openapi/kisi-openapi-original.yml#fetchFloor
+- name: updateFloor
+  description: Update floor
+  source_operation: openapi/kisi-openapi-original.yml#updateFloor
+- name: fetchGroupElevatorStops
+  description: Fetch group elevator stops
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroupElevatorStops
+- name: createGroupElevatorStop
+  description: Create group elevator stop
+  source_operation: openapi/kisi-openapi-original.yml#createGroupElevatorStop
+- name: fetchGroupElevatorStop
+  description: Fetch group elevator stop
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroupElevatorStop
+- name: deleteGroupElevatorStop
+  description: Delete group elevator stop
+  source_operation: openapi/kisi-openapi-original.yml#deleteGroupElevatorStop
+- name: fetchGroup_links
+  description: Fetch group links
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroup_links
+- name: createGroupLink
+  description: Create group link
+  source_operation: openapi/kisi-openapi-original.yml#createGroupLink
+- name: deleteGroupLink
+  description: Delete group link
+  source_operation: openapi/kisi-openapi-original.yml#deleteGroupLink
+- name: fetchGroupLocks
+  description: Fetch group locks
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroupLocks
+- name: createGroupLock
+  description: Create group lock
+  source_operation: openapi/kisi-openapi-original.yml#createGroupLock
+- name: fetchGroupLock
+  description: Fetch group lock
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroupLock
+- name: deleteGroupLock
+  description: Delete group lock
+  source_operation: openapi/kisi-openapi-original.yml#deleteGroupLock
+- name: fetchGroups
+  description: Fetch groups
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroups
+- name: createGroup
+  description: Create group
+  source_operation: openapi/kisi-openapi-original.yml#createGroup
+- name: fetchGroup
+  description: Fetch group
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroup
+- name: updateGroup
+  description: Update group
+  source_operation: openapi/kisi-openapi-original.yml#updateGroup
+- name: deleteGroup
+  description: Delete group
+  source_operation: openapi/kisi-openapi-original.yml#deleteGroup
+- name: fetchGroupTerminals
+  description: Fetch group terminals
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroupTerminals
+- name: createGroupTerminal
+  description: Create group terminal
+  source_operation: openapi/kisi-openapi-original.yml#createGroupTerminal
+- name: fetchGroupTerminal
+  description: Fetch group terminal
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroupTerminal
+- name: deleteGroupTerminal
+  description: Delete group terminal
+  source_operation: openapi/kisi-openapi-original.yml#deleteGroupTerminal
+- name: fetchGroupZones
+  description: Fetch group zones
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroupZones
+- name: createGroupZone
+  description: Create group zone
+  source_operation: openapi/kisi-openapi-original.yml#createGroupZone
+- name: fetchGroupZone
+  description: Fetch group zone
+  source_operation: openapi/kisi-openapi-original.yml#fetchGroupZone
+- name: deleteGroupZone
+  description: Delete group zone
+  source_operation: openapi/kisi-openapi-original.yml#deleteGroupZone
+- name: fetchGuests
+  description: Fetch guests
+  source_operation: openapi/kisi-openapi-original.yml#fetchGuests
+- name: createGuest
+  description: Create guest
+  source_operation: openapi/kisi-openapi-original.yml#createGuest
+- name: fetchGuest
+  description: Fetch guest
+  source_operation: openapi/kisi-openapi-original.yml#fetchGuest
+- name: deleteGuest
+  description: Delete guest
+  source_operation: openapi/kisi-openapi-original.yml#deleteGuest
+- name: fetchHolidays
+  description: Fetch holidays
+  source_operation: openapi/kisi-openapi-original.yml#fetchHolidays
+- name: fetchRegions
+  description: Fetch regions
+  source_operation: openapi/kisi-openapi-original.yml#fetchRegions
+- name: fetchIntegrations
+  description: Fetch integrations
+  source_operation: openapi/kisi-openapi-original.yml#fetchIntegrations
+- name: createIntegration
+  description: Create integration
+  source_operation: openapi/kisi-openapi-original.yml#createIntegration
+- name: fetchIntegration
+  description: Fetch integration
+  source_operation: openapi/kisi-openapi-original.yml#fetchIntegration
+- name: updateIntegration
+  description: Update integration
+  source_operation: openapi/kisi-openapi-original.yml#updateIntegration
+- name: deleteIntegration
+  description: Delete integration
+  source_operation: openapi/kisi-openapi-original.yml#deleteIntegration
+- name: createInvite
+  description: Create invite
+  source_operation: openapi/kisi-openapi-original.yml#createInvite
+- name: fetchLocks
+  description: Fetch locks
+  source_operation: openapi/kisi-openapi-original.yml#fetchLocks
+- name: createLock
+  description: Create lock
+  source_operation: openapi/kisi-openapi-original.yml#createLock
+- name: fetchLock
+  description: Fetch lock
+  source_operation: openapi/kisi-openapi-original.yml#fetchLock
+- name: updateLock
+  description: Update lock
+  source_operation: openapi/kisi-openapi-original.yml#updateLock
+- name: deleteLock
+  description: Delete lock
+  source_operation: openapi/kisi-openapi-original.yml#deleteLock
+- name: firstToArriveLock
+  description: Activate first to arrive side effects
+  source_operation: openapi/kisi-openapi-original.yml#firstToArriveLock
+- name: lastToLeaveLock
+  description: Reset first to arrive and disable scheduled unlock side effects
+  source_operation: openapi/kisi-openapi-original.yml#lastToLeaveLock
+- name: unlockLock
+  description: Unlock lock
+  source_operation: openapi/kisi-openapi-original.yml#unlockLock
+- name: lockDownLock
+  description: Lock down lock
+  source_operation: openapi/kisi-openapi-original.yml#lockDownLock
+- name: cancelLockLockdown
+  description: Cancel lockdown of lock
+  source_operation: openapi/kisi-openapi-original.yml#cancelLockLockdown
+- name: favoriteLock
+  description: Favorite a lock
+  source_operation: openapi/kisi-openapi-original.yml#favoriteLock
+- name: unfavoriteLock
+  description: Unfavorite a lock
+  source_operation: openapi/kisi-openapi-original.yml#unfavoriteLock
+- name: fetchLogins
+  description: Fetch logins
+  source_operation: openapi/kisi-openapi-original.yml#fetchLogins
+- name: createLogin
+  description: Create login
+  source_operation: openapi/kisi-openapi-original.yml#createLogin
+- name: deleteLogin
+  description: Delete login
+  source_operation: openapi/kisi-openapi-original.yml#deleteLogin
+- name: promoteLogin
+  description: Promote login
+  source_operation: openapi/kisi-openapi-original.yml#promoteLogin
+- name: resolveLogin
+  description: Resolve provisional login
+  source_operation: openapi/kisi-openapi-original.yml#resolveLogin
+- name: fetchCurrentLogin
+  description: Fetch current login
+  source_operation: openapi/kisi-openapi-original.yml#fetchCurrentLogin
+- name: updateCurrentLogin
+  description: Update current login
+  source_operation: openapi/kisi-openapi-original.yml#updateCurrentLogin
+- name: deleteCurrentLogin
+  description: Delete current login
+  source_operation: openapi/kisi-openapi-original.yml#deleteCurrentLogin
+- name: deleteAllExceptCurrentLogin
+  description: Delete any but the current login
+  source_operation: openapi/kisi-openapi-original.yml#deleteAllExceptCurrentLogin
+- name: promoteCurrentLogin
+  description: Promote current login to the primary login
+  source_operation: openapi/kisi-openapi-original.yml#promoteCurrentLogin
+- name: fetchOfflineCertificate
+  description: Show current login's offline certificate
+  source_operation: openapi/kisi-openapi-original.yml#fetchOfflineCertificate
+- name: fetchMembers
+  description: Fetch members
+  source_operation: openapi/kisi-openapi-original.yml#fetchMembers
+- name: createMember
+  description: Create Member
+  source_operation: openapi/kisi-openapi-original.yml#createMember
+- name: fetchMember
+  description: Fetch Member
+  source_operation: openapi/kisi-openapi-original.yml#fetchMember
+- name: updateMember
+  description: Update Member
+  source_operation: openapi/kisi-openapi-original.yml#updateMember
+- name: deleteMember
+  description: Delete Member
+  source_operation: openapi/kisi-openapi-original.yml#deleteMember
+- name: fetchOrganizations
+  description: Fetch organizations
+  source_operation: openapi/kisi-openapi-original.yml#fetchOrganizations
+- name: fetchPublicOrganization
+  description: Fetch public organization
+  source_operation: openapi/kisi-openapi-original.yml#fetchPublicOrganization
+- name: findOrganizations
+  description: Find my organizations
+  source_operation: openapi/kisi-openapi-original.yml#findOrganizations
+- name: fetchCurrentOrganization
+  description: Fetch current organization
+  source_operation: openapi/kisi-openapi-original.yml#fetchCurrentOrganization
+- name: updateCurrentOrganization
+  description: Update current organization
+  source_operation: openapi/kisi-openapi-original.yml#updateCurrentOrganization
+- name: fetchCurrentOrganizationSettings
+  description: Fetch current organization settings
+  source_operation: openapi/kisi-openapi-original.yml#fetchCurrentOrganizationSettings
+- name: fetchCurrentOrganizationDashboard
+  description: Fetch current organization dashboard
+  source_operation: openapi/kisi-openapi-original.yml#fetchCurrentOrganizationDashboard
+- name: generateNextCertificate
+  description: Generate next certificate
+  source_operation: openapi/kisi-openapi-original.yml#generateNextCertificate
+- name: rotateCertificate
+  description: Rotate certificate
+  source_operation: openapi/kisi-openapi-original.yml#rotateCertificate
+- name: fetchOrganizationTransfers
+  description: Fetch current user's organization transfers
+  source_operation: openapi/kisi-openapi-original.yml#fetchOrganizationTransfers
+- name: requestTransfer
+  description: Request transfer
+  source_operation: openapi/kisi-openapi-original.yml#requestTransfer
+- name: acceptTransfer
+  description: Accept transfer
+  source_operation: openapi/kisi-openapi-original.yml#acceptTransfer
+- name: rejectTransfer
+  description: Reject transfer
+  source_operation: openapi/kisi-openapi-original.yml#rejectTransfer
+- name: cancelTransfer
+  description: Cancel transfer
+  source_operation: openapi/kisi-openapi-original.yml#cancelTransfer
+- name: fetchPlaces
+  description: Fetch places
+  source_operation: openapi/kisi-openapi-original.yml#fetchPlaces
+- name: createPlace
+  description: Create place
+  source_operation: openapi/kisi-openapi-original.yml#createPlace
+- name: fetchPlace
+  description: Fetch place
+  source_operation: openapi/kisi-openapi-original.yml#fetchPlace
+- name: updatePlace
+  description: Update place
+  source_operation: openapi/kisi-openapi-original.yml#updatePlace
+- name: deletePlace
+  description: Delete place
+  source_operation: openapi/kisi-openapi-original.yml#deletePlace
+- name: lockDownPlace
+  description: Lock down place
+  source_operation: openapi/kisi-openapi-original.yml#lockDownPlace
+- name: cancelPlaceLockdown
+  description: Cancel lockdown of place
+  source_operation: openapi/kisi-openapi-original.yml#cancelPlaceLockdown
+- name: favoritePlace
+  description: Favorite a place
+  source_operation: openapi/kisi-openapi-original.yml#favoritePlace
+- name: unfavoritePlace
+  description: Unfavorite a place
+  source_operation: openapi/kisi-openapi-original.yml#unfavoritePlace
+- name: fetchPresences
+  description: Fetch presences
+  source_operation: openapi/kisi-openapi-original.yml#fetchPresences
+- name: fetchReaders
+  description: Fetch readers
+  source_operation: openapi/kisi-openapi-original.yml#fetchReaders
+- name: assignReader
+  description: Assign a reader by token
+  source_operation: openapi/kisi-openapi-original.yml#assignReader
+- name: deassignReader
+  description: Deassign a reader
+  source_operation: openapi/kisi-openapi-original.yml#deassignReader
+- name: resetTamperedState
+  description: Reset the tampered state of a reader
+  source_operation: openapi/kisi-openapi-original.yml#resetTamperedState
+- name: rebootReader
+  description: Reboot a reader
+  source_operation: openapi/kisi-openapi-original.yml#rebootReader
+- name: fetchReader
+  description: Fetch reader
+  source_operation: openapi/kisi-openapi-original.yml#fetchReader
+- name: updateReader
+  description: Update reader
+  source_operation: openapi/kisi-openapi-original.yml#updateReader
+- name: fetchReports
+  description: Fetch reports
+  source_operation: openapi/kisi-openapi-original.yml#fetchReports
+- name: createReport
+  description: Create report
+  source_operation: openapi/kisi-openapi-original.yml#createReport
+- name: fetchReport
+  description: Fetch report
+  source_operation: openapi/kisi-openapi-original.yml#fetchReport
+- name: deleteReport
+  description: Delete report
+  source_operation: openapi/kisi-openapi-original.yml#deleteReport
+- name: downloadReport
+  description: Retrieves a download url for the report.
+  source_operation: openapi/kisi-openapi-original.yml#downloadReport
+- name: fetchRoleAssignments
+  description: Fetch role assignments
+  source_operation: openapi/kisi-openapi-original.yml#fetchRoleAssignments
+- name: createRoleAssignment
+  description: Create role assignment
+  source_operation: openapi/kisi-openapi-original.yml#createRoleAssignment
+- name: fetchRoleAssignment
+  description: Fetch role assignment
+  source_operation: openapi/kisi-openapi-original.yml#fetchRoleAssignment
+- name: updateRoleAssignment
+  description: Update role assignment
+  source_operation: openapi/kisi-openapi-original.yml#updateRoleAssignment
+- name: deleteRoleAssignment
+  description: Delete role assignment
+  source_operation: openapi/kisi-openapi-original.yml#deleteRoleAssignment
+- name: fetchRoles
+  description: Fetch roles
+  source_operation: openapi/kisi-openapi-original.yml#fetchRoles
+- name: fetchRole
+  description: Fetch role
+  source_operation: openapi/kisi-openapi-original.yml#fetchRole
+- name: fetchSchedules
+  description: Fetch schedules
+  source_operation: openapi/kisi-openapi-original.yml#fetchSchedules
+- name: createSchedule
+  description: Create schedule
+  source_operation: openapi/kisi-openapi-original.yml#createSchedule
+- name: fetchSchedule
+  description: Fetch schedule
+  source_operation: openapi/kisi-openapi-original.yml#fetchSchedule
+- name: updateSchedule
+  description: Update schedule
+  source_operation: openapi/kisi-openapi-original.yml#updateSchedule
+- name: deleteSchedule
+  description: Delete schedule
+  source_operation: openapi/kisi-openapi-original.yml#deleteSchedule
+- name: fetchScheduledReports
+  description: Fetch scheduled reports
+  source_operation: openapi/kisi-openapi-original.yml#fetchScheduledReports
+- name: createScheduledReport
+  description: Create scheduled report
+  source_operation: openapi/kisi-openapi-original.yml#createScheduledReport
+- name: fetchScheduledReport
+  description: Fetch scheduled report
+  source_operation: openapi/kisi-openapi-original.yml#fetchScheduledReport
+- name: updateScheduledReport
+  description: Update scheduled report
+  source_operation: openapi/kisi-openapi-original.yml#updateScheduledReport
+- name: deleteScheduledReport
+  description: Delete scheduled report
+  source_operation: openapi/kisi-openapi-original.yml#deleteScheduledReport
+- name: fetchShares
+  description: Fetch shares
+  source_operation: openapi/kisi-openapi-original.yml#fetchShares
+- name: createShare
+  description: Create share
+  source_operation: openapi/kisi-openapi-original.yml#createShare
+- name: fetchShare
+  description: Fetch share
+  source_operation: openapi/kisi-openapi-original.yml#fetchShare
+- name: updateShare
+  description: Update share
+  source_operation: openapi/kisi-openapi-original.yml#updateShare
+- name: deleteShare
+  description: Delete share
+  source_operation: openapi/kisi-openapi-original.yml#deleteShare
+- name: createSignedUploadURL
+  description: Create signed upload URL
+  source_operation: openapi/kisi-openapi-original.yml#createSignedUploadURL
+- name: fetchTeamMemberships
+  description: Fetch team memberships
+  source_operation: openapi/kisi-openapi-original.yml#fetchTeamMemberships
+- name: createTeamMembership
+  description: Create team membership
+  source_operation: openapi/kisi-openapi-original.yml#createTeamMembership
+- name: fetchTeamMembership
+  description: Fetch team membership
+  source_operation: openapi/kisi-openapi-original.yml#fetchTeamMembership
+- name: deleteTeamMembership
+  description: Delete team membership
+  source_operation: openapi/kisi-openapi-original.yml#deleteTeamMembership
+- name: fetchTeams
+  description: Fetch teams
+  source_operation: openapi/kisi-openapi-original.yml#fetchTeams
+- name: createTeam
+  description: Create team
+  source_operation: openapi/kisi-openapi-original.yml#createTeam
+- name: fetchTeam
+  description: Fetch team
+  source_operation: openapi/kisi-openapi-original.yml#fetchTeam
+- name: updateTeam
+  description: Update team
+  source_operation: openapi/kisi-openapi-original.yml#updateTeam
+- name: deleteTeam
+  description: Delete team
+  source_operation: openapi/kisi-openapi-original.yml#deleteTeam
+- name: fetchTerminals
+  description: Fetch terminals
+  source_operation: openapi/kisi-openapi-original.yml#fetchTerminals
+- name: createTerminal
+  description: Create terminal
+  source_operation: openapi/kisi-openapi-original.yml#createTerminal
+- name: fetchTerminal
+  description: Fetch terminal
+  source_operation: openapi/kisi-openapi-original.yml#fetchTerminal
+- name: updateTerminal
+  description: Update terminal
+  source_operation: openapi/kisi-openapi-original.yml#updateTerminal
+- name: deleteTerminal
+  description: Delete terminal
+  source_operation: openapi/kisi-openapi-original.yml#deleteTerminal
+- name: triggerTerminal
+  description: Trigger terminal
+  source_operation: openapi/kisi-openapi-original.yml#triggerTerminal
+- name: fetchUsers
+  description: Fetch users
+  source_operation: openapi/kisi-openapi-original.yml#fetchUsers
+- name: createUser
+  description: Create user
+  source_operation: openapi/kisi-openapi-original.yml#createUser
+- name: fetchUser
+  description: Fetch user
+  source_operation: openapi/kisi-openapi-original.yml#fetchUser
+- name: updateUser
+  description: Update user
+  source_operation: openapi/kisi-openapi-original.yml#updateUser
+- name: deleteUser
+  description: Delete user
+  source_operation: openapi/kisi-openapi-original.yml#deleteUser
+- name: fetchCurrentUser
+  description: Fetch current user
+  source_operation: openapi/kisi-openapi-original.yml#fetchCurrentUser
+- name: updateCurrentUser
+  description: Update current user
+  source_operation: openapi/kisi-openapi-original.yml#updateCurrentUser
+- name: deleteCurrentUser
+  description: Delete current user
+  source_operation: openapi/kisi-openapi-original.yml#deleteCurrentUser
+- name: fetchOTP
+  description: Fetch user OTP secret
+  source_operation: openapi/kisi-openapi-original.yml#fetchOTP
+- name: activate2fa
+  description: Activate 2FA for user
+  source_operation: openapi/kisi-openapi-original.yml#activate2fa
+- name: deactivate2fa
+  description: Deactivate 2FA for user
+  source_operation: openapi/kisi-openapi-original.yml#deactivate2fa
+- name: fetchBackupCodes
+  description: Fetch 2FA backup codes
+  source_operation: openapi/kisi-openapi-original.yml#fetchBackupCodes
+- name: requestPasswordReset
+  description: Request password reset
+  source_operation: openapi/kisi-openapi-original.yml#requestPasswordReset
+- name: passwordReset
+  description: Reset password
+  source_operation: openapi/kisi-openapi-original.yml#passwordReset
+- name: signUpUser
+  description: Register user
+  source_operation: openapi/kisi-openapi-original.yml#signUpUser
+- name: fetchWirelessLocks
+  description: Fetch wireless locks
+  source_operation: openapi/kisi-openapi-original.yml#fetchWirelessLocks

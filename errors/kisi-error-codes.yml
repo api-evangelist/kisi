@@ -1,0 +1,155 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.getkisi.com/docs (info.description error-code table)
+format: kisi-error-code
+envelope:
+  schema: components.schemas.Error
+  fields:
+  - code
+  - error
+  example:
+    code: afc516
+    error: Wrong email address or password.
+notes: Application-level error codes returned in the `code` field alongside a human `error` message. Distinct
+  from HTTP status codes (see kisi-problem-types.yml).
+error_codes:
+- code: afc507
+  message: The authentication link is not valid.
+- code: afc546
+  message: Invalid Two Factor backup code.
+- code: faa9ff
+  message: The card is not activated.
+- code: faa9ef
+  message: The card was not found.
+- code: afc496
+  message: Access denied.
+- code: f29aef
+  message: Your link is invalid.
+- code: afc516
+  message: Wrong email address or password.
+- code: afc536
+  message: Invalid Two Factor verification code.
+- code: afc526
+  message: Please provide a Two Factor verification code.
+- code: afc516
+  message: The two factor pin is invalid
+- code: ffffff
+  message: An unexpected issue occured.
+- code: fcd8ef
+  message: Access denied.
+- code: fcd8ff
+  message: Access disabled.
+- code: cabbeb
+  message: A card with the same identifiers was already enrolled.
+- code: bb4fff
+  message: Please authorize Kisi for Bluetooth.
+- code: bb5bff
+  message: No nearby Kisi reader found. Try enabling Bluetooth on your device.
+- code: bb4bff
+  message: Please enable Bluetooth.
+- code: a7793f
+  message: Please authorize Kisi for location services.
+- code: a3799f
+  message: Please enable your location services.
+- code: a3793f
+  message: Please enable your location services.
+- code: f298cf
+  message: The place has disabled all links for you.
+- code: f298df
+  message: Your access rights for this place do not include links.
+- code: f298bf
+  message: Your access right is invalid.
+- code: f01337
+  message: Your group's access rights for this place do not include apps.
+- code: 34bd8f
+  message: Your device is not the primary one.
+- code: facced
+  message: Unable to decode the certificate.
+- code: bbb99f
+  message: Your location is not valid.
+- code: bbb93f
+  message: The location of the lock is invalid.
+- code: a3995f
+  message: You are too far away.
+- code: bb4faa
+  message: You're not close enough to the door.
+- code: bbc93f
+  message: In-app access is disabled by the organization. Please tap your phone against the reader.
+- code: 34ffaa
+  message: Your access is not allowed at this moment, please try again later.
+- code: f35ade
+  message: Your access is no longer valid.
+- code: f398de
+  message: Your access is invalid.,
+- code: f358de
+  message: Your access is not yet valid, please try again later.
+- code: fad334
+  message: An error occurred permitting the the elevator stop.
+- code: fad121
+  message: The elevator stop was not found.
+- code: fad122
+  message: The elevator stop was not configured.
+- code: fad123
+  message: The elevator stops are locked down.
+- code: fad124
+  message: The elevator stop was on schedule.
+- code: fad002
+  message: The place is currently locked down.
+- code: ff420a
+  message: The door has no assigned Kisi controller.
+- code: fad001
+  message: The door is currently locked down.
+- code: fad105
+  message: The door is improperly configured.
+- code: fad10e
+  message: The door could not be found.
+- code: fad110
+  message: The door is already scheduled to be unlocked.
+- code: fad137
+  message: The access was denied by the zone.
+- code: fad146
+  message: The third party zone was overriden but it is still armed.
+- code: fad10f
+  message: An error occurred connecting to the wireless lock.
+- code: fad106
+  message: An error occurred finding the wireless lock.
+- code: fad107
+  message: The wireless lock is offline.
+- code: fad112
+  message: An unlock is already in progress for the wireless lock.
+- code: fac001
+  message: The Kisi controller is currently unavailable.
+- code: fac002
+  message: The Kisi controller is currently unavailable.
+- code: fac003
+  message: The Kisi device is currently unavailable.
+- code: fac004
+  message: The Kisi device is currently unavailable.
+- code: fad108
+  message: The Kisi controller is not yet configured.
+- code: ecc123
+  message: The Kisi controller encountered an unhandled error.
+- code: fbc000
+  message: The Kisi controller firmware is being updated. This will take a few seconds. Please retry then.
+- code: aaa345
+  message: The zone has no assigned zone controller.
+- code: fad126
+  message: The zone could not be found.
+- code: fad129
+  message: The alarm controller is currently unavailable.
+- code: adf234
+  message: An error occurred resetting the zone.
+- code: fad144
+  message: The third party alarm is still in violation.
+- code: abbb11
+  message: The integration partner experienced an error.
+- code: abcc11
+  message: An integration partner resource could not be found.
+- code: abdd11
+  message: The communication with the integration partner failed.
+- code: abee11
+  message: Authorization with the integration partner failed.
+- code: abfe11
+  message: The integration is not acceptable
+- code: abff11
+  message: The integration is disabled.

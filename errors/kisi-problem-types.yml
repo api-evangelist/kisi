@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/kisi-openapi-original.yml
+format: kisi-error
+note: Kisi does not use RFC 9457 problem+json; errors use the {code,error} envelope (422 uses {errors:{field:[...]}}).
+  Derived from OpenAPI 4xx/5xx responses.
+error_envelope:
+  schema: components.schemas.Error
+  content_type: application/json
+problems:
+- status: 400
+  title: Bad request
+  description: Bad Request
+  schema: components.schemas.Error
+  occurrences: 18
+- status: 401
+  title: Unauthorized
+  description: Unauthorized
+  schema: components.schemas.Error
+  occurrences: 221
+- status: 403
+  title: Forbidden
+  description: Forbidden
+  schema: components.schemas.Error
+  occurrences: 158
+- status: 404
+  title: Not found
+  description: Not Found
+  schema: components.schemas.Error
+  occurrences: 139
+- status: 409
+  title: Conflict
+  description: Conflict
+  schema: components.schemas.Error
+  occurrences: 5
+- status: 422
+  title: Unprocessable entity (validation failed)
+  description: Unprocessable Content
+  schema: components.schemas.Errors
+  occurrences: 77
+- status: 503
+  title: Service unavailable
+  description: Service Unavailable
+  schema: components.schemas.Error
+  occurrences: 5

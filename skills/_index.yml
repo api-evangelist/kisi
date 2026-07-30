@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: generated
+api: openapi/kisi-openapi-original.yml
+skills:
+  - file: kisi-onboard-member-access.md
+    name: Onboard a member and grant door access
+    api: openapi/kisi-openapi-original.yml
+    operations: [fetchPlaces, fetchGroups, createMember, createGroupLock, unlockLock]
+  - file: kisi-issue-and-activate-card.md
+    name: Issue and activate an access card
+    api: openapi/kisi-openapi-original.yml
+    operations: [fetchUsers, createCard, createCardAssignment, activateCardAssignment, fetchCards]
+  - file: kisi-export-access-events.md
+    name: Export and page through access events
+    api: openapi/kisi-openapi-original.yml
+    operations: [fetchEventTypes, fetchEvents, createEventSet, fetchEventSet]

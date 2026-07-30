@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/kisi-openapi-original.yml
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: OpenAPI declares an OAuth2 securityScheme with an authorizationCode flow (authorize/token URLs at api.kisi.io).
+  - id: oauth2-basic
+    conforms: true
+    evidence: OAuth2Basic (HTTP basic) securityScheme present for the token endpoint.
+  - id: rfc8594-deprecation-sunset
+    conforms: true
+    evidence: Documented Deprecation and Sunset response headers for deprecated endpoints.
+  - id: pagination-offset-limit
+    conforms: true
+    evidence: List endpoints use limit/offset params and an X-Collection-Range response header.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom {code,error} JSON envelope, not application/problem+json.
+  - id: json-api
+    conforms: false
+  - id: idempotency
+    conforms: false
+    evidence: No Idempotency-Key mechanism documented.
+  - id: openidconnect
+    conforms: false
+    evidence: OAuth2 only; no OIDC discovery document served.
+  - id: webhook-signing
+    conforms: true
+    evidence: Webhook-Signature securityScheme (X-Signature header) for verifying inbound webhook payloads.
+compliance:
+  note: >-
+    Kisi publishes a Trust Center (trust.getkisi.com) with named certifications.
+    Captured in security/kisi-trust-center.yml.
+  certifications: [SOC 2 Type 2, 'ISO/IEC 27001:2022', GDPR, NDAA]
+  trust_center: https://trust.getkisi.com/

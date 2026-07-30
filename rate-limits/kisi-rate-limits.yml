@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.getkisi.com/docs (info.description Rate limits)
+default:
+  authenticated: 5 requests per second per user
+  unauthenticated: 5 requests per second per IP address
+limit_count: 5
+window: 1s
+exceeded_status: 429
+custom_limits:
+- endpoint: POST /event_sets
+  limit: 1 per second
+- endpoint: POST /signed_upload_urls
+  limit: 1 per 10 seconds
+signaling:
+  status: 429
+  note: Returns HTTP 429 when the limit is exceeded.
+guidance:
+- Make single-user requests serially, not concurrently.
+- Wait at least one second between requests for a single user.

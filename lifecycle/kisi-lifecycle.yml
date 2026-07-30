@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.getkisi.com/docs
+versioning:
+  scheme: unversioned-host
+  current: '1.0.0'
+  host: https://api.kisi.io
+  docs: https://docs.kisi.io/
+deprecation:
+  standard: RFC 8594
+  policy: >-
+    When part of the API is deprecated, Kisi returns a Deprecation header with the
+    deprecation date and a Sunset header with the expected removal date. Once the
+    Sunset date is reached the endpoint may be removed at any time.
+  headers:
+    deprecation: Deprecation
+    sunset: Sunset
+  docs: https://api.getkisi.com/docs
+status_page: https://status.kisi.io
+status_page_provider: Atlassian Statuspage
+support:
+  help_center: https://help.kisi.io/hc/en-us
+deprecated_operations: []
+notes: >-
+  Deprecation policy and Sunset-header support are documented in the API
+  reference. No operations are currently flagged deprecated in the OpenAPI.

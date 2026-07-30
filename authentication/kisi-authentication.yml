@@ -1,0 +1,52 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/kisi-openapi-original.yml
+docs: https://docs.kisi.io/api/get_started/add_necessary_headers
+note: >-
+  Header-based auth on the Authorization header. Four apiKey variants share the
+  Authorization header (Kisi-Login, Kisi-Access-Key, Kisi-Group-Link, Kisi-Service),
+  distinguished by value prefix; OAuth2 authorizationCode issues bearer tokens.
+  Webhook-Signature (X-Signature, HMAC-SHA256) verifies inbound webhook payloads.
+summary:
+  types:
+  - apiKey
+  - http
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: Webhook-Signature
+  type: apiKey
+  in: header
+  parameter: X-Signature
+  description: 'Authorize using a signature of the request body. The signature is a HMAC-SHA256
+    hash of the request body using a secret key. <br><br>E.g. `X-Signature: 123`'
+  sources:
+  - openapi/kisi-openapi-original.yml
+- name: Kisi-Login
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'Authorize using a login. Prefix the value with `KISI-LOGIN`<br><br>Example:
+    `Authorization: KISI-LOGIN 123`'
+  sources:
+  - openapi/kisi-openapi-original.yml
+- name: OAuth2Basic
+  type: http
+  scheme: basic
+  description: Username is the client id. Password is the client secret.
+  sources:
+  - openapi/kisi-openapi-original.yml
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+    scopes: 0
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+  sources:
+  - openapi/kisi-openapi-original.yml
