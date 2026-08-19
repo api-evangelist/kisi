@@ -1,0 +1,266 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kisi Calendars Card assignments API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Card assignments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch card assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/card_assignments",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object IDs"
+              },
+              {
+                "name": "assignee_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by assignee type"
+              },
+              {
+                "name": "assignee_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by assignee ID. Must be used with `assignee_type`"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status"
+              },
+              {
+                "name": "card_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by card IDs"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to offset"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user ID or by current user if value is `me`."
+              },
+              {
+                "name": "guest_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by guest ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch card assignments"
+        },
+        {
+          "info": {
+            "name": "Create card assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/card_assignments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create card assignment"
+        },
+        {
+          "info": {
+            "name": "Fetch card assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/card_assignments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch card assignment"
+        },
+        {
+          "info": {
+            "name": "Update card assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.kisi.io/card_assignments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update card assignment"
+        },
+        {
+          "info": {
+            "name": "Delete card assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.kisi.io/card_assignments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete card assignment"
+        },
+        {
+          "info": {
+            "name": "Activate card assignment by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/card_assignments/:id/activate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activate card assignment by id"
+        },
+        {
+          "info": {
+            "name": "Deactivate card assignment by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/card_assignments/:id/deactivate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivate card assignment by id"
+        },
+        {
+          "info": {
+            "name": "Activate card assignment with activation token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/card_assignments/:activation_token/activate_with_token",
+            "params": [
+              {
+                "name": "activation_token",
+                "value": "",
+                "type": "path",
+                "description": "The activation token of the card assignment."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activate card assignment with activation token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

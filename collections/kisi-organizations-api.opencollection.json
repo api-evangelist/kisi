@@ -1,0 +1,240 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kisi Calendars Organizations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/organizations",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch organizations"
+        },
+        {
+          "info": {
+            "name": "Fetch public organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/organizations/:domain/public",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "The domain of the organization."
+              }
+            ]
+          },
+          "docs": "Fetch public organization"
+        },
+        {
+          "info": {
+            "name": "Find my organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/organizations/find",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an email to the user including a list of all their organizations."
+        },
+        {
+          "info": {
+            "name": "Fetch current organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/organization",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch current organization"
+        },
+        {
+          "info": {
+            "name": "Update current organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.kisi.io/organization",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update current organization"
+        },
+        {
+          "info": {
+            "name": "Fetch current organization settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/organization/settings",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch current organization settings"
+        },
+        {
+          "info": {
+            "name": "Fetch current organization dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/organization/dashboard",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch current organization dashboard"
+        },
+        {
+          "info": {
+            "name": "Generate next certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/organization/generate_next_certificate",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Generate next certificate"
+        },
+        {
+          "info": {
+            "name": "Rotate certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/organization/rotate_certificate",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Rotate certificate"
+        },
+        {
+          "info": {
+            "name": "Fetch current user's organization transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/organization/transfers",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch current user's organization transfers"
+        },
+        {
+          "info": {
+            "name": "Request transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/organization/request_transfer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request transfer of the organization ownership to another user"
+        },
+        {
+          "info": {
+            "name": "Accept transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/organization/accept_transfer"
+          },
+          "docs": "Accept transfer of the organization ownership"
+        },
+        {
+          "info": {
+            "name": "Reject transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/organization/reject_transfer"
+          },
+          "docs": "Reject transfer of the organization ownership"
+        },
+        {
+          "info": {
+            "name": "Cancel transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/organization/cancel_transfer"
+          },
+          "docs": "Cancel transfer of the organization ownership"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

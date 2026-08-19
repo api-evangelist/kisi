@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kisi Calendars Controller Input Connections API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Controller Input Connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch controller input connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/controller_input_connections",
+            "params": [
+              {
+                "name": "controller_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by controller ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch controller input connections"
+        },
+        {
+          "info": {
+            "name": "Create a controller input connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/controller_input_connections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a controller input connection"
+        },
+        {
+          "info": {
+            "name": "Fetch a controller input connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/controller_input_connections/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch a controller input connection"
+        },
+        {
+          "info": {
+            "name": "Update a controller input connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.kisi.io/controller_input_connections/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a controller input connection"
+        },
+        {
+          "info": {
+            "name": "Delete a controller input connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.kisi.io/controller_input_connections/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a controller input connection"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

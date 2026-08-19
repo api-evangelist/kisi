@@ -1,0 +1,250 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kisi Calendars Logins API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Logins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch logins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/logins",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object IDs"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user ID or by current user if value is `me`. If not used, it will default to `me`."
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the scope of the record. Deprecated, use `user_id=me` to scope the logins to the current user.\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to offset"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch logins"
+        },
+        {
+          "info": {
+            "name": "Create login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/logins",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Organization members will be able to access this endpoint only if their organization has sso flow disabled.\nOrganization owner can create API key (login) regardless of the enabled flow (SSO flow | password flow).\nThere is a limit on the number of device and API logins a user can have. We allow a user to have up\nto 40 device logins and 10 API logins.\nWhen the device logins limit exceeded, the least recent used logins will be removed and if they were not used,\nwe will use the creation time.\nWhen t"
+        },
+        {
+          "info": {
+            "name": "Delete login",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.kisi.io/logins/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete login"
+        },
+        {
+          "info": {
+            "name": "Promote login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/logins/:id/promote",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Promote login to primary login. Demotes other primary logins.\n"
+        },
+        {
+          "info": {
+            "name": "Resolve provisional login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/logins/resolve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Resolve provisional login"
+        },
+        {
+          "info": {
+            "name": "Fetch current login",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/login",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object IDs"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch current login"
+        },
+        {
+          "info": {
+            "name": "Update current login",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.kisi.io/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update current login"
+        },
+        {
+          "info": {
+            "name": "Delete current login",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.kisi.io/login",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete current login"
+        },
+        {
+          "info": {
+            "name": "Delete any but the current login",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.kisi.io/login/elsewhere",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete any but the current login"
+        },
+        {
+          "info": {
+            "name": "Promote current login to the primary login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/login/promote",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Promote current login to the primary login"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

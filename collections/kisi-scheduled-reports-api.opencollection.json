@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kisi Calendars Scheduled reports API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scheduled reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch scheduled reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/scheduled_reports",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object IDs"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to offset"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch scheduled reports"
+        },
+        {
+          "info": {
+            "name": "Create scheduled report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/scheduled_reports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create scheduled report"
+        },
+        {
+          "info": {
+            "name": "Fetch scheduled report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/scheduled_reports/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch scheduled report"
+        },
+        {
+          "info": {
+            "name": "Update scheduled report",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.kisi.io/scheduled_reports/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update scheduled report"
+        },
+        {
+          "info": {
+            "name": "Delete scheduled report",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.kisi.io/scheduled_reports/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete scheduled report"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

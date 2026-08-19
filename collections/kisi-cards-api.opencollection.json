@@ -1,0 +1,338 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kisi Calendars Cards API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch cards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/cards",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object IDs"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to offset"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the token of the card."
+              },
+              {
+                "name": "data_block_value",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the data_block_value of the card. Only relevant for Mifare Classic cards."
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the uid of the card."
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user ID or by current user if value is `me`."
+              },
+              {
+                "name": "facility_code",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the facility code of the record. Only relevant for LF cards."
+              },
+              {
+                "name": "activated",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the activation status of the card."
+              },
+              {
+                "name": "card_number",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the card number of the record. Only relevant for LF cards."
+              },
+              {
+                "name": "card_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the card id of the record. Only relevant for LF cards."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort the results. Prepend `-` to sort in reverse order.\n\n`last_used_at` - sort by when the card was last used\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch cards"
+        },
+        {
+          "info": {
+            "name": "Create card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/cards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create card"
+        },
+        {
+          "info": {
+            "name": "Fetch card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/cards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch card"
+        },
+        {
+          "info": {
+            "name": "Update card",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.kisi.io/cards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update card"
+        },
+        {
+          "info": {
+            "name": "Delete card",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.kisi.io/cards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete card"
+        },
+        {
+          "info": {
+            "name": "Assign card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/cards/:id/assign",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Assigns the card to the user as the primary card.\nIf the user already has a primary card, it assigns the card as backup.\n"
+        },
+        {
+          "info": {
+            "name": "Deassign card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/cards/:id/deassign",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deassign card"
+        },
+        {
+          "info": {
+            "name": "Activate card by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/cards/:id/activate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Activates the card with the given identifier. Only assigned cards can be activated."
+        },
+        {
+          "info": {
+            "name": "Activate card by activation token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/cards/:activationToken/activate_with_token",
+            "params": [
+              {
+                "name": "activationToken",
+                "value": "",
+                "type": "path",
+                "description": "The activation token of the card."
+              }
+            ]
+          },
+          "docs": "Activates the card with the given activation token. Only assigned cards can be activated."
+        },
+        {
+          "info": {
+            "name": "Deactivate card by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/cards/:id/deactivate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deactivate card by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

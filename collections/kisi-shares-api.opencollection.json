@@ -1,0 +1,191 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kisi Calendars Shares API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shares",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch shares",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/shares",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object IDs"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a freetext string. Properties searched: `user.email`, `user.name`\n"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group ID"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by member ID"
+              },
+              {
+                "name": "place_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by place ID"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user ID or by current user if value is `me`."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to offset"
+              },
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the role of the share"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "<!-- theme: info -->\n> This API is deprecated.\n> Please read our [documentation](https://docs.kisi.io/api/how_to_guides/manage_access_rights/assign_access_rights/) about how to manage access rights.\n"
+        },
+        {
+          "info": {
+            "name": "Create share",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/shares",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "<!-- theme: info -->\n> This API is deprecated.\n> Please read our [documentation](https://docs.kisi.io/api/how_to_guides/manage_access_rights/assign_access_rights/) about how to manage access rights.\n"
+        },
+        {
+          "info": {
+            "name": "Fetch share",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/shares/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "<!-- theme: info -->\n> This API is deprecated.\n> Please read our [documentation](https://docs.kisi.io/api/how_to_guides/manage_access_rights/assign_access_rights/) about how to manage access rights.\n"
+        },
+        {
+          "info": {
+            "name": "Update share",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.kisi.io/shares/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "<!-- theme: info -->\n> This API is deprecated.\n> Please read our [documentation](https://docs.kisi.io/api/how_to_guides/manage_access_rights/assign_access_rights/) about how to manage access rights.\n"
+        },
+        {
+          "info": {
+            "name": "Delete share",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.kisi.io/shares/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "<!-- theme: info -->\n> This API is deprecated.\n> Please read our [documentation](https://docs.kisi.io/api/how_to_guides/manage_access_rights/assign_access_rights/) about how to manage access rights.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

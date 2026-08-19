@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kisi Calendars Schedules API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/schedules",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by object IDs"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to offset"
+              },
+              {
+                "name": "consequence",
+                "value": "",
+                "type": "query",
+                "description": "Filter by consequence"
+              },
+              {
+                "name": "scheduleable_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the scheduleable type of the schedule. Either both or none of `scheduleable_id` and `scheduleable_type` are required."
+              },
+              {
+                "name": "scheduleable_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the scheduleable id of the schedule. Either both or none of `scheduleable_id` and `scheduleable_type` are required."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The schedule resource represents a simplified calendar event or event generation rule, and may be used to configure time based functionality:\n\n- When access is allowed or restricted (\"time restrictions\"), set `consequence` to `allow`\n- When elevator stops are kept accessible (\"permit timer\"), set `consequence` to `permit`\n- When locks are kept unlocked (\"unlock timer\"), set `consequence` to `unlock`\n- To override an allow, permit or unlock, set `override` to `true`. The schedule will then neutra"
+        },
+        {
+          "info": {
+            "name": "Create schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/schedules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create schedule"
+        },
+        {
+          "info": {
+            "name": "Fetch schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/schedules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch schedule"
+        },
+        {
+          "info": {
+            "name": "Update schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.kisi.io/schedules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update schedule"
+        },
+        {
+          "info": {
+            "name": "Delete schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.kisi.io/schedules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete schedule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1579 @@
+{
+  "item": [
+    {
+      "id": "7d2e1a8b-9a6b-4afc-bc14-f49feffada24",
+      "name": "Role assignments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "400830e5-540a-414c-9780-3d8c7e1e3b03",
+          "name": "Fetch role assignments",
+          "request": {
+            "name": "Fetch role assignments",
+            "description": {},
+            "url": {
+              "path": [
+                "role_assignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter by object IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Filter by a freetext string. Properties searched: `user.email`, `user.name`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The number of objects to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of objects to offset"
+                },
+                {
+                  "disabled": false,
+                  "key": "role_id",
+                  "value": "<string>",
+                  "description": "Filter by role ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignee_type",
+                  "value": "<string>",
+                  "description": "Filter by assignee type"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignee_id",
+                  "value": "<integer>",
+                  "description": "Filter by assignee ID. Must be used with `assignee_type`"
+                },
+                {
+                  "disabled": false,
+                  "key": "applies_to_type",
+                  "value": "<string>",
+                  "description": "Filter by applies to type"
+                },
+                {
+                  "disabled": false,
+                  "key": "applies_to_id",
+                  "value": "<integer>",
+                  "description": "Filter by applies to ID. Must be used with `applies_to_type`"
+                },
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "Filter by scope"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<integer,string>",
+                  "description": "Filter by user ID or by current user if value is `me`."
+                },
+                {
+                  "disabled": false,
+                  "key": "place_id",
+                  "value": "<integer>",
+                  "description": "Filter by place ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<integer>",
+                  "description": "Filter by group ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort the results. Prepend `-` to sort in reverse order.\n`user.name` - sort by user name, alphabetically\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2bc42e57-8713-427c-a904-171011412d7d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "role_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignee_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignee_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "applies_to_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "applies_to_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<integer,string>"
+                    },
+                    {
+                      "key": "place_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Pagination information for offset based pagination. `start-end` represents the range\nof items requested. `total` represents the total count of items. If there is a total\nof 15 items and an offset of 10 and limit of 10 is used, the resulting header is:\n`10-19/15`.\n",
+                  "key": "X-Collection-Range",
+                  "value": "0-9/200"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 4527,\n    \"resource_type\": \"string\",\n    \"created_at\": \"1982-12-07T13:14:30.158Z\",\n    \"updated_at\": \"1952-02-17T03:53:33.015Z\",\n    \"role_id\": \"string\",\n    \"notify\": true,\n    \"applies_to_type\": \"string\",\n    \"applies_to_id\": 9073,\n    \"applies_to\": {\n      \"id\": 1117,\n      \"resource_type\": \"string\",\n      \"name\": \"string\",\n      \"domain\": \"string\"\n    },\n    \"assignee_type\": \"User\",\n    \"assignee_id\": 2252,\n    \"assignee\": {\n      \"id\": 448,\n      \"resource_type\": \"string\",\n      \"email\": \"KjxefK@EFMnyFeUhAVWdiVorsBc.gm\",\n      \"name\": \"string\"\n    },\n    \"created_by_type\": \"null\",\n    \"created_by_id\": 8728,\n    \"user_id\": 2757,\n    \"assignee_team_id\": 3748,\n    \"guest_id\": 5839,\n    \"issued_by_id\": 3329,\n    \"type\": \"string\",\n    \"scope\": \"string\",\n    \"organization_id\": 5647,\n    \"organization\": {\n      \"id\": 900,\n      \"resource_type\": \"string\",\n      \"name\": \"string\",\n      \"domain\": \"string\"\n    },\n    \"user\": {\n      \"id\": 678,\n      \"resource_type\": \"string\",\n      \"email\": \"cmGuXCA9NK@kdnAfOoBPRNoOmVIfIpZJkf.npzg\",\n      \"name\": \"string\"\n    },\n    \"assignee_team\": {\n      \"id\": 6958,\n      \"resource_type\": \"string\",\n      \"name\": \"string\"\n    },\n    \"guest\": {\n      \"id\": 1633,\n      \"resource_type\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"Ft0GS0dQ@ZPtZtXWJIgQaOkZsdZOojbHvEs.upt\",\n      \"phone_number\": \"string\"\n    }\n  },\n  {\n    \"id\": 3992,\n    \"resource_type\": \"string\",\n    \"created_at\": \"2022-02-10T09:28:00.771Z\",\n    \"updated_at\": \"1964-10-31T02:54:56.313Z\",\n    \"role_id\": \"string\",\n    \"notify\": true,\n    \"applies_to_type\": \"string\",\n    \"applies_to_id\": 8103,\n    \"applies_to\": {\n      \"id\": 8704,\n      \"resource_type\": \"string\",\n      \"name\": \"string\",\n      \"domain\": \"string\"\n    },\n    \"assignee_type\": \"User\",\n    \"assignee_id\": 7534,\n    \"assignee\": {\n      \"id\": 7860,\n      \"resource_type\": \"string\",\n      \"email\": \"lU4KYHVd@Xc.nilz\",\n      \"name\": \"string\"\n    },\n    \"created_by_type\": \"MarketplaceInstallation\",\n    \"created_by_id\": 8879,\n    \"user_id\": 6096,\n    \"assignee_team_id\": 9514,\n    \"guest_id\": 8576,\n    \"issued_by_id\": 3611,\n    \"type\": \"string\",\n    \"scope\": \"string\",\n    \"organization_id\": 1401,\n    \"organization\": {\n      \"id\": 2033,\n      \"resource_type\": \"string\",\n      \"name\": \"string\",\n      \"domain\": \"string\"\n    },\n    \"user\": {\n      \"id\": 4787,\n      \"resource_type\": \"string\",\n      \"email\": \"n-DK8FUB7NR4Z@hg.hp\",\n      \"name\": \"string\"\n    },\n    \"assignee_team\": {\n      \"id\": 6711,\n      \"resource_type\": \"string\",\n      \"name\": \"string\"\n    },\n    \"guest\": {\n      \"id\": 2228,\n      \"resource_type\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"uOH@twXcskFnthTqJ.lfpw\",\n      \"phone_number\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb8e2290-6b3f-4ce5-87c4-1a97641be891",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "role_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignee_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignee_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "applies_to_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "applies_to_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<integer,string>"
+                    },
+                    {
+                      "key": "place_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4ae07bd-6015-4174-ac65-7519d2affd0d",
+          "name": "Create role assignment",
+          "request": {
+            "name": "Create role assignment",
+            "description": {},
+            "url": {
+              "path": [
+                "role_assignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role_assignment\": {\n    \"applies_to_type\": \"<string>\",\n    \"applies_to_id\": \"<integer>\",\n    \"assignee_type\": \"<string>\",\n    \"assignee_id\": \"<integer>\",\n    \"role_id\": \"<string>\",\n    \"user_id\": \"<integer,null>\",\n    \"organization_id\": \"<integer>\",\n    \"notify\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb9ebae0-2571-47b7-8ddc-5e5e8a34130e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_assignment\": {\n    \"applies_to_type\": \"<string>\",\n    \"applies_to_id\": \"<integer>\",\n    \"assignee_type\": \"<string>\",\n    \"assignee_id\": \"<integer>\",\n    \"role_id\": \"<string>\",\n    \"user_id\": \"<integer,null>\",\n    \"organization_id\": \"<integer>\",\n    \"notify\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4371,\n  \"resource_type\": \"string\",\n  \"created_at\": \"2000-06-13T18:47:33.929Z\",\n  \"updated_at\": \"1971-11-05T06:34:50.039Z\",\n  \"role_id\": \"string\",\n  \"notify\": true,\n  \"applies_to_type\": \"string\",\n  \"applies_to_id\": 5289,\n  \"applies_to\": {\n    \"id\": 544,\n    \"resource_type\": \"string\",\n    \"name\": \"string\",\n    \"domain\": \"string\"\n  },\n  \"assignee_type\": \"Team\",\n  \"assignee_id\": 565,\n  \"assignee\": {\n    \"id\": 9456,\n    \"resource_type\": \"string\",\n    \"email\": \"66hQhoJl@RTYVQt.lj\",\n    \"name\": \"string\"\n  },\n  \"created_by_type\": \"User\",\n  \"created_by_id\": 6473,\n  \"user_id\": 3445,\n  \"assignee_team_id\": 4474,\n  \"guest_id\": 3563,\n  \"issued_by_id\": 3480,\n  \"type\": \"string\",\n  \"scope\": \"string\",\n  \"organization_id\": 416,\n  \"organization\": {\n    \"id\": 2493,\n    \"resource_type\": \"string\",\n    \"name\": \"string\",\n    \"domain\": \"string\"\n  },\n  \"user\": {\n    \"id\": 1171,\n    \"resource_type\": \"string\",\n    \"email\": \"1ZgADmV@nXOLEoFkUgYhogxT.ye\",\n    \"name\": \"string\"\n  },\n  \"assignee_team\": {\n    \"id\": 7733,\n    \"resource_type\": \"string\",\n    \"name\": \"string\"\n  },\n  \"guest\": {\n    \"id\": 4769,\n    \"resource_type\": \"string\",\n    \"name\": \"string\",\n    \"email\": \"8kyDsqSdy@bCKlWPTd.txk\",\n    \"phone_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edba3c0b-b99e-4b60-9883-38becea13ae4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_assignment\": {\n    \"applies_to_type\": \"<string>\",\n    \"applies_to_id\": \"<integer>\",\n    \"assignee_type\": \"<string>\",\n    \"assignee_id\": \"<integer>\",\n    \"role_id\": \"<string>\",\n    \"user_id\": \"<integer,null>\",\n    \"organization_id\": \"<integer>\",\n    \"notify\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a9ea7ac-f474-4f94-8903-f6802685825b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_assignment\": {\n    \"applies_to_type\": \"<string>\",\n    \"applies_to_id\": \"<integer>\",\n    \"assignee_type\": \"<string>\",\n    \"assignee_id\": \"<integer>\",\n    \"role_id\": \"<string>\",\n    \"user_id\": \"<integer,null>\",\n    \"organization_id\": \"<integer>\",\n    \"notify\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c73c8d51-2137-48c6-bd4b-029fbebd5719",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_assignment\": {\n    \"applies_to_type\": \"<string>\",\n    \"applies_to_id\": \"<integer>\",\n    \"assignee_type\": \"<string>\",\n    \"assignee_id\": \"<integer>\",\n    \"role_id\": \"<string>\",\n    \"user_id\": \"<integer,null>\",\n    \"organization_id\": \"<integer>\",\n    \"notify\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96536c7a-8de1-4856-9a3c-f97d75d5b9bb",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_assignment\": {\n    \"applies_to_type\": \"<string>\",\n    \"applies_to_id\": \"<integer>\",\n    \"assignee_type\": \"<string>\",\n    \"assignee_id\": \"<integer>\",\n    \"role_id\": \"<string>\",\n    \"user_id\": \"<integer,null>\",\n    \"organization_id\": \"<integer>\",\n    \"notify\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47c36c2e-e705-4e03-af7e-79d645b62a9e",
+          "name": "Fetch role assignment",
+          "request": {
+            "name": "Fetch role assignment",
+            "description": {},
+            "url": {
+              "path": [
+                "role_assignments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "237f0777-498b-4afe-a106-ce378fb1791d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4371,\n  \"resource_type\": \"string\",\n  \"created_at\": \"2000-06-13T18:47:33.929Z\",\n  \"updated_at\": \"1971-11-05T06:34:50.039Z\",\n  \"role_id\": \"string\",\n  \"notify\": true,\n  \"applies_to_type\": \"string\",\n  \"applies_to_id\": 5289,\n  \"applies_to\": {\n    \"id\": 544,\n    \"resource_type\": \"string\",\n    \"name\": \"string\",\n    \"domain\": \"string\"\n  },\n  \"assignee_type\": \"Team\",\n  \"assignee_id\": 565,\n  \"assignee\": {\n    \"id\": 9456,\n    \"resource_type\": \"string\",\n    \"email\": \"66hQhoJl@RTYVQt.lj\",\n    \"name\": \"string\"\n  },\n  \"created_by_type\": \"User\",\n  \"created_by_id\": 6473,\n  \"user_id\": 3445,\n  \"assignee_team_id\": 4474,\n  \"guest_id\": 3563,\n  \"issued_by_id\": 3480,\n  \"type\": \"string\",\n  \"scope\": \"string\",\n  \"organization_id\": 416,\n  \"organization\": {\n    \"id\": 2493,\n    \"resource_type\": \"string\",\n    \"name\": \"string\",\n    \"domain\": \"string\"\n  },\n  \"user\": {\n    \"id\": 1171,\n    \"resource_type\": \"string\",\n    \"email\": \"1ZgADmV@nXOLEoFkUgYhogxT.ye\",\n    \"name\": \"string\"\n  },\n  \"assignee_team\": {\n    \"id\": 7733,\n    \"resource_type\": \"string\",\n    \"name\": \"string\"\n  },\n  \"guest\": {\n    \"id\": 4769,\n    \"resource_type\": \"string\",\n    \"name\": \"string\",\n    \"email\": \"8kyDsqSdy@bCKlWPTd.txk\",\n    \"phone_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be05b3ab-0dbe-4cf7-9e21-5cc74f93c89a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c18ec2f-93d8-4c06-b4de-2f0a68282d1b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b9d305a-a555-4365-adad-8394fa8d3709",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e019651-ba67-458a-985e-7034c17f9862",
+          "name": "Update role assignment",
+          "request": {
+            "name": "Update role assignment",
+            "description": {},
+            "url": {
+              "path": [
+                "role_assignments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role_assignment\": {\n    \"role_id\": \"<string>\",\n    \"notify\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5f8daa9-bbe6-491c-b25b-c473b04ee70e",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_assignment\": {\n    \"role_id\": \"<string>\",\n    \"notify\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5fb6810-8565-4951-9e78-bf0c96e7c03a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_assignment\": {\n    \"role_id\": \"<string>\",\n    \"notify\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ddb60f0-bcc9-479a-8b8d-a7328bd63a35",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_assignment\": {\n    \"role_id\": \"<string>\",\n    \"notify\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "068f5657-e150-48fa-a003-c40e9184a863",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_assignment\": {\n    \"role_id\": \"<string>\",\n    \"notify\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8e3c7cf-d5a9-40ea-b0fd-4d2671c8dde7",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role_assignment\": {\n    \"role_id\": \"<string>\",\n    \"notify\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b06e19f-6a5a-4d60-8c7c-09fdd15d537b",
+          "name": "Delete role assignment",
+          "request": {
+            "name": "Delete role assignment",
+            "description": {},
+            "url": {
+              "path": [
+                "role_assignments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5a7a9e62-e4ac-4af6-a314-270e2614666c",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04fc8de5-132a-42e7-84a0-2bf70b298654",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5e7eaa7-2ddc-40e8-9f21-0c904e1bc520",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca8ce837-57a1-4930-8599-d50a49e7e622",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "role_assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kisi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b2bd6ed7-0620-4f58-a33d-0a7d860c6cb9",
+    "name": "Kisi Calendars Role assignments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Introduction\n\nWelcome to the Kisi API documentation. Before you read further, please read\nthe general [Kisi Docs portal](https://docs.kisi.io/).\n\n<!-- theme: info -->\n> If you want to be notified by email about updates to our API, please subscribe to our\n> [newsletter](https://2e2bc.share.hsforms.com/2OsdqtC8xRHGQ2yaS16AF7w).\n\n### Format\n\nThe Kisi API supports JSON only, so please set `Accept` and `Content-Type`\nto `application/json`. All requests and responses will use JSON as the\nformat for any data encompassed in the body of requests and responses.\n\n```http\n<METHOD> <URL> HTTP/1.1\nAccept: application/json\nContent-Type: application/json\n```\n\n### Authentication\n\nMost calls to the API will require an authenticated user. If such a user\nis not present, you will receive a 401 response.\nFor more information about authentication, see the [Kisi Docs portal](https://docs.kisi.io/api/get_started/add_necessary_headers).\n\nAPI calls must be made using HTTPS. Any calls made over plain HTTP will fail.\n\n### Rate limits\n\nFor authenticated API requests, you can make up to 5 requests per second,\nper user. Note that the limit applies per user, so requests made using\ndifferent logins for the same user share the same quota.\n\nFor unauthenticated requests, you can make up to 5 requests per second, per\nIP address.\n\nThe following endpoints have custom rate limits:\n\n| Endpoint                   | Limit            |\n|----------------------------|------------------|\n| `POST /event_sets`         | 1 per second     |\n| `POST /signed_upload_urls` | 1 per 10 seconds |\n\nIf you exceed the rate limit, a 429 response will be returned.\n\nSome best practices:\n- If you're making requests for a single user, do so serially, *not* concurrently.\n- If you're making a large number of requests for a single user, wait at least one second between each request.\n\nWe reserve the right to change these limits as needed to ensure availability.\n\n### Deprecations\n\nIn the event that some part of the API has to be deprecated, we do the following:\n\n  1. Return the `Deprecation` header with the date of when the endpoint is deprecated.\n  2. Return the `Sunset` header with the date of when the endpoint can be expected to not function anymore.\n  3. When the `Sunset` date is reached, the endpoint may go away at any time.\n\nWe recommend listening to these headers to avoid disruptions.\n\n### Error codes\n\nSome endpoints return an error code and a message. In the table below all error codes are listed.\n\n| Error code | Message                                                                                         |\n|------------|-------------------------------------------------------------------------------------------------|\n| `afc507`   | The authentication link is not valid.                                                           |\n| `afc546`   | Invalid Two Factor backup code.                                                                 |\n| `faa9ff`   | The card is not activated.                                                                      |\n| `faa9ef`   | The card was not found.                                                                         |\n| `afc496`   | Access denied.                                                                                  |\n| `f29aef`   | Your link is invalid.                                                                           |\n| `afc516`   | Wrong email address or password.                                                                |\n| `afc536`   | Invalid Two Factor verification code.                                                           |\n| `afc526`   | Please provide a Two Factor verification code.                                                  |\n| `afc516`   | The two factor pin is invalid                                                                   |\n| `ffffff`   | An unexpected issue occured.                                                                    |\n| `fcd8ef`   | Access denied.                                                                                  |\n| `fcd8ff`   | Access disabled.                                                                                |\n| `cabbeb`   | A card with the same identifiers was already enrolled.                                          |\n| `bb4fff`   | Please authorize Kisi for Bluetooth.                                                            |\n| `bb5bff`   | No nearby Kisi reader found. Try enabling Bluetooth on your device.                             |\n| `bb4bff`   | Please enable Bluetooth.                                                                        |\n| `a7793f`   | Please authorize Kisi for location services.                                                    |\n| `a3799f`   | Please enable your location services.                                                           |\n| `a3793f`   | Please enable your location services.                                                           |\n| `f298cf`   | The place has disabled all links for you.                                                       |\n| `f298df`   | Your access rights for this place do not include links.                                         |\n| `f298bf`   | Your access right is invalid.                                                                   |\n| `f01337`   | Your group's access rights for this place do not include apps.                                  |\n| `34bd8f`   | Your device is not the primary one.                                                             |\n| `facced`   | Unable to decode the certificate.                                                               |\n| `bbb99f`   | Your location is not valid.                                                                     |\n| `bbb93f`   | The location of the lock is invalid.                                                            |\n| `a3995f`   | You are too far away.                                                                           |\n| `bb4faa`   | You're not close enough to the door.                                                            |\n| `bbc93f`   | In-app access is disabled by the organization. Please tap your phone against the reader.        |\n| `34ffaa`   | Your access is not allowed at this moment, please try again later.                              |\n| `f35ade`   | Your access is no longer valid.                                                                 |\n| `f398de`   | Your access is invalid.,                                                                        |\n| `f358de`   | Your access is not yet valid, please try again later.                                           |\n| `fad334`   | An error occurred permitting the the elevator stop.                                             |\n| `fad121`   | The elevator stop was not found.                                                                |\n| `fad122`   | The elevator stop was not configured.                                                           |\n| `fad123`   | The elevator stops are locked down.                                                             |\n| `fad124`   | The elevator stop was on schedule.                                                              |\n| `fad002`   | The place is currently locked down.                                                             |\n| `ff420a`   | The door has no assigned Kisi controller.                                                       |\n| `fad001`   | The door is currently locked down.                                                              |\n| `fad105`   | The door is improperly configured.                                                              |\n| `fad10e`   | The door could not be found.                                                                    |\n| `fad110`   | The door is already scheduled to be unlocked.                                                   |\n| `fad137`   | The access was denied by the zone.                                                              |\n| `fad146`   | The third party zone was overriden but it is still armed.                                       |\n| `fad10f`   | An error occurred connecting to the wireless lock.                                              |\n| `fad106`   | An error occurred finding the wireless lock.                                                    |\n| `fad107`   | The wireless lock is offline.                                                                   |\n| `fad112`   | An unlock is already in progress for the wireless lock.                                         |\n| `fac001`   | The Kisi controller is currently unavailable.                                                   |\n| `fac002`   | The Kisi controller is currently unavailable.                                                   |\n| `fac003`   | The Kisi device is currently unavailable.                                                       |\n| `fac004`   | The Kisi device is currently unavailable.                                                       |\n| `fad108`   | The Kisi controller is not yet configured.                                                      |\n| `ecc123`   | The Kisi controller encountered an unhandled error.                                             |\n| `fbc000`   | The Kisi controller firmware is being updated. This will take a few seconds. Please retry then. |\n| `aaa345`   | The zone has no assigned zone controller.                                                       |\n| `fad126`   | The zone could not be found.                                                                    |\n| `fad129`   | The alarm controller is currently unavailable.                                                  |\n| `adf234`   | An error occurred resetting the zone.                                                           |\n| `fad144`   | The third party alarm is still in violation.                                                    |\n| `abbb11`   | The integration partner experienced an error.                                                   |\n| `abcc11`   | An integration partner resource could not be found.                                             |\n| `abdd11`   | The communication with the integration partner failed.                                          |\n| `abee11`   | Authorization with the integration partner failed.                                              |\n| `abfe11`   | The integration is not acceptable                                                               |\n| `abff11`   | The integration is disabled.                                                                    |\n\n\nContact Support:\n Name: Kisi Support\n Email: support@getkisi.com",
+      "type": "text/plain"
+    }
+  }
+}

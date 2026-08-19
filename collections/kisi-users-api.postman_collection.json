@@ -1,0 +1,3329 @@
+{
+  "item": [
+    {
+      "id": "485b7fa9-d064-47df-9393-6a1ecd1dfa22",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "412f81f6-2c7b-4b94-8c06-6e5d98bf0cb2",
+          "name": "Fetch users",
+          "request": {
+            "name": "Fetch users",
+            "description": {},
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter by object IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "place_id",
+                  "value": "<integer>",
+                  "description": "Filters users that have access to given place.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "Filter by email."
+                },
+                {
+                  "disabled": false,
+                  "key": "place_id",
+                  "value": "<integer>",
+                  "description": "Filters users that have access to given place.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<integer>",
+                  "description": "Filter by group ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Filter by a freetext string. Properties searched: `email`, `name`, `notes`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<integer,string>",
+                  "description": "Filter by user ID or by current user if value is `me`."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort the results. Prepend `-` to sort in reverse order.\n\n`name` - sort by user name, alphabetically<br>\n`unlock` - sort by last unlock; no unlocks first, then oldest to most recent\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "The number of objects to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of objects to offset"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "81a3288f-95ce-4e91-b2f5-a46a8a3c8ce5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "place_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "place_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<integer,string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Pagination information for offset based pagination. `start-end` represents the range\nof items requested. `total` represents the total count of items. If there is a total\nof 15 items and an offset of 10 and limit of 10 is used, the resulting header is:\n`10-19/15`.\n",
+                  "key": "X-Collection-Range",
+                  "value": "0-9/200"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 6555,\n    \"resource_type\": \"string\",\n    \"name\": \"string\",\n    \"email\": \"FRsVMIe7sTKF@POJHv.grkj\",\n    \"created_at\": \"2018-12-15T12:45:09.104Z\",\n    \"updated_at\": \"2009-09-12T22:09:44.543Z\",\n    \"metadata\": {},\n    \"image\": \"https://RnoNfCvfrvpYenxi.wmwvj-bSSy1FBo83GguGIBxED2ZNHTjVU\",\n    \"otp_required_for_login\": true,\n    \"password_flow_enabled\": false,\n    \"access_enabled\": true,\n    \"last_accessed_at\": \"2011-02-05T12:29:07.667Z\",\n    \"scim_access_enabled\": false,\n    \"notes\": \"string\",\n    \"organization_id\": 5663,\n    \"confirmed\": false,\n    \"groups_count\": 5802\n  },\n  {\n    \"id\": 3284,\n    \"resource_type\": \"string\",\n    \"name\": \"string\",\n    \"email\": \"5dnToz1UQ@VazPverQKgHVviky.zt\",\n    \"created_at\": \"1954-10-25T22:07:43.453Z\",\n    \"updated_at\": \"1975-01-16T17:48:40.666Z\",\n    \"metadata\": {},\n    \"image\": \"https://TeDVtJYAUkDnSpDZMBOtQJPmCVVp.igymtBT8F4WHEBEkqAYvW3jDQPPKMwQrC04\",\n    \"otp_required_for_login\": true,\n    \"password_flow_enabled\": true,\n    \"access_enabled\": true,\n    \"last_accessed_at\": \"2013-03-10T15:20:54.901Z\",\n    \"scim_access_enabled\": true,\n    \"notes\": \"string\",\n    \"organization_id\": 4174,\n    \"confirmed\": false,\n    \"groups_count\": 3191\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9d55a08-2f65-4ba1-b93c-7d2c5cf9cd28",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "place_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "place_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<integer,string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58d768f4-aa04-41a9-b988-e117fc5c996d",
+          "name": "Create user",
+          "request": {
+            "name": "Create user",
+            "description": {},
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"email\": \"<email>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"send_emails\": \"<boolean>\",\n    \"confirm\": \"<boolean>\",\n    \"access_enabled\": \"<boolean>\",\n    \"password_flow_enabled\": \"<boolean>\",\n    \"metadata\": \"<object>\",\n    \"notes\": \"<string,null>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7703f9bc-f1ac-4ecb-87d5-ad7b9a1aa076",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"email\": \"<email>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"send_emails\": \"<boolean>\",\n    \"confirm\": \"<boolean>\",\n    \"access_enabled\": \"<boolean>\",\n    \"password_flow_enabled\": \"<boolean>\",\n    \"metadata\": \"<object>\",\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4461,\n  \"resource_type\": \"string\",\n  \"name\": \"string\",\n  \"email\": \"l-7a0p@ccqXihuAtFQzAbD.ljww\",\n  \"created_at\": \"2014-08-29T23:38:45.633Z\",\n  \"updated_at\": \"2009-01-15T05:56:12.985Z\",\n  \"metadata\": {},\n  \"image\": \"http://iUEhWPNUnZizwxQXwDbddOexitjFh.wzfuq\",\n  \"otp_required_for_login\": false,\n  \"password_flow_enabled\": false,\n  \"access_enabled\": true,\n  \"last_accessed_at\": \"1989-01-06T10:42:40.997Z\",\n  \"scim_access_enabled\": false,\n  \"notes\": \"string\",\n  \"organization_id\": 1370,\n  \"confirmed\": true,\n  \"groups_count\": 7893\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "558999ff-e66a-4361-b1ff-16d1c61c391f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"email\": \"<email>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"send_emails\": \"<boolean>\",\n    \"confirm\": \"<boolean>\",\n    \"access_enabled\": \"<boolean>\",\n    \"password_flow_enabled\": \"<boolean>\",\n    \"metadata\": \"<object>\",\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3dcf79f-016e-4266-9882-1c5cde802153",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"email\": \"<email>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"send_emails\": \"<boolean>\",\n    \"confirm\": \"<boolean>\",\n    \"access_enabled\": \"<boolean>\",\n    \"password_flow_enabled\": \"<boolean>\",\n    \"metadata\": \"<object>\",\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad4af0ef-ac01-4ca0-9d15-51517a528287",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"email\": \"<email>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"send_emails\": \"<boolean>\",\n    \"confirm\": \"<boolean>\",\n    \"access_enabled\": \"<boolean>\",\n    \"password_flow_enabled\": \"<boolean>\",\n    \"metadata\": \"<object>\",\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd410fa3-1a68-41e5-b447-4148b0445203",
+          "name": "Fetch user",
+          "request": {
+            "name": "Fetch user",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ff33b370-e006-4919-a20d-49c16882139b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4461,\n  \"resource_type\": \"string\",\n  \"name\": \"string\",\n  \"email\": \"l-7a0p@ccqXihuAtFQzAbD.ljww\",\n  \"created_at\": \"2014-08-29T23:38:45.633Z\",\n  \"updated_at\": \"2009-01-15T05:56:12.985Z\",\n  \"metadata\": {},\n  \"image\": \"http://iUEhWPNUnZizwxQXwDbddOexitjFh.wzfuq\",\n  \"otp_required_for_login\": false,\n  \"password_flow_enabled\": false,\n  \"access_enabled\": true,\n  \"last_accessed_at\": \"1989-01-06T10:42:40.997Z\",\n  \"scim_access_enabled\": false,\n  \"notes\": \"string\",\n  \"organization_id\": 1370,\n  \"confirmed\": true,\n  \"groups_count\": 7893\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df1f228a-52f4-4d4f-8171-75ad6306599f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb910d34-aa45-49bb-825c-5108a27aa633",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba289dc0-8b18-4246-91ef-89b7f4f665db",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b37ca7b-0dcc-4688-831b-c162fd42210e",
+          "name": "Update user",
+          "request": {
+            "name": "Update user",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"access_enabled\": \"<boolean>\",\n    \"password_flow_enabled\": \"<boolean>\",\n    \"metadata\": \"<object>\",\n    \"notes\": \"<string,null>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c91432cb-df50-4d10-861c-08ee81ba58ca",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"access_enabled\": \"<boolean>\",\n    \"password_flow_enabled\": \"<boolean>\",\n    \"metadata\": \"<object>\",\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aab81cf0-f6e3-4a45-bdec-c4a78dedd900",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"access_enabled\": \"<boolean>\",\n    \"password_flow_enabled\": \"<boolean>\",\n    \"metadata\": \"<object>\",\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b6a4c0a-704c-4b1b-bcaf-38705df50f10",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"access_enabled\": \"<boolean>\",\n    \"password_flow_enabled\": \"<boolean>\",\n    \"metadata\": \"<object>\",\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67620565-1baa-4642-b71b-647849b00651",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"access_enabled\": \"<boolean>\",\n    \"password_flow_enabled\": \"<boolean>\",\n    \"metadata\": \"<object>\",\n    \"notes\": \"<string,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91135092-c7ba-4156-a666-c19f19256894",
+          "name": "Delete user",
+          "request": {
+            "name": "Delete user",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6a54d8d2-b2ca-4f09-9971-ff109e48f68b",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "30524e0a-52bb-40c0-9cbc-126a7264f346",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d969ba33-e838-466f-96b3-07ef66a57d6e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffa1c69a-611e-48bf-8d4a-780c642f8da6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0b4f986-78d7-4c49-9005-1690b0db4204",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ac6e132-8fb0-413d-8c5c-e54e03d72cd9",
+          "name": "Fetch current user",
+          "request": {
+            "name": "Fetch current user",
+            "description": {},
+            "url": {
+              "path": [
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2adfdb98-2f35-4717-8d09-36d16c36ab3a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1857,\n  \"resource_type\": \"string\",\n  \"name\": \"string\",\n  \"email\": \"wPs6J1Oiq3J@kxeNeRQuIQhjmahbCzvmWDOwTidqvH.mrt\",\n  \"image\": \"http://pPMTovxKlGPNJXrzOQoYvleXASWygb.rhd9IKX8cGTJ4K+wdBd6uFEU4icw-tGs1IMLGaGZOUXaQ2tE,.swrRg+hatMj\",\n  \"locale\": \"fr\",\n  \"notifications_unread_count\": 4704,\n  \"otp_required_for_login\": false,\n  \"otp_enabled_at\": \"2020-03-28T18:35:08.225Z\",\n  \"primary_login_exists\": false,\n  \"created_at\": \"2008-06-24T15:29:49.795Z\",\n  \"updated_at\": \"1984-02-11T04:58:35.160Z\",\n  \"announcements_last_seen_at\": \"1948-08-16T23:28:53.169Z\",\n  \"last_read_at\": {\n    \"key_0\": \"2024-12-29T17:29:46.027Z\",\n    \"key_1\": \"1997-05-29T06:09:13.351Z\",\n    \"key_2\": \"1947-11-12T20:00:19.562Z\",\n    \"key_3\": \"2019-12-12T05:15:37.637Z\",\n    \"key_4\": \"1995-08-03T04:05:24.134Z\",\n    \"key_5\": \"1972-12-14T19:51:47.215Z\",\n    \"key_6\": \"1976-09-16T06:26:47.005Z\",\n    \"key_7\": \"1994-03-31T08:26:43.737Z\",\n    \"key_8\": \"1961-10-07T03:14:25.740Z\",\n    \"key_9\": \"1964-12-24T14:15:49.860Z\",\n    \"key_10\": \"1964-08-05T21:40:00.284Z\",\n    \"key_11\": \"1998-07-19T09:58:06.818Z\",\n    \"key_12\": \"1976-02-16T16:43:45.100Z\",\n    \"key_13\": \"1962-12-07T10:38:16.988Z\",\n    \"key_14\": \"1979-01-12T01:53:32.226Z\",\n    \"key_15\": \"1985-11-14T18:38:19.440Z\",\n    \"key_16\": \"2001-11-29T16:18:10.981Z\",\n    \"key_17\": \"1990-03-13T15:53:53.541Z\",\n    \"key_18\": \"1948-04-06T07:54:01.354Z\",\n    \"key_19\": \"1993-07-07T09:26:22.993Z\",\n    \"key_20\": \"1990-10-30T12:33:11.260Z\",\n    \"key_21\": \"1982-02-16T09:26:21.461Z\",\n    \"key_22\": \"1961-12-08T14:49:35.366Z\",\n    \"key_23\": \"1994-01-27T08:57:11.801Z\",\n    \"key_24\": \"1972-07-15T04:13:31.415Z\",\n    \"key_25\": \"1974-09-27T18:02:02.798Z\",\n    \"key_26\": \"1980-09-23T09:39:44.952Z\",\n    \"key_27\": \"1957-06-07T13:37:31.994Z\",\n    \"key_28\": \"1970-07-29T10:49:41.691Z\"\n  },\n  \"notes\": \"string\",\n  \"organization_id\": 9273,\n  \"organization\": {\n    \"id\": 7161,\n    \"resource_type\": \"string\",\n    \"name\": \"string\",\n    \"domain\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c4d1981-8f99-408f-bc6c-80f0eb23f647",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7d337ae-d1a8-46d4-9a41-cf3e8045b169",
+          "name": "Update current user",
+          "request": {
+            "name": "Update current user",
+            "description": {},
+            "url": {
+              "path": [
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"last_read_at\": {\n      \"key_0\": \"<dateTime>\",\n      \"key_1\": \"<dateTime>\",\n      \"key_2\": \"<dateTime>\",\n      \"key_3\": \"<dateTime>\",\n      \"key_4\": \"<dateTime>\",\n      \"key_5\": \"<dateTime>\",\n      \"key_6\": \"<dateTime>\",\n      \"key_7\": \"<dateTime>\",\n      \"key_8\": \"<dateTime>\",\n      \"key_9\": \"<dateTime>\",\n      \"key_10\": \"<dateTime>\",\n      \"key_11\": \"<dateTime>\",\n      \"key_12\": \"<dateTime>\",\n      \"key_13\": \"<dateTime>\",\n      \"key_14\": \"<dateTime>\",\n      \"key_15\": \"<dateTime>\",\n      \"key_16\": \"<dateTime>\",\n      \"key_17\": \"<dateTime>\",\n      \"key_18\": \"<dateTime>\",\n      \"key_19\": \"<dateTime>\",\n      \"key_20\": \"<dateTime>\",\n      \"key_21\": \"<dateTime>\",\n      \"key_22\": \"<dateTime>\",\n      \"key_23\": \"<dateTime>\",\n      \"key_24\": \"<dateTime>\",\n      \"key_25\": \"<dateTime>\",\n      \"key_26\": \"<dateTime>\",\n      \"key_27\": \"<dateTime>\",\n      \"key_28\": \"<dateTime>\",\n      \"key_29\": \"<dateTime>\",\n      \"key_30\": \"<dateTime>\",\n      \"key_31\": \"<dateTime>\",\n      \"key_32\": \"<dateTime>\",\n      \"key_33\": \"<dateTime>\",\n      \"key_34\": \"<dateTime>\",\n      \"key_35\": \"<dateTime>\",\n      \"key_36\": \"<dateTime>\",\n      \"key_37\": \"<dateTime>\",\n      \"key_38\": \"<dateTime>\",\n      \"key_39\": \"<dateTime>\",\n      \"key_40\": \"<dateTime>\",\n      \"key_41\": \"<dateTime>\",\n      \"key_42\": \"<dateTime>\",\n      \"key_43\": \"<dateTime>\",\n      \"key_44\": \"<dateTime>\",\n      \"key_45\": \"<dateTime>\",\n      \"key_46\": \"<dateTime>\",\n      \"key_47\": \"<dateTime>\",\n      \"key_48\": \"<dateTime>\"\n    },\n    \"announcements_last_seen_at\": \"<string,null-date-time>\",\n    \"locale\": \"<string,null>\",\n    \"current_password\": \"<string>\",\n    \"password\": \"<string>\",\n    \"password_confirmation\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70e33b36-de9b-46f4-bbc2-49a8ea52a85b",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"last_read_at\": {\n      \"key_0\": \"<dateTime>\",\n      \"key_1\": \"<dateTime>\",\n      \"key_2\": \"<dateTime>\",\n      \"key_3\": \"<dateTime>\",\n      \"key_4\": \"<dateTime>\",\n      \"key_5\": \"<dateTime>\",\n      \"key_6\": \"<dateTime>\",\n      \"key_7\": \"<dateTime>\",\n      \"key_8\": \"<dateTime>\",\n      \"key_9\": \"<dateTime>\",\n      \"key_10\": \"<dateTime>\",\n      \"key_11\": \"<dateTime>\",\n      \"key_12\": \"<dateTime>\",\n      \"key_13\": \"<dateTime>\",\n      \"key_14\": \"<dateTime>\",\n      \"key_15\": \"<dateTime>\",\n      \"key_16\": \"<dateTime>\",\n      \"key_17\": \"<dateTime>\",\n      \"key_18\": \"<dateTime>\",\n      \"key_19\": \"<dateTime>\",\n      \"key_20\": \"<dateTime>\",\n      \"key_21\": \"<dateTime>\",\n      \"key_22\": \"<dateTime>\",\n      \"key_23\": \"<dateTime>\",\n      \"key_24\": \"<dateTime>\",\n      \"key_25\": \"<dateTime>\",\n      \"key_26\": \"<dateTime>\",\n      \"key_27\": \"<dateTime>\",\n      \"key_28\": \"<dateTime>\",\n      \"key_29\": \"<dateTime>\",\n      \"key_30\": \"<dateTime>\",\n      \"key_31\": \"<dateTime>\",\n      \"key_32\": \"<dateTime>\",\n      \"key_33\": \"<dateTime>\"\n    },\n    \"announcements_last_seen_at\": \"<string,null-date-time>\",\n    \"locale\": \"<string,null>\",\n    \"current_password\": \"<string>\",\n    \"password\": \"<string>\",\n    \"password_confirmation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c34b9d7-389b-4651-87d1-68369d9517c6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"last_read_at\": {\n      \"key_0\": \"<dateTime>\",\n      \"key_1\": \"<dateTime>\",\n      \"key_2\": \"<dateTime>\",\n      \"key_3\": \"<dateTime>\",\n      \"key_4\": \"<dateTime>\",\n      \"key_5\": \"<dateTime>\",\n      \"key_6\": \"<dateTime>\",\n      \"key_7\": \"<dateTime>\",\n      \"key_8\": \"<dateTime>\",\n      \"key_9\": \"<dateTime>\",\n      \"key_10\": \"<dateTime>\",\n      \"key_11\": \"<dateTime>\",\n      \"key_12\": \"<dateTime>\",\n      \"key_13\": \"<dateTime>\",\n      \"key_14\": \"<dateTime>\",\n      \"key_15\": \"<dateTime>\",\n      \"key_16\": \"<dateTime>\",\n      \"key_17\": \"<dateTime>\",\n      \"key_18\": \"<dateTime>\",\n      \"key_19\": \"<dateTime>\",\n      \"key_20\": \"<dateTime>\",\n      \"key_21\": \"<dateTime>\",\n      \"key_22\": \"<dateTime>\",\n      \"key_23\": \"<dateTime>\",\n      \"key_24\": \"<dateTime>\",\n      \"key_25\": \"<dateTime>\",\n      \"key_26\": \"<dateTime>\",\n      \"key_27\": \"<dateTime>\",\n      \"key_28\": \"<dateTime>\",\n      \"key_29\": \"<dateTime>\",\n      \"key_30\": \"<dateTime>\",\n      \"key_31\": \"<dateTime>\",\n      \"key_32\": \"<dateTime>\",\n      \"key_33\": \"<dateTime>\"\n    },\n    \"announcements_last_seen_at\": \"<string,null-date-time>\",\n    \"locale\": \"<string,null>\",\n    \"current_password\": \"<string>\",\n    \"password\": \"<string>\",\n    \"password_confirmation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18175009-ab1a-467f-a0a0-75aad2a173a3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"last_read_at\": {\n      \"key_0\": \"<dateTime>\",\n      \"key_1\": \"<dateTime>\",\n      \"key_2\": \"<dateTime>\",\n      \"key_3\": \"<dateTime>\",\n      \"key_4\": \"<dateTime>\",\n      \"key_5\": \"<dateTime>\",\n      \"key_6\": \"<dateTime>\",\n      \"key_7\": \"<dateTime>\",\n      \"key_8\": \"<dateTime>\",\n      \"key_9\": \"<dateTime>\",\n      \"key_10\": \"<dateTime>\",\n      \"key_11\": \"<dateTime>\",\n      \"key_12\": \"<dateTime>\",\n      \"key_13\": \"<dateTime>\",\n      \"key_14\": \"<dateTime>\",\n      \"key_15\": \"<dateTime>\",\n      \"key_16\": \"<dateTime>\",\n      \"key_17\": \"<dateTime>\",\n      \"key_18\": \"<dateTime>\",\n      \"key_19\": \"<dateTime>\",\n      \"key_20\": \"<dateTime>\",\n      \"key_21\": \"<dateTime>\",\n      \"key_22\": \"<dateTime>\",\n      \"key_23\": \"<dateTime>\",\n      \"key_24\": \"<dateTime>\",\n      \"key_25\": \"<dateTime>\",\n      \"key_26\": \"<dateTime>\",\n      \"key_27\": \"<dateTime>\",\n      \"key_28\": \"<dateTime>\",\n      \"key_29\": \"<dateTime>\",\n      \"key_30\": \"<dateTime>\",\n      \"key_31\": \"<dateTime>\",\n      \"key_32\": \"<dateTime>\",\n      \"key_33\": \"<dateTime>\"\n    },\n    \"announcements_last_seen_at\": \"<string,null-date-time>\",\n    \"locale\": \"<string,null>\",\n    \"current_password\": \"<string>\",\n    \"password\": \"<string>\",\n    \"password_confirmation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa1b394d-0e26-4eb3-b9c1-9c03e2499706",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\",\n    \"last_read_at\": {\n      \"key_0\": \"<dateTime>\",\n      \"key_1\": \"<dateTime>\",\n      \"key_2\": \"<dateTime>\",\n      \"key_3\": \"<dateTime>\",\n      \"key_4\": \"<dateTime>\",\n      \"key_5\": \"<dateTime>\",\n      \"key_6\": \"<dateTime>\",\n      \"key_7\": \"<dateTime>\",\n      \"key_8\": \"<dateTime>\",\n      \"key_9\": \"<dateTime>\",\n      \"key_10\": \"<dateTime>\",\n      \"key_11\": \"<dateTime>\",\n      \"key_12\": \"<dateTime>\",\n      \"key_13\": \"<dateTime>\",\n      \"key_14\": \"<dateTime>\",\n      \"key_15\": \"<dateTime>\",\n      \"key_16\": \"<dateTime>\",\n      \"key_17\": \"<dateTime>\",\n      \"key_18\": \"<dateTime>\",\n      \"key_19\": \"<dateTime>\",\n      \"key_20\": \"<dateTime>\",\n      \"key_21\": \"<dateTime>\",\n      \"key_22\": \"<dateTime>\",\n      \"key_23\": \"<dateTime>\",\n      \"key_24\": \"<dateTime>\",\n      \"key_25\": \"<dateTime>\",\n      \"key_26\": \"<dateTime>\",\n      \"key_27\": \"<dateTime>\",\n      \"key_28\": \"<dateTime>\",\n      \"key_29\": \"<dateTime>\",\n      \"key_30\": \"<dateTime>\",\n      \"key_31\": \"<dateTime>\",\n      \"key_32\": \"<dateTime>\",\n      \"key_33\": \"<dateTime>\"\n    },\n    \"announcements_last_seen_at\": \"<string,null-date-time>\",\n    \"locale\": \"<string,null>\",\n    \"current_password\": \"<string>\",\n    \"password\": \"<string>\",\n    \"password_confirmation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52128898-e648-413e-a5d8-a8ffae8261e9",
+          "name": "Delete current user",
+          "request": {
+            "name": "Delete current user",
+            "description": {},
+            "url": {
+              "path": [
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8b6b5bbe-3a10-4670-9c80-b15d582efd15",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "345ad63c-e66c-4c54-8b51-7fbcd3de061f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "540ddc82-4152-4936-85ec-2afb761d644d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab957d72-62e3-4a8c-be45-a54408c31e12",
+          "name": "Fetch user OTP secret",
+          "request": {
+            "name": "Fetch user OTP secret",
+            "description": {
+              "content": "Organization users will be able to access this endpoint only if their organization has sso flow disabled.\n\nRequires additional `Basic` authorization. Check [Authentication section](#section/Setup/Authentication) for the details.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "2fa",
+                "otp_secret"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "738effc6-9f48-4dd2-a851-02cd0781282d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "otp_secret"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"otp_secret\": \"string\",\n  \"uri\": \"otpauth://totp/Kisi:example.com?secret=otp_secret&issuer=Kisi\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c30d0dfb-839a-4301-953a-4b4a4637b16c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "otp_secret"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0139566-ea1a-4dd6-8718-9afc66a205ce",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "otp_secret"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4ab1b46-28c1-433f-9b64-308726c3bc2d",
+          "name": "Activate 2FA for user",
+          "request": {
+            "name": "Activate 2FA for user",
+            "description": {
+              "content": "Organization users will be able to access this endpoint only if their organization has sso flow disabled.\n\nRequires additional `Basic` authorization. Check [Authentication section](#section/Setup/Authentication) for the details.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "2fa",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"otp_attempt\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db0fcefd-17da-4f7a-b99d-f99e323c50bd",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"otp_attempt\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93039d1f-ba2b-4341-b554-ae5242fd1296",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"otp_attempt\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6babbe4-d4ef-4934-a1b8-0ac2808f8eb2",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"otp_attempt\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05b8bea0-9bc0-48c6-8f9a-22d240126f94",
+          "name": "Deactivate 2FA for user",
+          "request": {
+            "name": "Deactivate 2FA for user",
+            "description": {
+              "content": "Organization users will be able to access this endpoint only if their organization has sso flow disabled.\n\nRequires additional `Basic` authorization. Check [Authentication section](#section/Setup/Authentication) for the details.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "2fa",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"otp_attempt\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0af8429e-b29e-4efd-aca7-7e1c00440a56",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"otp_attempt\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0f0bc7d0-0d14-4975-90df-590af0e8c4d9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"otp_attempt\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "119001b3-046f-44e3-82d6-7e146dd5c5b4",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"otp_attempt\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72c1427e-6e82-40b9-b5fe-0a22f3504a0e",
+          "name": "Fetch 2FA backup codes",
+          "request": {
+            "name": "Fetch 2FA backup codes",
+            "description": {
+              "content": "Organization users will be able to access this endpoint only if their organization has sso flow disabled.\n\nRequires additional `Basic` authorization. Check [Authentication section](#section/Setup/Authentication) for the details.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "2fa",
+                "backup_codes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb2f014c-f7f2-40dc-927a-fabce1804a87",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "backup_codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"backup_codes\": [\n    \"hmpt4l\",\n    \"zklags\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a8f85bb-7f3a-4b47-a7e4-787e0ec93349",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "2fa",
+                    "backup_codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f9e9631-504d-4aab-98ad-0924051950ab",
+          "name": "Request password reset",
+          "request": {
+            "name": "Request password reset",
+            "description": {
+              "content": "Organization users will be able to access this endpoint only\nif their organization has sso flow disabled.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                "password"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"email\": \"<email>\",\n    \"domain\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5182f2e2-1e3a-449a-b049-a60c9d042748",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"email\": \"<email>\",\n    \"domain\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "192d77ed-6fdd-46ca-816c-e00d59a89083",
+          "name": "Reset password",
+          "request": {
+            "name": "Reset password",
+            "description": {
+              "content": "Organization users will be able to access this endpoint only\nif their organization has sso flow disabled.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                "password"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"password\": \"<string>\",\n    \"password_confirmation\": \"<string>\",\n    \"reset_password_token\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e46d5636-75b4-4117-a9cd-1f844146c04f",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"password\": \"<string>\",\n    \"password_confirmation\": \"<string>\",\n    \"reset_password_token\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "558e79c4-e5f8-413a-bef5-993a3e0d5fc0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"password\": \"<string>\",\n    \"password_confirmation\": \"<string>\",\n    \"reset_password_token\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93009860-7fc8-4f89-b448-9c756e8e9756",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"password\": \"<string>\",\n    \"password_confirmation\": \"<string>\",\n    \"reset_password_token\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a48dc680-2c32-40c7-9b92-237c59c5e30f",
+          "name": "Register user",
+          "request": {
+            "name": "Register user",
+            "description": {},
+            "url": {
+              "path": [
+                "users",
+                "sign_up"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"password\": \"<string>\",\n    \"terms_and_conditions\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\"\n  },\n  \"token\": \"<jwt>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70956ce0-ef7d-4f61-9f49-c409b3e44631",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "sign_up"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"password\": \"<string>\",\n    \"terms_and_conditions\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\"\n  },\n  \"token\": \"<jwt>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1857,\n  \"resource_type\": \"string\",\n  \"name\": \"string\",\n  \"email\": \"wPs6J1Oiq3J@kxeNeRQuIQhjmahbCzvmWDOwTidqvH.mrt\",\n  \"image\": \"http://pPMTovxKlGPNJXrzOQoYvleXASWygb.rhd9IKX8cGTJ4K+wdBd6uFEU4icw-tGs1IMLGaGZOUXaQ2tE,.swrRg+hatMj\",\n  \"locale\": \"fr\",\n  \"notifications_unread_count\": 4704,\n  \"otp_required_for_login\": false,\n  \"otp_enabled_at\": \"2020-03-28T18:35:08.225Z\",\n  \"primary_login_exists\": false,\n  \"created_at\": \"2008-06-24T15:29:49.795Z\",\n  \"updated_at\": \"1984-02-11T04:58:35.160Z\",\n  \"announcements_last_seen_at\": \"1948-08-16T23:28:53.169Z\",\n  \"last_read_at\": {\n    \"key_0\": \"2024-12-29T17:29:46.027Z\",\n    \"key_1\": \"1997-05-29T06:09:13.351Z\",\n    \"key_2\": \"1947-11-12T20:00:19.562Z\",\n    \"key_3\": \"2019-12-12T05:15:37.637Z\",\n    \"key_4\": \"1995-08-03T04:05:24.134Z\",\n    \"key_5\": \"1972-12-14T19:51:47.215Z\",\n    \"key_6\": \"1976-09-16T06:26:47.005Z\",\n    \"key_7\": \"1994-03-31T08:26:43.737Z\",\n    \"key_8\": \"1961-10-07T03:14:25.740Z\",\n    \"key_9\": \"1964-12-24T14:15:49.860Z\",\n    \"key_10\": \"1964-08-05T21:40:00.284Z\",\n    \"key_11\": \"1998-07-19T09:58:06.818Z\",\n    \"key_12\": \"1976-02-16T16:43:45.100Z\",\n    \"key_13\": \"1962-12-07T10:38:16.988Z\",\n    \"key_14\": \"1979-01-12T01:53:32.226Z\",\n    \"key_15\": \"1985-11-14T18:38:19.440Z\",\n    \"key_16\": \"2001-11-29T16:18:10.981Z\",\n    \"key_17\": \"1990-03-13T15:53:53.541Z\",\n    \"key_18\": \"1948-04-06T07:54:01.354Z\",\n    \"key_19\": \"1993-07-07T09:26:22.993Z\",\n    \"key_20\": \"1990-10-30T12:33:11.260Z\",\n    \"key_21\": \"1982-02-16T09:26:21.461Z\",\n    \"key_22\": \"1961-12-08T14:49:35.366Z\",\n    \"key_23\": \"1994-01-27T08:57:11.801Z\",\n    \"key_24\": \"1972-07-15T04:13:31.415Z\",\n    \"key_25\": \"1974-09-27T18:02:02.798Z\",\n    \"key_26\": \"1980-09-23T09:39:44.952Z\",\n    \"key_27\": \"1957-06-07T13:37:31.994Z\",\n    \"key_28\": \"1970-07-29T10:49:41.691Z\"\n  },\n  \"notes\": \"string\",\n  \"organization_id\": 9273,\n  \"organization\": {\n    \"id\": 7161,\n    \"resource_type\": \"string\",\n    \"name\": \"string\",\n    \"domain\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30a24337-199c-49d3-8ac9-a737e7e6a3a2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "sign_up"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"password\": \"<string>\",\n    \"terms_and_conditions\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\"\n  },\n  \"token\": \"<jwt>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ab01af1-da59-4979-b25c-2449eae612b3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "sign_up"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"password\": \"<string>\",\n    \"terms_and_conditions\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\"\n  },\n  \"token\": \"<jwt>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57f64f6e-5215-4fee-b813-c33c894c4e6d",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "sign_up"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"password\": \"<string>\",\n    \"terms_and_conditions\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\"\n  },\n  \"token\": \"<jwt>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cefcb37b-625c-404f-913f-dd7e30aff11b",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "sign_up"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"password\": \"<string>\",\n    \"terms_and_conditions\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"image\": \"<string,null-uri>\"\n  },\n  \"token\": \"<jwt>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kisi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2c263836-5aef-4afe-a015-8c5fee21845e",
+    "name": "Kisi Calendars Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Introduction\n\nWelcome to the Kisi API documentation. Before you read further, please read\nthe general [Kisi Docs portal](https://docs.kisi.io/).\n\n<!-- theme: info -->\n> If you want to be notified by email about updates to our API, please subscribe to our\n> [newsletter](https://2e2bc.share.hsforms.com/2OsdqtC8xRHGQ2yaS16AF7w).\n\n### Format\n\nThe Kisi API supports JSON only, so please set `Accept` and `Content-Type`\nto `application/json`. All requests and responses will use JSON as the\nformat for any data encompassed in the body of requests and responses.\n\n```http\n<METHOD> <URL> HTTP/1.1\nAccept: application/json\nContent-Type: application/json\n```\n\n### Authentication\n\nMost calls to the API will require an authenticated user. If such a user\nis not present, you will receive a 401 response.\nFor more information about authentication, see the [Kisi Docs portal](https://docs.kisi.io/api/get_started/add_necessary_headers).\n\nAPI calls must be made using HTTPS. Any calls made over plain HTTP will fail.\n\n### Rate limits\n\nFor authenticated API requests, you can make up to 5 requests per second,\nper user. Note that the limit applies per user, so requests made using\ndifferent logins for the same user share the same quota.\n\nFor unauthenticated requests, you can make up to 5 requests per second, per\nIP address.\n\nThe following endpoints have custom rate limits:\n\n| Endpoint                   | Limit            |\n|----------------------------|------------------|\n| `POST /event_sets`         | 1 per second     |\n| `POST /signed_upload_urls` | 1 per 10 seconds |\n\nIf you exceed the rate limit, a 429 response will be returned.\n\nSome best practices:\n- If you're making requests for a single user, do so serially, *not* concurrently.\n- If you're making a large number of requests for a single user, wait at least one second between each request.\n\nWe reserve the right to change these limits as needed to ensure availability.\n\n### Deprecations\n\nIn the event that some part of the API has to be deprecated, we do the following:\n\n  1. Return the `Deprecation` header with the date of when the endpoint is deprecated.\n  2. Return the `Sunset` header with the date of when the endpoint can be expected to not function anymore.\n  3. When the `Sunset` date is reached, the endpoint may go away at any time.\n\nWe recommend listening to these headers to avoid disruptions.\n\n### Error codes\n\nSome endpoints return an error code and a message. In the table below all error codes are listed.\n\n| Error code | Message                                                                                         |\n|------------|-------------------------------------------------------------------------------------------------|\n| `afc507`   | The authentication link is not valid.                                                           |\n| `afc546`   | Invalid Two Factor backup code.                                                                 |\n| `faa9ff`   | The card is not activated.                                                                      |\n| `faa9ef`   | The card was not found.                                                                         |\n| `afc496`   | Access denied.                                                                                  |\n| `f29aef`   | Your link is invalid.                                                                           |\n| `afc516`   | Wrong email address or password.                                                                |\n| `afc536`   | Invalid Two Factor verification code.                                                           |\n| `afc526`   | Please provide a Two Factor verification code.                                                  |\n| `afc516`   | The two factor pin is invalid                                                                   |\n| `ffffff`   | An unexpected issue occured.                                                                    |\n| `fcd8ef`   | Access denied.                                                                                  |\n| `fcd8ff`   | Access disabled.                                                                                |\n| `cabbeb`   | A card with the same identifiers was already enrolled.                                          |\n| `bb4fff`   | Please authorize Kisi for Bluetooth.                                                            |\n| `bb5bff`   | No nearby Kisi reader found. Try enabling Bluetooth on your device.                             |\n| `bb4bff`   | Please enable Bluetooth.                                                                        |\n| `a7793f`   | Please authorize Kisi for location services.                                                    |\n| `a3799f`   | Please enable your location services.                                                           |\n| `a3793f`   | Please enable your location services.                                                           |\n| `f298cf`   | The place has disabled all links for you.                                                       |\n| `f298df`   | Your access rights for this place do not include links.                                         |\n| `f298bf`   | Your access right is invalid.                                                                   |\n| `f01337`   | Your group's access rights for this place do not include apps.                                  |\n| `34bd8f`   | Your device is not the primary one.                                                             |\n| `facced`   | Unable to decode the certificate.                                                               |\n| `bbb99f`   | Your location is not valid.                                                                     |\n| `bbb93f`   | The location of the lock is invalid.                                                            |\n| `a3995f`   | You are too far away.                                                                           |\n| `bb4faa`   | You're not close enough to the door.                                                            |\n| `bbc93f`   | In-app access is disabled by the organization. Please tap your phone against the reader.        |\n| `34ffaa`   | Your access is not allowed at this moment, please try again later.                              |\n| `f35ade`   | Your access is no longer valid.                                                                 |\n| `f398de`   | Your access is invalid.,                                                                        |\n| `f358de`   | Your access is not yet valid, please try again later.                                           |\n| `fad334`   | An error occurred permitting the the elevator stop.                                             |\n| `fad121`   | The elevator stop was not found.                                                                |\n| `fad122`   | The elevator stop was not configured.                                                           |\n| `fad123`   | The elevator stops are locked down.                                                             |\n| `fad124`   | The elevator stop was on schedule.                                                              |\n| `fad002`   | The place is currently locked down.                                                             |\n| `ff420a`   | The door has no assigned Kisi controller.                                                       |\n| `fad001`   | The door is currently locked down.                                                              |\n| `fad105`   | The door is improperly configured.                                                              |\n| `fad10e`   | The door could not be found.                                                                    |\n| `fad110`   | The door is already scheduled to be unlocked.                                                   |\n| `fad137`   | The access was denied by the zone.                                                              |\n| `fad146`   | The third party zone was overriden but it is still armed.                                       |\n| `fad10f`   | An error occurred connecting to the wireless lock.                                              |\n| `fad106`   | An error occurred finding the wireless lock.                                                    |\n| `fad107`   | The wireless lock is offline.                                                                   |\n| `fad112`   | An unlock is already in progress for the wireless lock.                                         |\n| `fac001`   | The Kisi controller is currently unavailable.                                                   |\n| `fac002`   | The Kisi controller is currently unavailable.                                                   |\n| `fac003`   | The Kisi device is currently unavailable.                                                       |\n| `fac004`   | The Kisi device is currently unavailable.                                                       |\n| `fad108`   | The Kisi controller is not yet configured.                                                      |\n| `ecc123`   | The Kisi controller encountered an unhandled error.                                             |\n| `fbc000`   | The Kisi controller firmware is being updated. This will take a few seconds. Please retry then. |\n| `aaa345`   | The zone has no assigned zone controller.                                                       |\n| `fad126`   | The zone could not be found.                                                                    |\n| `fad129`   | The alarm controller is currently unavailable.                                                  |\n| `adf234`   | An error occurred resetting the zone.                                                           |\n| `fad144`   | The third party alarm is still in violation.                                                    |\n| `abbb11`   | The integration partner experienced an error.                                                   |\n| `abcc11`   | An integration partner resource could not be found.                                             |\n| `abdd11`   | The communication with the integration partner failed.                                          |\n| `abee11`   | Authorization with the integration partner failed.                                              |\n| `abfe11`   | The integration is not acceptable                                                               |\n| `abff11`   | The integration is disabled.                                                                    |\n\n\nContact Support:\n Name: Kisi Support\n Email: support@getkisi.com",
+      "type": "text/plain"
+    }
+  }
+}

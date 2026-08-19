@@ -1,0 +1,785 @@
+{
+  "item": [
+    {
+      "id": "97230976-01d5-4862-a785-752953e7e642",
+      "name": "Event sets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "187952ee-921b-476f-83c7-188c6b388781",
+          "name": "Create event set",
+          "request": {
+            "name": "Create event set",
+            "description": {
+              "content": "This endpoint can be used to create an event set that can later be paginated through with a cursor. The set will be persisted and available for pagination for approximately 24 hours.\n\nWhen creating the event set the events may not be immediately available. Check the `status` property to determine if the events are available.\n- If `in_progress`, periodically check `GET /event_sets/{id}` until status is `finished`.\n- If `finished`, `events` will contain the events, and `cursor` will contain the cursor used to paginate the set.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_sets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_set\": {\n    \"interval\": \"<string>\",\n    \"event_actor_id\": \"<integer,null>\",\n    \"event_actor_type\": \"<string,null>\",\n    \"event_authenticated_by_id\": \"<integer,null>\",\n    \"event_authenticated_by_type\": \"<string,null>\",\n    \"event_object_id\": \"<integer,null>\",\n    \"event_object_type\": \"<string,null>\",\n    \"event_place_id\": \"<integer,null>\",\n    \"event_success\": \"<boolean,null>\",\n    \"event_sequence\": \"<string,null>\",\n    \"event_type\": \"<string,null>\",\n    \"event_uuid\": \"<string,null>\",\n    \"place_id\": \"<integer,null>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8a862c9e-7dfe-41e4-8e7b-1416c46282b1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_set\": {\n    \"interval\": \"<string>\",\n    \"event_actor_id\": \"<integer,null>\",\n    \"event_actor_type\": \"<string,null>\",\n    \"event_authenticated_by_id\": \"<integer,null>\",\n    \"event_authenticated_by_type\": \"<string,null>\",\n    \"event_object_id\": \"<integer,null>\",\n    \"event_object_type\": \"<string,null>\",\n    \"event_place_id\": \"<integer,null>\",\n    \"event_success\": \"<boolean,null>\",\n    \"event_sequence\": \"<string,null>\",\n    \"event_type\": \"<string,null>\",\n    \"event_uuid\": \"<string,null>\",\n    \"place_id\": \"<integer,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1120,\n  \"created_at\": \"1988-05-24T10:45:52.963Z\",\n  \"status\": \"finished\",\n  \"interval\": \"string\",\n  \"event_actor_id\": 9573,\n  \"event_actor_type\": \"string\",\n  \"event_authenticated_by_id\": 7229,\n  \"event_authenticated_by_type\": \"string\",\n  \"event_object_id\": 6607,\n  \"event_object_type\": \"string\",\n  \"event_place_id\": 4878,\n  \"event_success\": true,\n  \"event_sequence\": \"string\",\n  \"event_type\": \"string\",\n  \"event_uuid\": \"string\",\n  \"cursor\": \"string\",\n  \"place_id\": 6940,\n  \"events\": [\n    {\n      \"uuid\": \"d4652864-a4a7-5b8f-d2a9-dd4585cc03f3\",\n      \"type\": \"string\",\n      \"actor_type\": \"MarketplaceInstallation\",\n      \"actor_id\": 6902,\n      \"actor_name\": \"string\",\n      \"actor_email\": \"string\",\n      \"authenticated_by_type\": \"null\",\n      \"authenticated_by_id\": 8663,\n      \"authorized_by_type\": \"string\",\n      \"authorized_by_id\": 9599,\n      \"authorized_by_role_id\": \"string\",\n      \"object_type\": \"string\",\n      \"object_id\": 6250,\n      \"object_name\": \"string\",\n      \"action\": \"string\",\n      \"created_at\": \"1996-05-03T03:37:53.326Z\",\n      \"message\": \"string\",\n      \"success\": false,\n      \"code\": \"string\",\n      \"sequence\": \"string\",\n      \"organization_id\": 5895,\n      \"place_id\": 1308,\n      \"error_code\": \"string\",\n      \"error_message\": \"string\",\n      \"details\": {},\n      \"via\": {},\n      \"object\": {}\n    },\n    {\n      \"uuid\": \"e9fdaeed-f0ad-6328-4533-630f3ef7a5d0\",\n      \"type\": \"string\",\n      \"actor_type\": \"User\",\n      \"actor_id\": 8817,\n      \"actor_name\": \"string\",\n      \"actor_email\": \"string\",\n      \"authenticated_by_type\": \"GroupLink\",\n      \"authenticated_by_id\": 4092,\n      \"authorized_by_type\": \"string\",\n      \"authorized_by_id\": 606,\n      \"authorized_by_role_id\": \"string\",\n      \"object_type\": \"string\",\n      \"object_id\": 1710,\n      \"object_name\": \"string\",\n      \"action\": \"string\",\n      \"created_at\": \"2015-10-26T12:26:28.599Z\",\n      \"message\": \"string\",\n      \"success\": true,\n      \"code\": \"string\",\n      \"sequence\": \"string\",\n      \"organization_id\": 708,\n      \"place_id\": 1663,\n      \"error_code\": \"string\",\n      \"error_message\": \"string\",\n      \"details\": {},\n      \"via\": {},\n      \"object\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae3952a3-e450-4b04-884d-0db0b9b87617",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_set\": {\n    \"interval\": \"<string>\",\n    \"event_actor_id\": \"<integer,null>\",\n    \"event_actor_type\": \"<string,null>\",\n    \"event_authenticated_by_id\": \"<integer,null>\",\n    \"event_authenticated_by_type\": \"<string,null>\",\n    \"event_object_id\": \"<integer,null>\",\n    \"event_object_type\": \"<string,null>\",\n    \"event_place_id\": \"<integer,null>\",\n    \"event_success\": \"<boolean,null>\",\n    \"event_sequence\": \"<string,null>\",\n    \"event_type\": \"<string,null>\",\n    \"event_uuid\": \"<string,null>\",\n    \"place_id\": \"<integer,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76698f15-f9f9-40af-b2e4-79f6d2e214c6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_set\": {\n    \"interval\": \"<string>\",\n    \"event_actor_id\": \"<integer,null>\",\n    \"event_actor_type\": \"<string,null>\",\n    \"event_authenticated_by_id\": \"<integer,null>\",\n    \"event_authenticated_by_type\": \"<string,null>\",\n    \"event_object_id\": \"<integer,null>\",\n    \"event_object_type\": \"<string,null>\",\n    \"event_place_id\": \"<integer,null>\",\n    \"event_success\": \"<boolean,null>\",\n    \"event_sequence\": \"<string,null>\",\n    \"event_type\": \"<string,null>\",\n    \"event_uuid\": \"<string,null>\",\n    \"place_id\": \"<integer,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f565a3ba-0f24-46e1-94b6-aead294da018",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_set\": {\n    \"interval\": \"<string>\",\n    \"event_actor_id\": \"<integer,null>\",\n    \"event_actor_type\": \"<string,null>\",\n    \"event_authenticated_by_id\": \"<integer,null>\",\n    \"event_authenticated_by_type\": \"<string,null>\",\n    \"event_object_id\": \"<integer,null>\",\n    \"event_object_type\": \"<string,null>\",\n    \"event_place_id\": \"<integer,null>\",\n    \"event_success\": \"<boolean,null>\",\n    \"event_sequence\": \"<string,null>\",\n    \"event_type\": \"<string,null>\",\n    \"event_uuid\": \"<string,null>\",\n    \"place_id\": \"<integer,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"email\": [\n      \"can't be blank or invalid\"\n    ],\n    \"password\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1faee9b-06e3-4d9b-8ed1-7653821ff6f9",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_set\": {\n    \"interval\": \"<string>\",\n    \"event_actor_id\": \"<integer,null>\",\n    \"event_actor_type\": \"<string,null>\",\n    \"event_authenticated_by_id\": \"<integer,null>\",\n    \"event_authenticated_by_type\": \"<string,null>\",\n    \"event_object_id\": \"<integer,null>\",\n    \"event_object_type\": \"<string,null>\",\n    \"event_place_id\": \"<integer,null>\",\n    \"event_success\": \"<boolean,null>\",\n    \"event_sequence\": \"<string,null>\",\n    \"event_type\": \"<string,null>\",\n    \"event_uuid\": \"<string,null>\",\n    \"place_id\": \"<integer,null>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b53bf85-38cb-49a7-a7d7-7a0eb9ca4d20",
+          "name": "Fetch event set",
+          "request": {
+            "name": "Fetch event set",
+            "description": {},
+            "url": {
+              "path": [
+                "event_sets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d3ed8caf-98e4-4eab-8899-8ca154d518c9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1120,\n  \"created_at\": \"1988-05-24T10:45:52.963Z\",\n  \"status\": \"finished\",\n  \"interval\": \"string\",\n  \"event_actor_id\": 9573,\n  \"event_actor_type\": \"string\",\n  \"event_authenticated_by_id\": 7229,\n  \"event_authenticated_by_type\": \"string\",\n  \"event_object_id\": 6607,\n  \"event_object_type\": \"string\",\n  \"event_place_id\": 4878,\n  \"event_success\": true,\n  \"event_sequence\": \"string\",\n  \"event_type\": \"string\",\n  \"event_uuid\": \"string\",\n  \"cursor\": \"string\",\n  \"place_id\": 6940,\n  \"events\": [\n    {\n      \"uuid\": \"d4652864-a4a7-5b8f-d2a9-dd4585cc03f3\",\n      \"type\": \"string\",\n      \"actor_type\": \"MarketplaceInstallation\",\n      \"actor_id\": 6902,\n      \"actor_name\": \"string\",\n      \"actor_email\": \"string\",\n      \"authenticated_by_type\": \"null\",\n      \"authenticated_by_id\": 8663,\n      \"authorized_by_type\": \"string\",\n      \"authorized_by_id\": 9599,\n      \"authorized_by_role_id\": \"string\",\n      \"object_type\": \"string\",\n      \"object_id\": 6250,\n      \"object_name\": \"string\",\n      \"action\": \"string\",\n      \"created_at\": \"1996-05-03T03:37:53.326Z\",\n      \"message\": \"string\",\n      \"success\": false,\n      \"code\": \"string\",\n      \"sequence\": \"string\",\n      \"organization_id\": 5895,\n      \"place_id\": 1308,\n      \"error_code\": \"string\",\n      \"error_message\": \"string\",\n      \"details\": {},\n      \"via\": {},\n      \"object\": {}\n    },\n    {\n      \"uuid\": \"e9fdaeed-f0ad-6328-4533-630f3ef7a5d0\",\n      \"type\": \"string\",\n      \"actor_type\": \"User\",\n      \"actor_id\": 8817,\n      \"actor_name\": \"string\",\n      \"actor_email\": \"string\",\n      \"authenticated_by_type\": \"GroupLink\",\n      \"authenticated_by_id\": 4092,\n      \"authorized_by_type\": \"string\",\n      \"authorized_by_id\": 606,\n      \"authorized_by_role_id\": \"string\",\n      \"object_type\": \"string\",\n      \"object_id\": 1710,\n      \"object_name\": \"string\",\n      \"action\": \"string\",\n      \"created_at\": \"2015-10-26T12:26:28.599Z\",\n      \"message\": \"string\",\n      \"success\": true,\n      \"code\": \"string\",\n      \"sequence\": \"string\",\n      \"organization_id\": 708,\n      \"place_id\": 1663,\n      \"error_code\": \"string\",\n      \"error_message\": \"string\",\n      \"details\": {},\n      \"via\": {},\n      \"object\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfcd6990-b126-42e5-9caa-b96642e02e9b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd052989-013c-4104-8ee9-4c76de7c0b6b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2e8d424-3dd0-4693-b4c3-f245b31d932a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "302ad0b0-bb93-45ae-9266-947bdd2a996a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69d2866f-e352-43ae-a1bd-885003ae47a2",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_sets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kisi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1a58bdc8-9830-418e-8827-9f907686c691",
+    "name": "Kisi Calendars Event sets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Introduction\n\nWelcome to the Kisi API documentation. Before you read further, please read\nthe general [Kisi Docs portal](https://docs.kisi.io/).\n\n<!-- theme: info -->\n> If you want to be notified by email about updates to our API, please subscribe to our\n> [newsletter](https://2e2bc.share.hsforms.com/2OsdqtC8xRHGQ2yaS16AF7w).\n\n### Format\n\nThe Kisi API supports JSON only, so please set `Accept` and `Content-Type`\nto `application/json`. All requests and responses will use JSON as the\nformat for any data encompassed in the body of requests and responses.\n\n```http\n<METHOD> <URL> HTTP/1.1\nAccept: application/json\nContent-Type: application/json\n```\n\n### Authentication\n\nMost calls to the API will require an authenticated user. If such a user\nis not present, you will receive a 401 response.\nFor more information about authentication, see the [Kisi Docs portal](https://docs.kisi.io/api/get_started/add_necessary_headers).\n\nAPI calls must be made using HTTPS. Any calls made over plain HTTP will fail.\n\n### Rate limits\n\nFor authenticated API requests, you can make up to 5 requests per second,\nper user. Note that the limit applies per user, so requests made using\ndifferent logins for the same user share the same quota.\n\nFor unauthenticated requests, you can make up to 5 requests per second, per\nIP address.\n\nThe following endpoints have custom rate limits:\n\n| Endpoint                   | Limit            |\n|----------------------------|------------------|\n| `POST /event_sets`         | 1 per second     |\n| `POST /signed_upload_urls` | 1 per 10 seconds |\n\nIf you exceed the rate limit, a 429 response will be returned.\n\nSome best practices:\n- If you're making requests for a single user, do so serially, *not* concurrently.\n- If you're making a large number of requests for a single user, wait at least one second between each request.\n\nWe reserve the right to change these limits as needed to ensure availability.\n\n### Deprecations\n\nIn the event that some part of the API has to be deprecated, we do the following:\n\n  1. Return the `Deprecation` header with the date of when the endpoint is deprecated.\n  2. Return the `Sunset` header with the date of when the endpoint can be expected to not function anymore.\n  3. When the `Sunset` date is reached, the endpoint may go away at any time.\n\nWe recommend listening to these headers to avoid disruptions.\n\n### Error codes\n\nSome endpoints return an error code and a message. In the table below all error codes are listed.\n\n| Error code | Message                                                                                         |\n|------------|-------------------------------------------------------------------------------------------------|\n| `afc507`   | The authentication link is not valid.                                                           |\n| `afc546`   | Invalid Two Factor backup code.                                                                 |\n| `faa9ff`   | The card is not activated.                                                                      |\n| `faa9ef`   | The card was not found.                                                                         |\n| `afc496`   | Access denied.                                                                                  |\n| `f29aef`   | Your link is invalid.                                                                           |\n| `afc516`   | Wrong email address or password.                                                                |\n| `afc536`   | Invalid Two Factor verification code.                                                           |\n| `afc526`   | Please provide a Two Factor verification code.                                                  |\n| `afc516`   | The two factor pin is invalid                                                                   |\n| `ffffff`   | An unexpected issue occured.                                                                    |\n| `fcd8ef`   | Access denied.                                                                                  |\n| `fcd8ff`   | Access disabled.                                                                                |\n| `cabbeb`   | A card with the same identifiers was already enrolled.                                          |\n| `bb4fff`   | Please authorize Kisi for Bluetooth.                                                            |\n| `bb5bff`   | No nearby Kisi reader found. Try enabling Bluetooth on your device.                             |\n| `bb4bff`   | Please enable Bluetooth.                                                                        |\n| `a7793f`   | Please authorize Kisi for location services.                                                    |\n| `a3799f`   | Please enable your location services.                                                           |\n| `a3793f`   | Please enable your location services.                                                           |\n| `f298cf`   | The place has disabled all links for you.                                                       |\n| `f298df`   | Your access rights for this place do not include links.                                         |\n| `f298bf`   | Your access right is invalid.                                                                   |\n| `f01337`   | Your group's access rights for this place do not include apps.                                  |\n| `34bd8f`   | Your device is not the primary one.                                                             |\n| `facced`   | Unable to decode the certificate.                                                               |\n| `bbb99f`   | Your location is not valid.                                                                     |\n| `bbb93f`   | The location of the lock is invalid.                                                            |\n| `a3995f`   | You are too far away.                                                                           |\n| `bb4faa`   | You're not close enough to the door.                                                            |\n| `bbc93f`   | In-app access is disabled by the organization. Please tap your phone against the reader.        |\n| `34ffaa`   | Your access is not allowed at this moment, please try again later.                              |\n| `f35ade`   | Your access is no longer valid.                                                                 |\n| `f398de`   | Your access is invalid.,                                                                        |\n| `f358de`   | Your access is not yet valid, please try again later.                                           |\n| `fad334`   | An error occurred permitting the the elevator stop.                                             |\n| `fad121`   | The elevator stop was not found.                                                                |\n| `fad122`   | The elevator stop was not configured.                                                           |\n| `fad123`   | The elevator stops are locked down.                                                             |\n| `fad124`   | The elevator stop was on schedule.                                                              |\n| `fad002`   | The place is currently locked down.                                                             |\n| `ff420a`   | The door has no assigned Kisi controller.                                                       |\n| `fad001`   | The door is currently locked down.                                                              |\n| `fad105`   | The door is improperly configured.                                                              |\n| `fad10e`   | The door could not be found.                                                                    |\n| `fad110`   | The door is already scheduled to be unlocked.                                                   |\n| `fad137`   | The access was denied by the zone.                                                              |\n| `fad146`   | The third party zone was overriden but it is still armed.                                       |\n| `fad10f`   | An error occurred connecting to the wireless lock.                                              |\n| `fad106`   | An error occurred finding the wireless lock.                                                    |\n| `fad107`   | The wireless lock is offline.                                                                   |\n| `fad112`   | An unlock is already in progress for the wireless lock.                                         |\n| `fac001`   | The Kisi controller is currently unavailable.                                                   |\n| `fac002`   | The Kisi controller is currently unavailable.                                                   |\n| `fac003`   | The Kisi device is currently unavailable.                                                       |\n| `fac004`   | The Kisi device is currently unavailable.                                                       |\n| `fad108`   | The Kisi controller is not yet configured.                                                      |\n| `ecc123`   | The Kisi controller encountered an unhandled error.                                             |\n| `fbc000`   | The Kisi controller firmware is being updated. This will take a few seconds. Please retry then. |\n| `aaa345`   | The zone has no assigned zone controller.                                                       |\n| `fad126`   | The zone could not be found.                                                                    |\n| `fad129`   | The alarm controller is currently unavailable.                                                  |\n| `adf234`   | An error occurred resetting the zone.                                                           |\n| `fad144`   | The third party alarm is still in violation.                                                    |\n| `abbb11`   | The integration partner experienced an error.                                                   |\n| `abcc11`   | An integration partner resource could not be found.                                             |\n| `abdd11`   | The communication with the integration partner failed.                                          |\n| `abee11`   | Authorization with the integration partner failed.                                              |\n| `abfe11`   | The integration is not acceptable                                                               |\n| `abff11`   | The integration is disabled.                                                                    |\n\n\nContact Support:\n Name: Kisi Support\n Email: support@getkisi.com",
+      "type": "text/plain"
+    }
+  }
+}

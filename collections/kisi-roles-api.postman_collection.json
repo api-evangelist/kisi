@@ -1,0 +1,379 @@
+{
+  "item": [
+    {
+      "id": "ec5fd0ab-986f-4351-8900-bac8172eaade",
+      "name": "Roles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd127a7a-476c-4ee2-812f-b3b60f0cf801",
+          "name": "Fetch roles",
+          "request": {
+            "name": "Fetch roles",
+            "description": {},
+            "url": {
+              "path": [
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7f93ce67-c273-4c4f-a90d-957e13407970",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"resource_type\": \"string\",\n    \"applies_to\": \"Group\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"custom\": true,\n    \"permissions\": {\n      \"access_keys_read\": false,\n      \"access_keys_write\": true,\n      \"amenities_read\": false,\n      \"amenities_write\": true,\n      \"analytics_read\": true,\n      \"apple_passes_read\": true,\n      \"apple_passes_write\": false,\n      \"bookings_read\": true,\n      \"bookings_write\": true,\n      \"camera_snapshot_sets_read\": false,\n      \"camera_snapshots_read\": true,\n      \"camera_snapshots_write\": true,\n      \"cameras_read\": false,\n      \"cameras_write\": false,\n      \"capacities_read\": false,\n      \"capacities_write\": true,\n      \"card_assignments_read\": true,\n      \"card_assignments_write\": false,\n      \"cards_activate\": true,\n      \"cards_read\": true,\n      \"cards_write\": true,\n      \"communication_policies_read\": false,\n      \"communication_policies_write\": true,\n      \"csv_card_import_read\": false,\n      \"csv_card_import_write\": false,\n      \"csv_user_import_read\": true,\n      \"csv_user_import_write\": false,\n      \"custom_roles_read\": false,\n      \"custom_roles_write\": false,\n      \"dashboards_read\": true,\n      \"elevator_stops_permit\": true,\n      \"elevator_stops_read\": true,\n      \"elevator_stops_write\": false,\n      \"elevators_read\": true,\n      \"elevators_write\": false,\n      \"event_retention_policies_read\": true,\n      \"event_retention_policies_write\": false,\n      \"events_read\": true,\n      \"floors_read\": false,\n      \"floors_write\": true,\n      \"group_elevator_stops_read\": false,\n      \"group_elevator_stops_write\": false,\n      \"group_links_read\": false,\n      \"group_links_write\": true,\n      \"group_locks_read\": false,\n      \"group_locks_write\": true,\n      \"group_terminals_read\": true,\n      \"group_terminals_write\": false,\n      \"group_zones_read\": true,\n      \"group_zones_write\": false,\n      \"groups_read\": false,\n      \"groups_write\": false,\n      \"guests_read\": false,\n      \"guests_write\": true,\n      \"hardware_read\": true,\n      \"hardware_write\": true,\n      \"third_party_hf_uid_read_configurations_read\": false,\n      \"third_party_hf_uid_read_configurations_write\": true,\n      \"incident_occurrences_read\": false,\n      \"incident_policies_read\": true,\n      \"incident_policies_write\": false,\n      \"incidents_read\": false,\n      \"incidents_write\": false,\n      \"integrations_read\": false,\n      \"integrations_write\": false,\n      \"intercom_assignment_read\": false,\n      \"intercom_assignment_write\": true,\n      \"intercom_completed_call_stream_read\": true,\n      \"invites_write\": false,\n      \"kiosk_shortcuts_read\": false,\n      \"kiosk_shortcuts_write\": true,\n      \"locks_read\": true,\n      \"locks_unlock\": false,\n      \"locks_write\": false,\n      \"logins_read\": true,\n      \"logins_write\": false,\n      \"managed_devices_read\": true,\n      \"managed_devices_write\": true,\n      \"marketplace_app_shares_read\": false,\n      \"marketplace_app_shares_write\": false,\n      \"marketplace_installations_read\": true,\n      \"marketplace_installations_write\": true,\n      \"marketplace_shortcuts_read\": true,\n      \"marketplace_shortcuts_write\": true,\n      \"mobile_cache_policies_read\": true,\n      \"mobile_cache_policies_write\": true,\n      \"place_dashboard_read\": true,\n      \"places_read\": false,\n      \"places_write\": true,\n      \"reports_read\": true,\n      \"reports_write\": false,\n      \"role_assignments_read\": false,\n      \"role_assignments_write\": false,\n      \"scanned_card_read\": true,\n      \"scanned_card_write\": false,\n      \"scheduled_report_read\": false,\n      \"scheduled_report_write\": true,\n      \"schedules_read\": true,\n      \"schedules_write\": false,\n      \"shares_read\": true,\n      \"shares_write\": false,\n      \"subscriptions_read\": true,\n      \"team_memberships_read\": true,\n      \"team_memberships_write\": false,\n      \"teams_read\": true,\n      \"teams_write\": false,\n      \"terminals_read\": true,\n      \"terminals_trigger\": false,\n      \"terminals_write\": false,\n      \"users_read\": false,\n      \"users_write\": false,\n      \"visualization_page_reporters_read\": false,\n      \"visualization_page_reporters_write\": false,\n      \"visualization_page_shares_read\": true,\n      \"visualization_page_shares_write\": true,\n      \"zones_override\": false,\n      \"zones_read\": false,\n      \"zones_reset\": false,\n      \"zones_write\": false\n    },\n    \"custom_role_id\": 8886\n  },\n  {\n    \"id\": \"string\",\n    \"resource_type\": \"string\",\n    \"applies_to\": \"Group\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"custom\": false,\n    \"permissions\": {\n      \"access_keys_read\": true,\n      \"access_keys_write\": false,\n      \"amenities_read\": true,\n      \"amenities_write\": true,\n      \"analytics_read\": false,\n      \"apple_passes_read\": true,\n      \"apple_passes_write\": true,\n      \"bookings_read\": false,\n      \"bookings_write\": false,\n      \"camera_snapshot_sets_read\": false,\n      \"camera_snapshots_read\": true,\n      \"camera_snapshots_write\": true,\n      \"cameras_read\": true,\n      \"cameras_write\": false,\n      \"capacities_read\": true,\n      \"capacities_write\": false,\n      \"card_assignments_read\": false,\n      \"card_assignments_write\": true,\n      \"cards_activate\": true,\n      \"cards_read\": true,\n      \"cards_write\": true,\n      \"communication_policies_read\": true,\n      \"communication_policies_write\": false,\n      \"csv_card_import_read\": false,\n      \"csv_card_import_write\": true,\n      \"csv_user_import_read\": true,\n      \"csv_user_import_write\": true,\n      \"custom_roles_read\": false,\n      \"custom_roles_write\": true,\n      \"dashboards_read\": true,\n      \"elevator_stops_permit\": true,\n      \"elevator_stops_read\": false,\n      \"elevator_stops_write\": false,\n      \"elevators_read\": false,\n      \"elevators_write\": false,\n      \"event_retention_policies_read\": false,\n      \"event_retention_policies_write\": true,\n      \"events_read\": true,\n      \"floors_read\": true,\n      \"floors_write\": false,\n      \"group_elevator_stops_read\": true,\n      \"group_elevator_stops_write\": true,\n      \"group_links_read\": true,\n      \"group_links_write\": false,\n      \"group_locks_read\": false,\n      \"group_locks_write\": true,\n      \"group_terminals_read\": true,\n      \"group_terminals_write\": true,\n      \"group_zones_read\": false,\n      \"group_zones_write\": false,\n      \"groups_read\": false,\n      \"groups_write\": true,\n      \"guests_read\": false,\n      \"guests_write\": false,\n      \"hardware_read\": true,\n      \"hardware_write\": false,\n      \"third_party_hf_uid_read_configurations_read\": true,\n      \"third_party_hf_uid_read_configurations_write\": true,\n      \"incident_occurrences_read\": false,\n      \"incident_policies_read\": false,\n      \"incident_policies_write\": false,\n      \"incidents_read\": false,\n      \"incidents_write\": true,\n      \"integrations_read\": true,\n      \"integrations_write\": false,\n      \"intercom_assignment_read\": false,\n      \"intercom_assignment_write\": true,\n      \"intercom_completed_call_stream_read\": false,\n      \"invites_write\": false,\n      \"kiosk_shortcuts_read\": true,\n      \"kiosk_shortcuts_write\": true,\n      \"locks_read\": false,\n      \"locks_unlock\": true,\n      \"locks_write\": false,\n      \"logins_read\": false,\n      \"logins_write\": false,\n      \"managed_devices_read\": false,\n      \"managed_devices_write\": false,\n      \"marketplace_app_shares_read\": true,\n      \"marketplace_app_shares_write\": true,\n      \"marketplace_installations_read\": false,\n      \"marketplace_installations_write\": false,\n      \"marketplace_shortcuts_read\": false,\n      \"marketplace_shortcuts_write\": false,\n      \"mobile_cache_policies_read\": true,\n      \"mobile_cache_policies_write\": false,\n      \"place_dashboard_read\": true,\n      \"places_read\": false,\n      \"places_write\": true,\n      \"reports_read\": true,\n      \"reports_write\": true,\n      \"role_assignments_read\": false,\n      \"role_assignments_write\": false,\n      \"scanned_card_read\": true,\n      \"scanned_card_write\": false,\n      \"scheduled_report_read\": false,\n      \"scheduled_report_write\": true,\n      \"schedules_read\": true,\n      \"schedules_write\": false,\n      \"shares_read\": true,\n      \"shares_write\": true,\n      \"subscriptions_read\": true,\n      \"team_memberships_read\": true,\n      \"team_memberships_write\": false,\n      \"teams_read\": false,\n      \"teams_write\": false,\n      \"terminals_read\": false,\n      \"terminals_trigger\": false,\n      \"terminals_write\": false,\n      \"users_read\": false,\n      \"users_write\": false,\n      \"visualization_page_reporters_read\": false,\n      \"visualization_page_reporters_write\": true,\n      \"visualization_page_shares_read\": true,\n      \"visualization_page_shares_write\": true,\n      \"zones_override\": true,\n      \"zones_read\": true,\n      \"zones_reset\": true,\n      \"zones_write\": true\n    },\n    \"custom_role_id\": 4297\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1dc159fc-6aa7-492a-8b3d-c42ee5def3b0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d8689b7-9a6f-4847-b344-1dc99b020cdb",
+          "name": "Fetch role",
+          "request": {
+            "name": "Fetch role",
+            "description": {},
+            "url": {
+              "path": [
+                "roles",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e14d7add-9c2d-4edb-9026-ca40e3dfb1c9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"resource_type\": \"string\",\n  \"applies_to\": \"Group\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"custom\": false,\n  \"permissions\": {\n    \"access_keys_read\": false,\n    \"access_keys_write\": false,\n    \"amenities_read\": true,\n    \"amenities_write\": false,\n    \"analytics_read\": true,\n    \"apple_passes_read\": false,\n    \"apple_passes_write\": true,\n    \"bookings_read\": false,\n    \"bookings_write\": true,\n    \"camera_snapshot_sets_read\": true,\n    \"camera_snapshots_read\": true,\n    \"camera_snapshots_write\": true,\n    \"cameras_read\": true,\n    \"cameras_write\": true,\n    \"capacities_read\": false,\n    \"capacities_write\": false,\n    \"card_assignments_read\": true,\n    \"card_assignments_write\": false,\n    \"cards_activate\": false,\n    \"cards_read\": false,\n    \"cards_write\": true,\n    \"communication_policies_read\": false,\n    \"communication_policies_write\": true,\n    \"csv_card_import_read\": true,\n    \"csv_card_import_write\": true,\n    \"csv_user_import_read\": true,\n    \"csv_user_import_write\": true,\n    \"custom_roles_read\": true,\n    \"custom_roles_write\": false,\n    \"dashboards_read\": false,\n    \"elevator_stops_permit\": true,\n    \"elevator_stops_read\": false,\n    \"elevator_stops_write\": true,\n    \"elevators_read\": false,\n    \"elevators_write\": false,\n    \"event_retention_policies_read\": false,\n    \"event_retention_policies_write\": true,\n    \"events_read\": false,\n    \"floors_read\": false,\n    \"floors_write\": true,\n    \"group_elevator_stops_read\": false,\n    \"group_elevator_stops_write\": false,\n    \"group_links_read\": true,\n    \"group_links_write\": false,\n    \"group_locks_read\": true,\n    \"group_locks_write\": true,\n    \"group_terminals_read\": false,\n    \"group_terminals_write\": true,\n    \"group_zones_read\": true,\n    \"group_zones_write\": false,\n    \"groups_read\": true,\n    \"groups_write\": true,\n    \"guests_read\": false,\n    \"guests_write\": true,\n    \"hardware_read\": false,\n    \"hardware_write\": false,\n    \"third_party_hf_uid_read_configurations_read\": false,\n    \"third_party_hf_uid_read_configurations_write\": true,\n    \"incident_occurrences_read\": true,\n    \"incident_policies_read\": true,\n    \"incident_policies_write\": false,\n    \"incidents_read\": true,\n    \"incidents_write\": false,\n    \"integrations_read\": false,\n    \"integrations_write\": false,\n    \"intercom_assignment_read\": true,\n    \"intercom_assignment_write\": false,\n    \"intercom_completed_call_stream_read\": true,\n    \"invites_write\": true,\n    \"kiosk_shortcuts_read\": false,\n    \"kiosk_shortcuts_write\": false,\n    \"locks_read\": true,\n    \"locks_unlock\": false,\n    \"locks_write\": false,\n    \"logins_read\": true,\n    \"logins_write\": false,\n    \"managed_devices_read\": false,\n    \"managed_devices_write\": true,\n    \"marketplace_app_shares_read\": true,\n    \"marketplace_app_shares_write\": true,\n    \"marketplace_installations_read\": false,\n    \"marketplace_installations_write\": false,\n    \"marketplace_shortcuts_read\": true,\n    \"marketplace_shortcuts_write\": false,\n    \"mobile_cache_policies_read\": false,\n    \"mobile_cache_policies_write\": false,\n    \"place_dashboard_read\": true,\n    \"places_read\": true,\n    \"places_write\": false,\n    \"reports_read\": true,\n    \"reports_write\": false,\n    \"role_assignments_read\": true,\n    \"role_assignments_write\": false,\n    \"scanned_card_read\": true,\n    \"scanned_card_write\": false,\n    \"scheduled_report_read\": false,\n    \"scheduled_report_write\": false,\n    \"schedules_read\": false,\n    \"schedules_write\": true,\n    \"shares_read\": false,\n    \"shares_write\": false,\n    \"subscriptions_read\": false,\n    \"team_memberships_read\": false,\n    \"team_memberships_write\": false,\n    \"teams_read\": true,\n    \"teams_write\": false,\n    \"terminals_read\": false,\n    \"terminals_trigger\": false,\n    \"terminals_write\": true,\n    \"users_read\": true,\n    \"users_write\": false,\n    \"visualization_page_reporters_read\": true,\n    \"visualization_page_reporters_write\": false,\n    \"visualization_page_shares_read\": false,\n    \"visualization_page_shares_write\": false,\n    \"zones_override\": false,\n    \"zones_read\": false,\n    \"zones_reset\": true,\n    \"zones_write\": true\n  },\n  \"custom_role_id\": 8055\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d1482aa-6ddb-4ee8-9c9a-7a4d3c67eed0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1ee057c-194e-4cb5-99db-82ee580f15bd",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Wrong email address or password.\",\n  \"code\": \"afc516\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kisi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2abc0c9a-1630-4677-97d0-9dddbdd8016f",
+    "name": "Kisi Calendars Roles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Introduction\n\nWelcome to the Kisi API documentation. Before you read further, please read\nthe general [Kisi Docs portal](https://docs.kisi.io/).\n\n<!-- theme: info -->\n> If you want to be notified by email about updates to our API, please subscribe to our\n> [newsletter](https://2e2bc.share.hsforms.com/2OsdqtC8xRHGQ2yaS16AF7w).\n\n### Format\n\nThe Kisi API supports JSON only, so please set `Accept` and `Content-Type`\nto `application/json`. All requests and responses will use JSON as the\nformat for any data encompassed in the body of requests and responses.\n\n```http\n<METHOD> <URL> HTTP/1.1\nAccept: application/json\nContent-Type: application/json\n```\n\n### Authentication\n\nMost calls to the API will require an authenticated user. If such a user\nis not present, you will receive a 401 response.\nFor more information about authentication, see the [Kisi Docs portal](https://docs.kisi.io/api/get_started/add_necessary_headers).\n\nAPI calls must be made using HTTPS. Any calls made over plain HTTP will fail.\n\n### Rate limits\n\nFor authenticated API requests, you can make up to 5 requests per second,\nper user. Note that the limit applies per user, so requests made using\ndifferent logins for the same user share the same quota.\n\nFor unauthenticated requests, you can make up to 5 requests per second, per\nIP address.\n\nThe following endpoints have custom rate limits:\n\n| Endpoint                   | Limit            |\n|----------------------------|------------------|\n| `POST /event_sets`         | 1 per second     |\n| `POST /signed_upload_urls` | 1 per 10 seconds |\n\nIf you exceed the rate limit, a 429 response will be returned.\n\nSome best practices:\n- If you're making requests for a single user, do so serially, *not* concurrently.\n- If you're making a large number of requests for a single user, wait at least one second between each request.\n\nWe reserve the right to change these limits as needed to ensure availability.\n\n### Deprecations\n\nIn the event that some part of the API has to be deprecated, we do the following:\n\n  1. Return the `Deprecation` header with the date of when the endpoint is deprecated.\n  2. Return the `Sunset` header with the date of when the endpoint can be expected to not function anymore.\n  3. When the `Sunset` date is reached, the endpoint may go away at any time.\n\nWe recommend listening to these headers to avoid disruptions.\n\n### Error codes\n\nSome endpoints return an error code and a message. In the table below all error codes are listed.\n\n| Error code | Message                                                                                         |\n|------------|-------------------------------------------------------------------------------------------------|\n| `afc507`   | The authentication link is not valid.                                                           |\n| `afc546`   | Invalid Two Factor backup code.                                                                 |\n| `faa9ff`   | The card is not activated.                                                                      |\n| `faa9ef`   | The card was not found.                                                                         |\n| `afc496`   | Access denied.                                                                                  |\n| `f29aef`   | Your link is invalid.                                                                           |\n| `afc516`   | Wrong email address or password.                                                                |\n| `afc536`   | Invalid Two Factor verification code.                                                           |\n| `afc526`   | Please provide a Two Factor verification code.                                                  |\n| `afc516`   | The two factor pin is invalid                                                                   |\n| `ffffff`   | An unexpected issue occured.                                                                    |\n| `fcd8ef`   | Access denied.                                                                                  |\n| `fcd8ff`   | Access disabled.                                                                                |\n| `cabbeb`   | A card with the same identifiers was already enrolled.                                          |\n| `bb4fff`   | Please authorize Kisi for Bluetooth.                                                            |\n| `bb5bff`   | No nearby Kisi reader found. Try enabling Bluetooth on your device.                             |\n| `bb4bff`   | Please enable Bluetooth.                                                                        |\n| `a7793f`   | Please authorize Kisi for location services.                                                    |\n| `a3799f`   | Please enable your location services.                                                           |\n| `a3793f`   | Please enable your location services.                                                           |\n| `f298cf`   | The place has disabled all links for you.                                                       |\n| `f298df`   | Your access rights for this place do not include links.                                         |\n| `f298bf`   | Your access right is invalid.                                                                   |\n| `f01337`   | Your group's access rights for this place do not include apps.                                  |\n| `34bd8f`   | Your device is not the primary one.                                                             |\n| `facced`   | Unable to decode the certificate.                                                               |\n| `bbb99f`   | Your location is not valid.                                                                     |\n| `bbb93f`   | The location of the lock is invalid.                                                            |\n| `a3995f`   | You are too far away.                                                                           |\n| `bb4faa`   | You're not close enough to the door.                                                            |\n| `bbc93f`   | In-app access is disabled by the organization. Please tap your phone against the reader.        |\n| `34ffaa`   | Your access is not allowed at this moment, please try again later.                              |\n| `f35ade`   | Your access is no longer valid.                                                                 |\n| `f398de`   | Your access is invalid.,                                                                        |\n| `f358de`   | Your access is not yet valid, please try again later.                                           |\n| `fad334`   | An error occurred permitting the the elevator stop.                                             |\n| `fad121`   | The elevator stop was not found.                                                                |\n| `fad122`   | The elevator stop was not configured.                                                           |\n| `fad123`   | The elevator stops are locked down.                                                             |\n| `fad124`   | The elevator stop was on schedule.                                                              |\n| `fad002`   | The place is currently locked down.                                                             |\n| `ff420a`   | The door has no assigned Kisi controller.                                                       |\n| `fad001`   | The door is currently locked down.                                                              |\n| `fad105`   | The door is improperly configured.                                                              |\n| `fad10e`   | The door could not be found.                                                                    |\n| `fad110`   | The door is already scheduled to be unlocked.                                                   |\n| `fad137`   | The access was denied by the zone.                                                              |\n| `fad146`   | The third party zone was overriden but it is still armed.                                       |\n| `fad10f`   | An error occurred connecting to the wireless lock.                                              |\n| `fad106`   | An error occurred finding the wireless lock.                                                    |\n| `fad107`   | The wireless lock is offline.                                                                   |\n| `fad112`   | An unlock is already in progress for the wireless lock.                                         |\n| `fac001`   | The Kisi controller is currently unavailable.                                                   |\n| `fac002`   | The Kisi controller is currently unavailable.                                                   |\n| `fac003`   | The Kisi device is currently unavailable.                                                       |\n| `fac004`   | The Kisi device is currently unavailable.                                                       |\n| `fad108`   | The Kisi controller is not yet configured.                                                      |\n| `ecc123`   | The Kisi controller encountered an unhandled error.                                             |\n| `fbc000`   | The Kisi controller firmware is being updated. This will take a few seconds. Please retry then. |\n| `aaa345`   | The zone has no assigned zone controller.                                                       |\n| `fad126`   | The zone could not be found.                                                                    |\n| `fad129`   | The alarm controller is currently unavailable.                                                  |\n| `adf234`   | An error occurred resetting the zone.                                                           |\n| `fad144`   | The third party alarm is still in violation.                                                    |\n| `abbb11`   | The integration partner experienced an error.                                                   |\n| `abcc11`   | An integration partner resource could not be found.                                             |\n| `abdd11`   | The communication with the integration partner failed.                                          |\n| `abee11`   | Authorization with the integration partner failed.                                              |\n| `abfe11`   | The integration is not acceptable                                                               |\n| `abff11`   | The integration is disabled.                                                                    |\n\n\nContact Support:\n Name: Kisi Support\n Email: support@getkisi.com",
+      "type": "text/plain"
+    }
+  }
+}

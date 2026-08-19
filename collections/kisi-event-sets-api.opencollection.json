@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kisi Calendars Event sets API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Event sets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create event set",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kisi.io/event_sets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint can be used to create an event set that can later be paginated through with a cursor. The set will be persisted and available for pagination for approximately 24 hours.\n\nWhen creating the event set the events may not be immediately available. Check the `status` property to determine if the events are available.\n- If `in_progress`, periodically check `GET /event_sets/{id}` until status is `finished`.\n- If `finished`, `events` will contain the events, and `cursor` will contain the cu"
+        },
+        {
+          "info": {
+            "name": "Fetch event set",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/event_sets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the object"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch event set"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

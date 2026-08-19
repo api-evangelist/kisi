@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kisi Calendars Holiday calendars API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Holiday calendars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch holidays",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/holiday_calendars/:region/holidays",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "path",
+                "description": "Specifies the region"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the year"
+              },
+              {
+                "name": "observed",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the observance"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch holidays"
+        },
+        {
+          "info": {
+            "name": "Fetch regions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kisi.io/holiday_calendars/regions",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch regions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -691,3 +691,9 @@ tools:
 - name: fetchWirelessLocks
   description: Fetch wireless locks
   source_operation: openapi/kisi-openapi-original.yml#fetchWirelessLocks
+deployment:
+  mode: none
+  verified: derived
+  tools: 227
+  checked: '2026-08-12'
+  source: catalog MCP census
