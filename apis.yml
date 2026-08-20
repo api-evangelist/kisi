@@ -42,6 +42,15 @@ tags:
 - IoT
 - Building Management
 - Access Control
+- Software-as-a-Service
+tags_raw:
+- Company
+- Physical Access Control
+- Security
+- Identity
+- IoT
+- Building Management
+- Access Control
 - SaaS
 maintainers:
 - FN: Kin Lane
@@ -81,6 +90,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Camera
+  tags_raw:
   - Cameras
   properties:
   - type: OpenAPI
@@ -474,6 +485,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -656,6 +669,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -734,6 +749,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Integration
+  tags_raw:
   - Integrations
   properties:
   - type: OpenAPI
@@ -864,6 +881,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -994,6 +1013,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Role Assignments
+  tags_raw:
   - Role assignments
   properties:
   - type: OpenAPI
@@ -1046,6 +1067,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Scheduled Reports
+  tags_raw:
   - Scheduled reports
   properties:
   - type: OpenAPI
@@ -1176,6 +1199,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Team Memberships
+  tags_raw:
   - Team memberships
   properties:
   - type: OpenAPI
@@ -1202,6 +1227,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
@@ -1254,6 +1281,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
