@@ -735,6 +735,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Holiday Calendars
+  tags_raw:
   - Holiday calendars
   properties:
   - type: OpenAPI
@@ -1025,7 +1027,7 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
-  - Role Assignments
+  - Role assignments
   tags_raw:
   - Role assignments
   properties:
@@ -1079,7 +1081,7 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
-  - Scheduled Reports
+  - Scheduled reports
   tags_raw:
   - Scheduled reports
   properties:
@@ -1211,7 +1213,7 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
-  - Team Memberships
+  - Team memberships
   tags_raw:
   - Team memberships
   properties:
