@@ -1027,7 +1027,7 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
-  - Role assignments
+  - Role Assignments
   tags_raw:
   - Role assignments
   properties:
@@ -1081,7 +1081,7 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
-  - Scheduled reports
+  - Scheduled Reports
   tags_raw:
   - Scheduled reports
   properties:
@@ -1213,7 +1213,7 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
-  - Team memberships
+  - Team Memberships
   tags_raw:
   - Team memberships
   properties:
