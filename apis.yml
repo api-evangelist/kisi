@@ -76,6 +76,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Calendar
+  tags_raw:
   - Calendars
   properties:
   - type: OpenAPI
@@ -341,6 +343,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Controller
+  tags_raw:
   - Controllers
   properties:
   - type: OpenAPI
@@ -1109,6 +1113,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Schedule
+  tags_raw:
   - Schedules
   properties:
   - type: OpenAPI
@@ -1161,6 +1167,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Share
+  tags_raw:
   - Shares
   properties:
   - type: OpenAPI
@@ -1269,6 +1277,8 @@ apis:
   humanURL: https://api.getkisi.com/docs
   baseURL: https://api.kisi.io
   tags:
+  - Terminal
+  tags_raw:
   - Terminals
   properties:
   - type: OpenAPI
