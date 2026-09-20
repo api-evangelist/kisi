@@ -1,0 +1,34 @@
+slug: kisi
+provider: KISI
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Users
+  spec_file: kisi-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: POST /user/2fa/activate  activate2fa  Activate 2FA for user
+  reason: User account lifecycle plus two-factor authentication enrolment and backup codes is identity
+    and access administration.
+- tag: Role assignments
+  spec_file: kisi-role-assignments-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /role_assignments createRoleAssignment  Create role assignment
+  reason: Assigning roles to users on an access-control platform is role-based access administration,
+    i.e. Identity & Access Management. Confidence tempered because the spec fragment shows only generic
+    CRUD with no schema detail.
