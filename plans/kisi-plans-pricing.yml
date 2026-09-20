@@ -1,0 +1,71 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.getkisi.com/pricing
+sources:
+- https://www.getkisi.com/pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+published: true
+note: Access control platform pricing page; monthly/annual toggle with OSP starting at $99 and Enterprise
+  quote-only, plus one-time hardware list prices. Page notes 'Hardware prices listed applicable only when
+  purchasing Kisi OSP, Flex, or Fit plans.' API mentioned only as a resource link, not priced.
+plan_count: 9
+currency: USD
+plans:
+- name: One Security Platform (OSP)
+  price_text: Starting at $ 99
+  price: 99
+  currency: USD
+  period: month
+  included_quota: 'Access to the admin dashboard. Hardware and add-ons might be required. Discounts available
+    with annual contracts. Unlock access to: Access control, Visitor management, Video surveillance, Intrusion
+    detection, Analytics and reporting'
+- name: Enterprise
+  price_text: Contact us
+  period: none
+  included_quota: Everything in OSP plus advanced analytics and reporting, custom event retention policies,
+    enterprise onboarding and support, custom roles and permissions
+- name: Reader Pro 2
+  price_text: ﹩475
+  price: 475
+  currency: USD
+  period: one-time
+  unit: device
+- name: Controller Pro 2
+  price_text: ﹩850
+  price: 850
+  currency: USD
+  period: one-time
+  unit: device
+- name: Terminal Pro
+  price_text: ﹩595
+  price: 595
+  currency: USD
+  period: one-time
+  unit: device
+- name: Wiegand board
+  price_text: ﹩150
+  price: 150
+  currency: USD
+  period: one-time
+  unit: device
+- name: Two-wire switch
+  price_text: ﹩499
+  price: 499
+  currency: USD
+  period: one-time
+  unit: device
+- name: Two-wire adapter
+  price_text: ﹩189
+  price: 189
+  currency: USD
+  period: one-time
+  unit: device
+- name: Altronix trove
+  price_text: Prices vary
+  period: one-time

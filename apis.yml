@@ -1359,6 +1359,8 @@ x-enrichment:
   artifacts_added: 20
   pass: local-v1
 common:
+- type: Plans
+  url: plans/kisi-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/kisi-capability-edges.yml
   name: KISI Business Capability Map
