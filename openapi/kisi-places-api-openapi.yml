@@ -1284,6 +1284,21 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Error:
+      description: Schema describing errors.
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error message.
+          example: Wrong email address or password.
+        code:
+          type: string
+          description: An identifier of the error.
+          example: afc516
+      required:
+      - error
+      - code
     Errors:
       description: Schema describing validation errors.
       type: object
@@ -1301,21 +1316,6 @@ components:
             - can't be blank
       required:
       - errors
-    Error:
-      description: Schema describing errors.
-      type: object
-      properties:
-        error:
-          type: string
-          description: The error message.
-          example: Wrong email address or password.
-        code:
-          type: string
-          description: An identifier of the error.
-          example: afc516
-      required:
-      - error
-      - code
   securitySchemes:
     Webhook-Signature:
       type: apiKey
