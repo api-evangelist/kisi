@@ -1,0 +1,12 @@
+{
+ "url": "https://api.getkisi.com/openapi/apps.yaml",
+ "requested_url": "https://api.getkisi.com/openapi/apps.yaml",
+ "status": 200,
+ "content_type": "application/yaml; charset=utf-8",
+ "bytes": 3201926,
+ "sha256": "81f80e0f763627d74063f0a9e8b806a706294a27b5e3abb180870024836713da",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.978), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
