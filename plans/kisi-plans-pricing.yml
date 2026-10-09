@@ -74,3 +74,81 @@ plans:
 - name: Altronix trove
   price_text: Prices vary
   period: one-time
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - subscription
+  units:
+  - object
+  plans:
+  - name: One Security Platform (OSP)
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Reader Pro 2
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - one-time
+  - name: Controller Pro 2
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - one-time
+  - name: Terminal Pro
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - one-time
+  - name: Wiegand board
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - one-time
+  - name: Two-wire switch
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - one-time
+  - name: Two-wire adapter
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - one-time
+  - name: Altronix trove
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - one-time
