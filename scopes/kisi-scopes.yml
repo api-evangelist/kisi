@@ -1,9 +1,403 @@
-generated: '2026-07-20'
-method: derived
-source: openapi/kisi-openapi-original.yml
+generated: '2026-10-14'
+method: none
+source: openapi/kisi-calendars-api-openapi.yml, openapi/kisi-cameras-api-openapi.yml, openapi/kisi-card-assignments-api-openapi.yml,
+  openapi/kisi-cards-api-openapi.yml, openapi/kisi-controller-input-connections-api-openapi.yml,
+  openapi/kisi-controller-inputs-api-openapi.yml, openapi/kisi-controller-relay-connections-api-openapi.yml,
+  openapi/kisi-controller-relays-api-openapi.yml, openapi/kisi-controller-wiegand-connections-api-openapi.yml,
+  openapi/kisi-controller-wiegands-api-openapi.yml, openapi/kisi-controllers-api-openapi.yml,
+  openapi/kisi-csv-card-imports-api-openapi.yml, openapi/kisi-csv-user-imports-api-openapi.yml,
+  openapi/kisi-elevator-stops-api-openapi.yml, openapi/kisi-elevators-api-openapi.yml, openapi/kisi-event-sets-api-openapi.yml,
+  openapi/kisi-events-api-openapi.yml, openapi/kisi-floors-api-openapi.yml, openapi/kisi-group-elevator-stops-api-openapi.yml,
+  openapi/kisi-group-links-api-openapi.yml, openapi/kisi-group-locks-api-openapi.yml, openapi/kisi-group-terminals-api-openapi.yml,
+  openapi/kisi-group-zones-api-openapi.yml, openapi/kisi-groups-api-openapi.yml, openapi/kisi-guests-api-openapi.yml,
+  openapi/kisi-holiday-calendars-api-openapi.yml, openapi/kisi-integrations-api-openapi.yml,
+  openapi/kisi-invites-api-openapi.yml, openapi/kisi-locks-api-openapi.yml, openapi/kisi-logins-api-openapi.yml,
+  openapi/kisi-members-api-openapi.yml, openapi/kisi-organizations-api-openapi.yml, openapi/kisi-places-api-openapi.yml,
+  openapi/kisi-presences-api-openapi.yml, openapi/kisi-readers-api-openapi.yml, openapi/kisi-reports-api-openapi.yml,
+  openapi/kisi-role-assignments-api-openapi.yml, openapi/kisi-roles-api-openapi.yml, openapi/kisi-scheduled-reports-api-openapi.yml,
+  openapi/kisi-schedules-api-openapi.yml, openapi/kisi-scram-api-openapi.yml, openapi/kisi-shares-api-openapi.yml,
+  openapi/kisi-signed-upload-urls-api-openapi.yml, openapi/kisi-team-memberships-api-openapi.yml,
+  openapi/kisi-teams-api-openapi.yml, openapi/kisi-terminals-api-openapi.yml, openapi/kisi-users-api-openapi.yml,
+  openapi/kisi-wireless-locks-api-openapi.yml
 schemes:
 - name: OAuth2
-  source: openapi/kisi-openapi-original.yml
+  source: openapi/kisi-calendars-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-cameras-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-card-assignments-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-cards-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-controller-input-connections-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-controller-inputs-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-controller-relay-connections-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-controller-relays-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-controller-wiegand-connections-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-controller-wiegands-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-controllers-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-csv-card-imports-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-csv-user-imports-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-elevator-stops-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-elevators-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-event-sets-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-events-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-floors-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-group-elevator-stops-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-group-links-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-group-locks-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-group-terminals-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-group-zones-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-groups-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-guests-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-holiday-calendars-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-integrations-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-invites-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-locks-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-logins-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-members-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-organizations-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-places-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-presences-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-readers-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-reports-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-role-assignments-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-roles-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-scheduled-reports-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-schedules-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-scram-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-shares-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-signed-upload-urls-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-team-memberships-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-teams-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-terminals-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-users-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.kisi.io/oauth/authorize
+    tokenUrl: https://api.kisi.io/oauth/token
+  description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
+    youraccesstoken`'
+- name: OAuth2
+  source: openapi/kisi-wireless-locks-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://api.kisi.io/oauth/authorize
@@ -11,3 +405,5 @@ schemes:
   description: 'OAuth access tokens are sent as bearer tokens. Example: `Authorization: Bearer
     youraccesstoken`'
 scopes: []
+note: The OAuth2 security scheme(s) in the OpenAPI declare no scopes, and no security requirement
+  references one.
