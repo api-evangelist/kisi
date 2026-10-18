@@ -65,7 +65,7 @@
     - connectors/applications/kisi
     vendor_link: https://www.getkisi.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: kisi-zoom-own
   label: Zoom (own)
