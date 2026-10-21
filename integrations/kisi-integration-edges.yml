@@ -6,35 +6,11 @@ checked:
 - https://zapier.com/api/v4/apps/
 - okta/integrations/okta-integration-edges.yml
 - zoom/integrations/zoom-integration-edges.yml
+- cisco-meraki/integrations/cisco-meraki-integration-edges.yml
+- cisco/integrations/cisco-integration-edges.yml
 source:
 - okta/integrations/okta-integration-edges.yml
 edges:
-- partner_name: Okta (own)
-  partner: okta
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://www.okta.com/integrations/kisiphysicalsecurity/
-  mirror_of: okta/integrations/okta-integration-edges.yml
-  apps:
-  - Kisi Physical Security
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Single Sign-On
-  badges:
-  - OKTA_VERIFIED
-  features:
-  - CREATE
-  - DEACTIVATE
-  - GROUP_LINKING
-  - GROUP_PUSH
-  - SAML
-  - UPDATE
 - partner_name: Zapier
   partner: zapier
   partner_match: aggregator
@@ -86,6 +62,32 @@ edges:
     builder: Fivetran
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/kisiphysicalsecurity/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - Kisi Physical Security
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Single Sign-On
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - CREATE
+  - DEACTIVATE
+  - GROUP_LINKING
+  - GROUP_PUSH
+  - SAML
+  - UPDATE
 - partner_name: Zoom (own)
   partner: zoom
   partner_match: mirror
@@ -103,3 +105,37 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Zoom app
+- partner_name: Cisco (own)
+  partner: cisco
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.cisco.com/en-US/apps/380847
+  mirror_of: cisco/integrations/cisco-integration-edges.yml
+  apps:
+  - Kisi Cloud Based Access Control
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: Physical Asset Tracking
+- partner_name: Cisco Meraki (own)
+  partner: cisco-meraki
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.cisco.com/en-US/apps/380688
+  mirror_of: cisco-meraki/integrations/cisco-meraki-integration-edges.yml
+  apps:
+  - 'Tailgating and Unauthorized access: Kisi Physical Security'
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: Access Control, Computer Vision AI
