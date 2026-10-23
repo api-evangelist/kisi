@@ -3874,3 +3874,9 @@ components:
           authorizationUrl: https://api.kisi.io/oauth/authorize
           tokenUrl: https://api.kisi.io/oauth/token
           scopes: {}
+x-provenance:
+  method: harvested
+  publisher: KISI
+  source: https://api.getkisi.com/openapi/apps.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
